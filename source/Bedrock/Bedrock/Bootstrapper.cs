@@ -30,10 +30,10 @@ namespace Bedrock
         protected IModuleCatalog ModuleCatalog { get; set; }
 
         /// <summary>
-        /// Gets the shell user interface
+        /// Gets the the first view of application, that is Startup view 
         /// </summary>
         /// <value>The shell user interface.</value>
-        protected IStartupView Shell { get; set; }
+        protected IStartupView Startup { get; set; }
 
         /// <summary>
         /// Create the <see cref="ILoggerFacade" /> used by the bootstrapper.
@@ -111,9 +111,9 @@ namespace Bedrock
         }
 
         /// <summary>
-        /// Initializes the shell.
+        /// show first view of application.
         /// </summary>
-        protected virtual void InitializeShell()
+        protected virtual void ShowStartup()
         {
         }
 
@@ -129,13 +129,9 @@ namespace Bedrock
         /// </summary>
         /// <returns>The shell of the application.</returns>
         /// <remarks>
-        /// If the returned instance is a <see cref="DependencyObject"/>, the
-        /// <see cref="Bootstrapper"/> will attach the default <see cref="IRegionManager"/> of
-        /// the application in its <see cref="RegionManager.RegionManagerProperty"/> attached property
-        /// in order to be able to add regions by using the <see cref="RegionManager.RegionNameProperty"/>
-        /// attached property from XAML.
+        /// the application will attach the default <see cref="IRegionManager"/> 
         /// </remarks>
-        protected abstract IStartupView CreateShell();
+        protected abstract IStartupView CreateStartup();
 
         /// <summary>
         /// Configures the LocatorProvider for the <see cref="Microsoft.Practices.ServiceLocation.ServiceLocator" />.

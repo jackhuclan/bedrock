@@ -9,15 +9,14 @@ namespace HelloWorld
     class Bootstrapper : UnityBootstrapper
     {
         private Form1 _startForm;
-        protected override IStartupView CreateShell()
+        protected override IStartupView CreateStartup()
         {
             _startForm = this.Container.Resolve<Form1>();
             return _startForm;
         }
 
-        protected override void InitializeShell()
+        protected override void ShowStartup()
         {
-            base.InitializeShell();
             Application.Run(_startForm);
         }     
 

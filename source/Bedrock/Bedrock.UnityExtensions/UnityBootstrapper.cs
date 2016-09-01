@@ -79,23 +79,26 @@ namespace Bedrock.UnityExtensions
             this.RegisterFrameworkExceptionTypes();
 
             this.Logger.Log(Resources.CreatingShell, Category.Debug, Priority.Low);
-            this.Shell = this.CreateShell();
-            if (this.Shell != null)
+            this.Startup = this.CreateStartup();
+            if (this.Startup != null)
             {
                 this.Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
-                RegionManager.SetRegionManager(this.Shell, this.Container.Resolve<IRegionManager>());
+                RegionManager.SetRegionManager(this.Startup, this.Container.Resolve<IRegionManager>());
 
                 this.Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 RegionManager.UpdateRegions();
-
-                this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
-                this.InitializeShell();
             }
 
             if (this.Container.IsRegistered<IModuleManager>())
             {
                 this.Logger.Log(Resources.InitializingModules, Category.Debug, Priority.Low);
                 this.InitializeModules();
+            }
+
+            if (this.Startup != null)
+            {
+                this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
+                this.ShowStartup();
             }
 
             this.Logger.Log(Resources.BootstrapperSequenceCompleted, Category.Debug, Priority.Low);
