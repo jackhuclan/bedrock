@@ -64,7 +64,7 @@ namespace Bedrock.Regions
         /// <param name="regionName">The name of the region to associate the view with.</param>
         /// <param name="getContentDelegate">The delegate used to resolve a concreate instance of the view.</param>
         /// <returns>The regionmanager, for adding several views easily</returns>
-        public static IRegionManager RegisterViewWithRegion(this IRegionManager regionManager, string regionName, Func<object> getContentDelegate)
+        public static IRegionManager RegisterViewWithRegion(this IRegionManager regionManager, string regionName, Func<IView> getContentDelegate)
         {
             var regionViewRegistry = ServiceLocator.Current.GetInstance<IRegionViewRegistry>();
 

@@ -113,12 +113,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Regions\Behaviors\AutoPopulateRegionBehavior.cs" />
     <Compile Include="Regions\IRegion.cs" />
+    <Compile Include="Regions\IRegionBehavior.cs" />
+    <Compile Include="Regions\IRegionBehaviorCollection.cs" />
+    <Compile Include="Regions\IRegionBehaviorFactory.cs" />
     <Compile Include="Regions\IRegionCollection.cs" />
     <Compile Include="Regions\IRegionManager.cs" />
     <Compile Include="Regions\IRegionViewRegistry.cs" />
     <Compile Include="Regions\IViewsCollection.cs" />
     <Compile Include="Regions\Region.cs" />
+    <Compile Include="Regions\RegionBehavior.cs" />
+    <Compile Include="Regions\RegionBehaviorCollection.cs" />
+    <Compile Include="Regions\RegionBehaviorFactory.cs" />
     <Compile Include="Regions\RegionManager.cs" />
     <Compile Include="Regions\RegionManagerExtensions.cs" />
     <Compile Include="Regions\RegionViewRegistry.cs" />

@@ -1,7 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
+using System;
 using Bedrock.Logging;
 using Bedrock.Modularity;
+using Bedrock.Regions;
+using Bedrock.Regions.Behaviors;
 using Bedrock.Views;
 using Microsoft.Practices.ServiceLocation;
 
@@ -80,7 +83,7 @@ namespace Bedrock
         protected virtual void RegisterFrameworkExceptionTypes()
         {
             ExceptionExtensions.RegisterFrameworkExceptionType(
-                typeof(Microsoft.Practices.ServiceLocation.ActivationException));
+                typeof(ActivationException));
         }
 
         /// <summary>
@@ -90,6 +93,24 @@ namespace Bedrock
         {
             IModuleManager manager = ServiceLocator.Current.GetInstance<IModuleManager>();
             manager.Run();
+        }
+
+        /// <summary>
+        /// Configures the <see cref="IRegionBehaviorFactory"/>. 
+        /// This will be the list of default behaviors that will be added to a region. 
+        /// </summary>
+        protected virtual IRegionBehaviorFactory ConfigureDefaultRegionBehaviors()
+        {
+            var defaultRegionBehaviorTypesDictionary = ServiceLocator.Current.GetInstance<IRegionBehaviorFactory>();
+
+            if (defaultRegionBehaviorTypesDictionary != null)
+            {
+                defaultRegionBehaviorTypesDictionary.AddIfMissing(
+                    AutoPopulateRegionBehavior.BehaviorKey,
+                    typeof(AutoPopulateRegionBehavior));
+            }
+
+            return defaultRegionBehaviorTypesDictionary;
         }
 
         /// <summary>

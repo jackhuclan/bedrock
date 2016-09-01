@@ -28,7 +28,5 @@ namespace HelloWorld
             ModuleCatalog moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
             moduleCatalog.AddModule(typeof(HelloWorldModule.HelloWorldModule));
         }
-
-        
     }
 }

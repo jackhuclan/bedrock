@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using Bedrock.Properties;
+using Bedrock.Views;
 using Microsoft.Practices.ServiceLocation;
 
 namespace Bedrock.Regions
@@ -41,10 +42,10 @@ namespace Bedrock.Regions
         /// </summary>
         /// <param name="regionName">Name of the region which content is being requested.</param>
         /// <returns>Collection of contents registered for the region.</returns>
-        public IEnumerable<object> GetContents(string regionName)
+        public IEnumerable<IView> GetContents(string regionName)
         {
-            List<object> items = new List<object>();
-            foreach (Func<object> getContentDelegate in this.registeredContent[regionName])
+            List<IView> items = new List<IView>();
+            foreach (Func<IView> getContentDelegate in this.registeredContent[regionName])
             {
                 items.Add(getContentDelegate());
             }
@@ -67,7 +68,7 @@ namespace Bedrock.Regions
         /// </summary>
         /// <param name="regionName">Region name to which the <paramref name="getContentDelegate"/> will be registered.</param>
         /// <param name="getContentDelegate">Delegate used to retrieve the content associated with the <paramref name="regionName"/>.</param>
-        public void RegisterViewWithRegion(string regionName, Func<object> getContentDelegate)
+        public void RegisterViewWithRegion(string regionName, Func<IView> getContentDelegate)
         {
             this.registeredContent.Add(regionName, getContentDelegate);
             this.OnContentRegistered(new ViewRegisteredEventArgs(regionName, getContentDelegate));
@@ -78,9 +79,9 @@ namespace Bedrock.Regions
         /// </summary>
         /// <param name="type">Type of the registered view.</param>
         /// <returns>Instance of the registered view.</returns>
-        protected virtual object CreateInstance(Type type)
+        protected virtual IView CreateInstance(Type type)
         {
-            return this.locator.GetInstance(type);
+            return this.locator.GetInstance(type) as IView;
         }
 
         private void OnContentRegistered(ViewRegisteredEventArgs e)

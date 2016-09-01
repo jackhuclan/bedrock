@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.MainRegion = new Bedrock.Winform.RegionPlaceholder();
+            this.SuspendLayout();
+            // 
+            // MainRegion
+            // 
+            this.MainRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MainRegion.Context = null;
+            this.MainRegion.Location = new System.Drawing.Point(44, 32);
+            this.MainRegion.Name = "MainRegion";
+            this.MainRegion.RegionManager = null;
+            this.MainRegion.Size = new System.Drawing.Size(365, 176);
+            this.MainRegion.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(466, 266);
+            this.Controls.Add(this.MainRegion);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Bedrock.Winform.RegionPlaceholder MainRegion;
     }
 }
 

@@ -72,6 +72,9 @@ namespace Bedrock.UnityExtensions
             this.Logger.Log(Resources.ConfiguringServiceLocatorSingleton, Category.Debug, Priority.Low);
             this.ConfigureServiceLocator();
 
+            this.Logger.Log(Resources.ConfiguringDefaultRegionBehaviors, Category.Debug, Priority.Low);
+            this.ConfigureDefaultRegionBehaviors();
+
             this.Logger.Log(Resources.RegisteringFrameworkExceptionTypes, Category.Debug, Priority.Low);
             this.RegisterFrameworkExceptionTypes();
 
@@ -139,6 +142,7 @@ namespace Bedrock.UnityExtensions
                 RegisterTypeIfMissing(typeof(IRegionManager), typeof(RegionManager), true);
                 RegisterTypeIfMissing(typeof(IEventAggregator), typeof(EventAggregator), true);
                 RegisterTypeIfMissing(typeof(IRegionViewRegistry), typeof(RegionViewRegistry), true);
+                RegisterTypeIfMissing(typeof(IRegionBehaviorFactory), typeof(RegionBehaviorFactory), true);
             }
         }
 

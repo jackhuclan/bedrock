@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Bedrock.Views;
 
 namespace Bedrock.Regions
 {
@@ -24,7 +25,7 @@ namespace Bedrock.Regions
         /// </summary>
         /// <param name="regionName">Region name for which contents are requested.</param>
         /// <returns>Collection of contents associated with the <paramref name="regionName"/>.</returns>
-        IEnumerable<object> GetContents(string regionName);
+        IEnumerable<IView> GetContents(string regionName);
 
         /// <summary>
         /// Registers a content type with a region name.
@@ -38,6 +39,6 @@ namespace Bedrock.Regions
         /// </summary>
         /// <param name="regionName">Region name to which the <paramref name="getContentDelegate"/> will be registered.</param>
         /// <param name="getContentDelegate">Delegate used to retrieve the content associated with the <paramref name="regionName"/>.</param>
-        void RegisterViewWithRegion(string regionName, Func<object> getContentDelegate);
+        void RegisterViewWithRegion(string regionName, Func<IView> getContentDelegate);
     }
 }

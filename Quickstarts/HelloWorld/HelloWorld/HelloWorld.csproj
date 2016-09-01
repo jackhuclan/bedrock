@@ -39,6 +39,9 @@
     <Reference Include="Bedrock.UnityExtensions">
       <HintPath>..\..\..\Lib\Bedrock.UnityExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Bedrock.Winform">
+      <HintPath>..\..\..\Lib\Bedrock.Winform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism.PubSubEvents">
       <HintPath>..\..\..\Lib\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
     </Reference>
@@ -76,6 +79,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

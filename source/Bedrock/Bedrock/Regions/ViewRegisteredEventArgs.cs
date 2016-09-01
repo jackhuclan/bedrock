@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using Bedrock.Views;
 
 namespace Bedrock.Regions
 {
@@ -14,7 +15,7 @@ namespace Bedrock.Regions
         /// </summary>
         /// <param name="regionName">The region name to which the content was registered.</param>
         /// <param name="getViewDelegate">The content which was registered.</param>
-        public ViewRegisteredEventArgs(string regionName, Func<object> getViewDelegate)
+        public ViewRegisteredEventArgs(string regionName, Func<IView> getViewDelegate)
         {
             this.GetView = getViewDelegate;
             this.RegionName = regionName;
@@ -28,6 +29,6 @@ namespace Bedrock.Regions
         /// <summary>
         /// Gets the content which was registered.
         /// </summary>
-        public Func<object> GetView { get; private set; }
+        public Func<IView> GetView { get; private set; }
     }
 }
