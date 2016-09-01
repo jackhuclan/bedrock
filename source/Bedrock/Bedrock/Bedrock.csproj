@@ -121,15 +121,16 @@
     <Compile Include="Regions\Region.cs" />
     <Compile Include="Regions\RegionManager.cs" />
     <Compile Include="Regions\RegionManagerExtensions.cs" />
+    <Compile Include="Regions\RegionViewRegistry.cs" />
     <Compile Include="Regions\UpdateRegionsException.cs" />
     <Compile Include="Regions\UpdateRegionsException.Desktop.cs" />
     <Compile Include="Regions\ViewRegisteredEventArgs.cs" />
+    <Compile Include="Regions\ViewRegistrationException.cs" />
+    <Compile Include="Regions\ViewRegistrationException.Desktop.cs" />
     <Compile Include="Regions\WeakDelegatesManager.cs" />
     <Compile Include="ServiceLocatorExtensions.cs" />
     <Compile Include="Views\IStartupView.cs" />
     <Compile Include="Views\IView.cs" />
-    <Compile Include="Views\IViewManager.cs" />
-    <Compile Include="Views\ViewManager.cs" />
     <Compile Include="Views\ViewsCollection.cs" />
   </ItemGroup>
   <ItemGroup>

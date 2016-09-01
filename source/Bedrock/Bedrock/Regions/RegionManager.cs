@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Bedrock.Properties;
+using Bedrock.Views;
 
 namespace Bedrock.Regions
 {
@@ -19,9 +20,8 @@ namespace Bedrock.Regions
     /// </remarks>
     public class RegionManager : IRegionManager
     {
+        private static readonly WeakDelegatesManager UpdatingRegionsListeners = new WeakDelegatesManager();
 
-        private static readonly WeakDelegatesManager updatingRegionsListeners = new WeakDelegatesManager();
-        
         /// <summary>
         /// Notification used by attached behaviors to update the region managers appropriatelly if needed to.
         /// </summary>
@@ -29,8 +29,8 @@ namespace Bedrock.Regions
         /// target element longer than expected.</remarks>
         public static event EventHandler UpdatingRegions
         {
-            add { updatingRegionsListeners.AddListener(value); }
-            remove { updatingRegionsListeners.RemoveListener(value); }
+            add { UpdatingRegionsListeners.AddListener(value); }
+            remove { UpdatingRegionsListeners.RemoveListener(value); }
         }
 
         /// <summary>
@@ -41,10 +41,9 @@ namespace Bedrock.Regions
         /// </remarks>
         public static void UpdateRegions()
         {
-
             try
             {
-                updatingRegionsListeners.Raise(null, EventArgs.Empty);
+                UpdatingRegionsListeners.Raise(null, EventArgs.Empty);
             }
             catch (TargetInvocationException ex)
             {
@@ -54,16 +53,20 @@ namespace Bedrock.Regions
                     Resources.UpdateRegionException, rootException), ex.InnerException);
             }
         }
-        
 
-        private readonly RegionCollection regionCollection;
+        public static void SetRegionManager(IView view, IRegionManager regionManager)
+        {
+            view.RegionManager = regionManager;
+        }
+
+        private readonly RegionCollection _regionCollection;
 
         /// <summary>
         /// Initializes a new instance of <see cref="RegionManager"/>.
         /// </summary>
         public RegionManager()
         {
-            regionCollection = new RegionCollection(this);
+            _regionCollection = new RegionCollection(this);
         }
 
         /// <summary>
@@ -72,7 +75,7 @@ namespace Bedrock.Regions
         /// <value>A <see cref="IRegionCollection"/> with all the registered regions.</value>
         public IRegionCollection Regions
         {
-            get { return regionCollection; }
+            get { return _regionCollection; }
         }
 
         /// <summary>
@@ -84,15 +87,16 @@ namespace Bedrock.Regions
             return new RegionManager();
         }
 
+        #region RegionCollection
         private class RegionCollection : IRegionCollection
         {
-            private readonly IRegionManager regionManager;
-            private readonly List<IRegion> regions;
+            private readonly IRegionManager _regionManager;
+            private readonly List<IRegion> _regions;
 
             public RegionCollection(IRegionManager regionManager)
             {
-                this.regionManager = regionManager;
-                this.regions = new List<IRegion>();
+                this._regionManager = regionManager;
+                this._regions = new List<IRegion>();
             }
 
             public event NotifyCollectionChangedEventHandler CollectionChanged;
@@ -101,7 +105,7 @@ namespace Bedrock.Regions
             {
                 UpdateRegions();
 
-                return this.regions.GetEnumerator();
+                return this._regions.GetEnumerator();
             }
 
             IEnumerator IEnumerable.GetEnumerator()
@@ -141,8 +145,8 @@ namespace Bedrock.Regions
                                                               Resources.RegionNameExistsException, region.Name));
                 }
 
-                this.regions.Add(region);
-                region.RegionManager = this.regionManager;
+                this._regions.Add(region);
+                region.RegionManager = this._regionManager;
 
                 this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, region, 0));
             }
@@ -157,7 +161,7 @@ namespace Bedrock.Regions
                 if (region != null)
                 {
                     removed = true;
-                    this.regions.Remove(region);
+                    this._regions.Remove(region);
                     region.RegionManager = null;
 
                     this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, region, 0));
@@ -175,7 +179,7 @@ namespace Bedrock.Regions
 
             private IRegion GetRegionByName(string regionName)
             {
-                return this.regions.FirstOrDefault(r => r.Name == regionName);
+                return this._regions.FirstOrDefault(r => r.Name == regionName);
             }
 
             private void OnCollectionChanged(NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
@@ -188,5 +192,6 @@ namespace Bedrock.Regions
                 }
             }
         }
+        #endregion
     }
 }
