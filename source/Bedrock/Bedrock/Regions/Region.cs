@@ -22,8 +22,6 @@ namespace Bedrock.Regions
         private object context;
         private IRegionManager regionManager;
 
-        private Comparison<object> sort;
-
         /// <summary>
         /// Initializes a new instance of <see cref="Region"/>.
         /// </summary>
