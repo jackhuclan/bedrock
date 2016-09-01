@@ -1,14 +1,14 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 using Bedrock.Regions;
 using Bedrock.Views;
+using Microsoft.Practices.ServiceLocation;
 
 namespace Bedrock.Winform
 {
     public class RegionPlaceholder : UserControl, IRegion
     {
-        private IContainer components = null;
+        private IContainer components;
         private readonly Region _region = new Region();
 
         #region implements IRegion
@@ -35,6 +35,44 @@ namespace Bedrock.Winform
             get { return _region.RegionManager; }
             set { _region.RegionManager = value; }
         }
+
+        public IRegionManager Add(IView view)
+        {
+            return _region.Add(view);
+        }
+
+        public IRegionManager Add(IView view, string viewName)
+        {
+            return _region.Add(view, viewName);
+        }
+
+        public IRegionManager Add(IView view, string viewName, bool createRegionManagerScope)
+        {
+            return _region.Add(view, viewName, createRegionManagerScope);
+        }
+
+        public void Remove(IView view)
+        {
+            _region.Remove(view);
+        }
+
+        public void Activate(IView view)
+        {
+            _region.Activate(view);
+        }
+
+        public void Deactivate(IView view)
+        {
+            _region.Deactivate(view);
+        }
+
+        public object GetView(string viewName)
+        {
+            return _region.GetView(viewName);
+        }
+
+        public IRegionBehaviorCollection Behaviors { get { return _region.Behaviors; } }
+
         #endregion
 
         #region Component Designer generated code
@@ -53,49 +91,12 @@ namespace Bedrock.Winform
             base.Dispose(disposing);
         }
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = AutoScaleMode.Font;
-        }
-
-        public IRegionManager Add(IView view)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IRegionManager Add(IView view, string viewName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IRegionManager Add(IView view, string viewName, bool createRegionManagerScope)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(IView view)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Activate(IView view)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Deactivate(IView view)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object GetView(string viewName)
-        {
-            throw new NotImplementedException();
+            components = new Container();
+            AutoScaleMode = AutoScaleMode.Font;
+            RegionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
+            RegionManager.Regions.Add(this);
         }
 
         #endregion

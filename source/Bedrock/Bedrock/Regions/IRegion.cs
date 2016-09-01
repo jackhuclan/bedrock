@@ -83,6 +83,11 @@ namespace Bedrock.Regions
         /// <param name="viewName">The name used when adding the view to the region.</param>
         /// <returns>Returns the named view or <see langword="null"/> if the view with <paramref name="viewName"/> does not exist in the current region.</returns>
         object GetView(string viewName);
+        
+        /// <summary>
+        /// Gets the collection of <see cref="IRegionBehavior"/>s that can extend the behavior of regions. 
+        /// </summary>
+        IRegionBehaviorCollection Behaviors { get; }
 
         /// <summary>
         /// Gets or sets the <see cref="IRegionManager"/> that will be passed to the views when adding them to the region, unless the view is added by specifying createRegionManagerScope as <see langword="true" />.

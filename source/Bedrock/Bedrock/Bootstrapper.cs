@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using System;
 using Bedrock.Logging;
 using Bedrock.Modularity;
@@ -54,7 +52,7 @@ namespace Bedrock
         /// </summary>
         public void Run()
         {
-            this.Run(true);
+            Run(true);
         }
 
 
@@ -82,8 +80,7 @@ namespace Bedrock
         /// </summary>
         protected virtual void RegisterFrameworkExceptionTypes()
         {
-            ExceptionExtensions.RegisterFrameworkExceptionType(
-                typeof(ActivationException));
+            ExceptionExtensions.RegisterFrameworkExceptionType(typeof(ActivationException));
         }
 
         /// <summary>

@@ -67,7 +67,6 @@ namespace Bedrock.Regions
         public static IRegionManager RegisterViewWithRegion(this IRegionManager regionManager, string regionName, Func<IView> getContentDelegate)
         {
             var regionViewRegistry = ServiceLocator.Current.GetInstance<IRegionViewRegistry>();
-
             regionViewRegistry.RegisterViewWithRegion(regionName, getContentDelegate);
 
             return regionManager;

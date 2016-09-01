@@ -27,13 +27,18 @@ namespace Bedrock.Regions
         /// </summary>
         public Region()
         {
-
+            this.Behaviors = new RegionBehaviorCollection(this);
         }
 
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        
+        /// <summary>
+        /// Gets the collection of <see cref="IRegionBehavior"/>s that can extend the behavior of regions. 
+        /// </summary>
+        public IRegionBehaviorCollection Behaviors { get; private set; }
 
         /// <summary>
         /// Gets or sets a context for the region. This value can be used by the user to share context with the views.

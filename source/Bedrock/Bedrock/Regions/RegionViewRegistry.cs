@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -95,15 +93,20 @@ namespace Bedrock.Regions
                 Exception rootException;
                 if (ex.InnerException != null)
                 {
-                     rootException = ex.InnerException.GetRootException();
+                    rootException = ex.InnerException.GetRootException();
                 }
                 else
                 {
                     rootException = ex.GetRootException();
                 }
 
-                throw new ViewRegistrationException(string.Format(CultureInfo.CurrentCulture,
-                    Resources.OnViewRegisteredException, e.RegionName, rootException), ex.InnerException);
+                throw new ViewRegistrationException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.OnViewRegisteredException,
+                        e.RegionName,
+                        rootException),
+                    ex.InnerException);
             }
         }
     }
