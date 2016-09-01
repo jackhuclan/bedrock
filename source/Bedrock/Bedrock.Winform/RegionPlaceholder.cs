@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Bedrock.Regions;
 using Bedrock.Views;
@@ -6,10 +7,26 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace Bedrock.Winform
 {
-    public class RegionPlaceholder : UserControl, IRegion
+    public partial class RegionPlaceholder : UserControl, IRegion
     {
-        private IContainer components;
         private readonly Region _region = new Region();
+        public RegionPlaceholder()
+        {
+            InitializeComponent();
+            if (!DesignMode)
+            {
+                try
+                {
+                    //todo: why this line will throw exception when this control be dragged into a form.
+                    RegionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
+                    RegionManager.Regions.Add(this);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+        }
 
         #region implements IRegion
         public event PropertyChangedEventHandler PropertyChanged;
@@ -72,32 +89,6 @@ namespace Bedrock.Winform
         }
 
         public IRegionBehaviorCollection Behaviors { get { return _region.Behaviors; } }
-
-        #endregion
-
-        #region Component Designer generated code
-
-        public RegionPlaceholder()
-        {
-            InitializeComponent();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void InitializeComponent()
-        {
-            components = new Container();
-            AutoScaleMode = AutoScaleMode.Font;
-            RegionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
-            RegionManager.Regions.Add(this);
-        }
 
         #endregion
     }
