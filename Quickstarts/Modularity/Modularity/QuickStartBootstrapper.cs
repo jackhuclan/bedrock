@@ -18,10 +18,10 @@ namespace Modularity
     {
         private readonly CallbackLogger callbackLogger = new CallbackLogger();
 
-        private Form1 _startForm;
+        private Startup _startForm;
         protected override IView CreateStartup()
         {
-            _startForm = this.Container.Resolve<Form1>();
+            _startForm = this.Container.Resolve<Startup>();
             return _startForm;
         }
 
