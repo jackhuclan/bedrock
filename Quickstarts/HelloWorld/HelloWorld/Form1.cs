@@ -7,12 +7,7 @@ namespace HelloWorld
         public Form1()
         {
             InitializeComponent();
-        }
-
-        public override void InitializeRegions()
-        {
             AddRegion(this.panel1.Name, this.panel1);
         }
-
     }
 }
