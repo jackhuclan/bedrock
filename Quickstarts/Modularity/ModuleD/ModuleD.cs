@@ -2,9 +2,8 @@
 
 using System;
 using Bedrock.Modularity;
-using Modularity.ModuleTracking;
 
-namespace Modularity.ModuleD
+namespace Modularity
 {
     /// <summary>
     /// A module for the quickstart.

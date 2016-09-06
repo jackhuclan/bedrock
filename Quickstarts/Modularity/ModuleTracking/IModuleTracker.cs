@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
-namespace Modularity.ModuleTracking
+namespace Modularity
 {
     /// <summary>
     /// Provides ability for modules to inform the quickstart of their state.

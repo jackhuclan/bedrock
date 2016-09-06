@@ -28,76 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.moduleControl1 = new Modularity.ModuleControl();
-            this.moduleControl2 = new Modularity.ModuleControl();
-            this.moduleControl3 = new Modularity.ModuleControl();
-            this.moduleControl4 = new Modularity.ModuleControl();
-            this.moduleControl5 = new Modularity.ModuleControl();
-            this.moduleControl6 = new Modularity.ModuleControl();
+            this.ModuleA = new Modularity.ModuleControl();
+            this.ModuleB = new Modularity.ModuleControl();
+            this.ModuleC = new Modularity.ModuleControl();
+            this.ModuleD = new Modularity.ModuleControl();
+            this.ModuleE = new Modularity.ModuleControl();
+            this.ModuleF = new Modularity.ModuleControl();
             this.TraceTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // moduleControl1
+            // ModuleA
             // 
-            this.moduleControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.moduleControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.moduleControl1.Label2Text = " ";
-            this.moduleControl1.Location = new System.Drawing.Point(165, 12);
-            this.moduleControl1.ModuleName = "ModuleA";
-            this.moduleControl1.Name = "moduleControl1";
-            this.moduleControl1.Size = new System.Drawing.Size(133, 110);
-            this.moduleControl1.TabIndex = 0;
+            this.ModuleA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ModuleA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModuleA.Label2Text = " ";
+            this.ModuleA.Location = new System.Drawing.Point(165, 12);
+            this.ModuleA.ModuleName = "ModuleA";
+            this.ModuleA.Name = "ModuleA";
+            this.ModuleA.Size = new System.Drawing.Size(133, 110);
+            this.ModuleA.TabIndex = 0;
             // 
-            // moduleControl2
+            // ModuleB
             // 
-            this.moduleControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.moduleControl2.Label2Text = null;
-            this.moduleControl2.Location = new System.Drawing.Point(329, 12);
-            this.moduleControl2.ModuleName = "ModuleB";
-            this.moduleControl2.Name = "moduleControl2";
-            this.moduleControl2.Size = new System.Drawing.Size(133, 110);
-            this.moduleControl2.TabIndex = 1;
+            this.ModuleB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModuleB.Label2Text = "Click to load";
+            this.ModuleB.Location = new System.Drawing.Point(329, 12);
+            this.ModuleB.ModuleName = "ModuleB";
+            this.ModuleB.Name = "ModuleB";
+            this.ModuleB.Size = new System.Drawing.Size(133, 110);
+            this.ModuleB.TabIndex = 1;
+            this.ModuleB.Load += new System.EventHandler(this.ModuleB_Load);
             // 
-            // moduleControl3
+            // ModuleC
             // 
-            this.moduleControl3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.moduleControl3.Label2Text = null;
-            this.moduleControl3.Location = new System.Drawing.Point(487, 12);
-            this.moduleControl3.ModuleName = "ModuleC";
-            this.moduleControl3.Name = "moduleControl3";
-            this.moduleControl3.Size = new System.Drawing.Size(133, 110);
-            this.moduleControl3.TabIndex = 2;
+            this.ModuleC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModuleC.Label2Text = "Click to load";
+            this.ModuleC.Location = new System.Drawing.Point(487, 12);
+            this.ModuleC.ModuleName = "ModuleC";
+            this.ModuleC.Name = "ModuleC";
+            this.ModuleC.Size = new System.Drawing.Size(133, 110);
+            this.ModuleC.TabIndex = 2;
+            this.ModuleC.Load += new System.EventHandler(this.ModuleC_Load);
             // 
-            // moduleControl4
+            // ModuleD
             // 
-            this.moduleControl4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.moduleControl4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.moduleControl4.Label2Text = null;
-            this.moduleControl4.Location = new System.Drawing.Point(165, 137);
-            this.moduleControl4.ModuleName = "ModuleD";
-            this.moduleControl4.Name = "moduleControl4";
-            this.moduleControl4.Size = new System.Drawing.Size(133, 110);
-            this.moduleControl4.TabIndex = 3;
+            this.ModuleD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ModuleD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModuleD.Label2Text = null;
+            this.ModuleD.Location = new System.Drawing.Point(165, 137);
+            this.ModuleD.ModuleName = "ModuleD";
+            this.ModuleD.Name = "ModuleD";
+            this.ModuleD.Size = new System.Drawing.Size(133, 110);
+            this.ModuleD.TabIndex = 3;
             // 
-            // moduleControl5
+            // ModuleE
             // 
-            this.moduleControl5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.moduleControl5.Label2Text = null;
-            this.moduleControl5.Location = new System.Drawing.Point(329, 137);
-            this.moduleControl5.ModuleName = "ModuleE";
-            this.moduleControl5.Name = "moduleControl5";
-            this.moduleControl5.Size = new System.Drawing.Size(133, 110);
-            this.moduleControl5.TabIndex = 4;
+            this.ModuleE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModuleE.Label2Text = "Click to load";
+            this.ModuleE.Location = new System.Drawing.Point(329, 137);
+            this.ModuleE.ModuleName = "ModuleE";
+            this.ModuleE.Name = "ModuleE";
+            this.ModuleE.Size = new System.Drawing.Size(133, 110);
+            this.ModuleE.TabIndex = 4;
+            this.ModuleE.Load += new System.EventHandler(this.ModuleE_Load);
             // 
-            // moduleControl6
+            // ModuleF
             // 
-            this.moduleControl6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.moduleControl6.Label2Text = null;
-            this.moduleControl6.Location = new System.Drawing.Point(487, 137);
-            this.moduleControl6.ModuleName = "ModuleF";
-            this.moduleControl6.Name = "moduleControl6";
-            this.moduleControl6.Size = new System.Drawing.Size(133, 110);
-            this.moduleControl6.TabIndex = 5;
+            this.ModuleF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModuleF.Label2Text = "Click to load";
+            this.ModuleF.Location = new System.Drawing.Point(487, 137);
+            this.ModuleF.ModuleName = "ModuleF";
+            this.ModuleF.Name = "ModuleF";
+            this.ModuleF.Size = new System.Drawing.Size(133, 110);
+            this.ModuleF.TabIndex = 5;
+            this.ModuleF.Load += new System.EventHandler(this.ModuleF_Load);
             // 
             // TraceTextBox
             // 
@@ -113,14 +117,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 452);
             this.Controls.Add(this.TraceTextBox);
-            this.Controls.Add(this.moduleControl6);
-            this.Controls.Add(this.moduleControl5);
-            this.Controls.Add(this.moduleControl4);
-            this.Controls.Add(this.moduleControl3);
-            this.Controls.Add(this.moduleControl2);
-            this.Controls.Add(this.moduleControl1);
+            this.Controls.Add(this.ModuleF);
+            this.Controls.Add(this.ModuleE);
+            this.Controls.Add(this.ModuleD);
+            this.Controls.Add(this.ModuleC);
+            this.Controls.Add(this.ModuleB);
+            this.Controls.Add(this.ModuleA);
             this.Name = "Startup";
             this.Text = "Startup";
+            this.Load += new System.EventHandler(this.Startup_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,12 +133,12 @@
 
         #endregion
 
-        private ModuleControl moduleControl1;
-        private ModuleControl moduleControl2;
-        private ModuleControl moduleControl3;
-        private ModuleControl moduleControl4;
-        private ModuleControl moduleControl5;
-        private ModuleControl moduleControl6;
+        private ModuleControl ModuleA;
+        private ModuleControl ModuleB;
+        private ModuleControl ModuleC;
+        private ModuleControl ModuleD;
+        private ModuleControl ModuleE;
+        private ModuleControl ModuleF;
         private System.Windows.Forms.TextBox TraceTextBox;
     }
 }

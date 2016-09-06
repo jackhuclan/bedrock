@@ -7,7 +7,6 @@ using Bedrock.Modularity;
 using Bedrock.UnityExtensions;
 using Bedrock.Views;
 using Microsoft.Practices.Unity;
-using Modularity.ModuleTracking;
 
 namespace Modularity
 {
@@ -75,11 +74,11 @@ namespace Modularity
         protected override void ConfigureModuleCatalog()
         {
             // Module A is defined in the code.
-            Type moduleAType = typeof(ModuleA.ModuleA);
+            Type moduleAType = typeof(ModuleA);
             ModuleCatalog.AddModule(new ModuleInfo(moduleAType.Name, moduleAType.AssemblyQualifiedName));
 
             // Module C is defined in the code.
-            Type moduleCType = typeof(ModuleC.ModuleC);
+            Type moduleCType = typeof(ModuleC);
             ModuleCatalog.AddModule(new ModuleInfo()
             {
                 ModuleName = moduleCType.Name,

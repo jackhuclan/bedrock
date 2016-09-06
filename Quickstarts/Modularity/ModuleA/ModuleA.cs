@@ -3,9 +3,8 @@
 using System;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
-using Modularity.ModuleTracking;
 
-namespace Modularity.ModuleA
+namespace Modularity
 {
     /// <summary>
     /// A module for the quickstart.

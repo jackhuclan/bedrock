@@ -7,7 +7,7 @@
     <ProjectGuid>{FA1B82AE-E6BB-413C-8DB8-530D605B516A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Modularity.ModuleB</RootNamespace>
+    <RootNamespace>Modularity</RootNamespace>
     <AssemblyName>Modularity.ModuleB</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

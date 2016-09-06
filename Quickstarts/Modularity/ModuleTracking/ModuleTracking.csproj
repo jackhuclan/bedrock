@@ -7,7 +7,7 @@
     <ProjectGuid>{A55F0D7B-7A58-4E49-87CC-9A65A28CC218}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Modularity.ModuleTracking</RootNamespace>
+    <RootNamespace>Modularity</RootNamespace>
     <AssemblyName>Modularity.ModuleTracking</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

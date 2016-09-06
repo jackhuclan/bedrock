@@ -4,7 +4,6 @@ using System;
 using System.Globalization;
 using Bedrock.Logging;
 using Bedrock.Modularity;
-using Modularity.ModuleTracking;
 using Modularity.Properties;
 
 namespace Modularity
