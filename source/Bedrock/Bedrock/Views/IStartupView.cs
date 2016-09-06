@@ -1,6 +1,6 @@
 ﻿namespace Bedrock.Views
 {
-    public interface IStartupView : IView
+    public interface IStartupView
     {
     }
 }

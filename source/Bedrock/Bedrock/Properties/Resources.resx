@@ -310,4 +310,10 @@ Error was: {1}.</value>
   <data name="ViewNotInRegionException" xml:space="preserve">
     <value>The region does not contain the specified view.</value>
   </data>
+  <data name="CannotFindNameProperty" xml:space="preserve">
+    <value>Can't find name property for this control!</value>
+  </data>
+  <data name="NameValueOfControlIsNull" xml:space="preserve">
+    <value>The name of this control should not be null!</value>
+  </data>
 </root>

@@ -88,6 +88,15 @@ namespace Bedrock.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t find name property for this control!.
+        /// </summary>
+        internal static string CannotFindNameProperty {
+            get {
+                return ResourceManager.GetString("CannotFindNameProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type &apos;{0}&apos; does not implement from IRegionBehavior..
         /// </summary>
         internal static string CanOnlyAddTypesThatInheritIFromRegionBehavior {
@@ -360,6 +369,15 @@ namespace Bedrock.Properties {
         internal static string ModuleTypeNotFound {
             get {
                 return ResourceManager.GetString("ModuleTypeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of this control should not be null!.
+        /// </summary>
+        internal static string NameValueOfControlIsNull {
+            get {
+                return ResourceManager.GetString("NameValueOfControlIsNull", resourceCulture);
             }
         }
         

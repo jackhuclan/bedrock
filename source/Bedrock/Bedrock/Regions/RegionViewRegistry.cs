@@ -68,6 +68,7 @@ namespace Bedrock.Regions
         /// <param name="getContentDelegate">Delegate used to retrieve the content associated with the <paramref name="regionName"/>.</param>
         public void RegisterViewWithRegion(string regionName, Func<IView> getContentDelegate)
         {
+            RegionShouldAlreadyExist(regionName);
             this.registeredContent.Add(regionName, getContentDelegate);
             this.OnContentRegistered(new ViewRegisteredEventArgs(regionName, getContentDelegate));
         }
@@ -107,6 +108,16 @@ namespace Bedrock.Regions
                         e.RegionName,
                         rootException),
                     ex.InnerException);
+            }
+        }
+
+        private void RegionShouldAlreadyExist(string regionName)
+        {
+            var regionManager = (IRegionManager)locator.GetInstance(typeof(IRegionManager));
+            if (regionManager != null && !regionManager.Regions.ContainsRegionWithName(regionName))
+            {
+                throw new ArgumentNullException(
+                    string.Format("The '{0}' should be added via IView.InitializeRegions!", regionName));
             }
         }
     }

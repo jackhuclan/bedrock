@@ -136,14 +136,15 @@
     <Compile Include="Regions\ViewRegistrationException.Desktop.cs" />
     <Compile Include="Regions\WeakDelegatesManager.cs" />
     <Compile Include="ServiceLocatorExtensions.cs" />
-    <Compile Include="Views\IStartupView.cs" />
     <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\ViewBase.cs" />
     <Compile Include="Views\ViewsCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

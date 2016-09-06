@@ -33,7 +33,7 @@ namespace Bedrock
         /// Gets the the first view of application, that is Startup view 
         /// </summary>
         /// <value>The shell user interface.</value>
-        protected IStartupView Startup { get; set; }
+        protected IView Startup { get; set; }
 
         /// <summary>
         /// Create the <see cref="ILoggerFacade" /> used by the bootstrapper.
@@ -131,7 +131,7 @@ namespace Bedrock
         /// <remarks>
         /// the application will attach the default <see cref="IRegionManager"/> 
         /// </remarks>
-        protected abstract IStartupView CreateStartup();
+        protected abstract IView CreateStartup();
 
         /// <summary>
         /// Configures the LocatorProvider for the <see cref="Microsoft.Practices.ServiceLocation.ServiceLocator" />.

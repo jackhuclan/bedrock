@@ -34,6 +34,11 @@ namespace Bedrock.Regions
         /// <value>The name of the region.</value>
         string Name { get; set; }
 
+        /// <summary>
+        /// The control mapping with region name
+        /// </summary>
+        object Control { get; set; }
+
         ///<overloads>Adds a new view to the region.</overloads>
         /// <summary>
         /// Adds a new view to the region.

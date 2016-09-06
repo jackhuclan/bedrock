@@ -36,5 +36,7 @@ namespace Bedrock.Regions
         /// <param name="regionName">The name of the region to look for.</param>
         /// <returns><see langword="true"/> if the region is contained in the collection, otherwise <see langword="false"/>.</returns>
         bool ContainsRegionWithName(string regionName);
+
+        IRegion GetRegionByName(string regionName);
     }
 }

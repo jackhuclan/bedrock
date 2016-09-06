@@ -88,7 +88,7 @@ namespace Bedrock.Regions
         }
 
         #region RegionCollection
-        private class RegionCollection : IRegionCollection
+        internal class RegionCollection : IRegionCollection
         {
             private readonly IRegionManager _regionManager;
             private readonly List<IRegion> _regions;
@@ -177,7 +177,7 @@ namespace Bedrock.Regions
                 return GetRegionByName(regionName) != null;
             }
 
-            private IRegion GetRegionByName(string regionName)
+            public IRegion GetRegionByName(string regionName)
             {
                 return this._regions.FirstOrDefault(r => r.Name == regionName);
             }

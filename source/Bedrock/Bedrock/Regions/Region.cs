@@ -25,9 +25,18 @@ namespace Bedrock.Regions
         /// <summary>
         /// Initializes a new instance of <see cref="Region"/>.
         /// </summary>
-        public Region()
+        public Region(object control)
         {
             this.Behaviors = new RegionBehaviorCollection(this);
+            this.Control = control;
+            this.name = GetNamePropertyVal(control);
+        }
+
+        public Region(string name, object control)
+        {
+            this.Behaviors = new RegionBehaviorCollection(this);
+            this.name = name;
+            this.Control = control;
         }
 
         /// <summary>
@@ -88,6 +97,8 @@ namespace Bedrock.Regions
                 this.OnPropertyChanged("Name");
             }
         }
+
+        public object Control { get; set; }
 
         /// <summary>
         /// Gets a readonly view of the collection of views in the region.
@@ -256,5 +267,23 @@ namespace Bedrock.Regions
                 eventHandler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        private string GetNamePropertyVal(object control)
+        {
+            var nameProperty = control.GetType().GetProperty("Name");
+            if (nameProperty == null)
+            {
+                throw new ArgumentNullException(Resources.CannotFindNameProperty);
+            }
+
+            var val = nameProperty.GetValue(control);
+            if (val == null)
+            {
+                throw new ArgumentNullException(Resources.NameValueOfControlIsNull);
+            }
+
+            return val.ToString();
+        }
+
     }
 }

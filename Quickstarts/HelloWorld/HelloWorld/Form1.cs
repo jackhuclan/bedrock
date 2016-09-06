@@ -1,17 +1,18 @@
-﻿using System.Windows.Forms;
-using Bedrock.Regions;
-using Bedrock.Views;
+﻿using Bedrock.Winform;
 
 namespace HelloWorld
 {
-    public partial class Form1 : Form, IStartupView
+    public partial class Form1 : FormView
     {
         public Form1()
         {
             InitializeComponent();
         }
 
-        public object DataContext { get; set; }
-        public IRegionManager RegionManager { get; set; }
+        public override void InitializeRegions()
+        {
+            AddRegion(this.panel1.Name, this.panel1);
+        }
+
     }
 }

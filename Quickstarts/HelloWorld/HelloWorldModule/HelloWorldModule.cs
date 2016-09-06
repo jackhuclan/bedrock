@@ -18,14 +18,13 @@ namespace HelloWorldModule
         public void Initialize()
         {
             _regionViewRegistry.ContentRegistered += _regionViewRegistry_ContentRegistered;
-            _regionViewRegistry.RegisterViewWithRegion("MainRegion", typeof(Views.HelloWorldView));
+            _regionViewRegistry.RegisterViewWithRegion("panel1", typeof(Views.HelloWorldView));
         }
 
         private void _regionViewRegistry_ContentRegistered(object sender, ViewRegisteredEventArgs e)
         {
-            var region = _regionManager.Regions[e.RegionName];
-            var regionContainer = region as UserControl;
             var view = e.GetView() as Control;
+            var regionContainer = _regionManager.Regions[e.RegionName].Control as Control;
             if (regionContainer != null && view != null)
             {
                 regionContainer.Controls.Add(view);
