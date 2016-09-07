@@ -106,6 +106,7 @@
             this.TraceTextBox.Location = new System.Drawing.Point(29, 257);
             this.TraceTextBox.Multiline = true;
             this.TraceTextBox.Name = "TraceTextBox";
+            this.TraceTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TraceTextBox.Size = new System.Drawing.Size(591, 191);
             this.TraceTextBox.TabIndex = 6;
             // 
@@ -121,6 +122,9 @@
             this.Controls.Add(this.ModuleC);
             this.Controls.Add(this.ModuleB);
             this.Controls.Add(this.ModuleA);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Startup";
             this.Text = "Startup";
             this.Load += new System.EventHandler(this.Startup_Load);

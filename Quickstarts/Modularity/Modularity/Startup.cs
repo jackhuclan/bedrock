@@ -12,7 +12,7 @@ namespace Modularity
         private IModuleTracker moduleTracker;
         private IModuleManager moduleManager;
         private CallbackLogger logger;
-        private readonly Color loadedColor = System.Drawing.Color.FromArgb(((int) (((byte) (128)))), ((int) (((byte) (255)))),
+        private readonly Color loadedColor = Color.FromArgb(((int) (((byte) (128)))), ((int) (((byte) (255)))),
             ((int) (((byte) (128)))));
 
         public Startup(IModuleManager moduleManager, IModuleTracker moduleTracker, CallbackLogger logger)

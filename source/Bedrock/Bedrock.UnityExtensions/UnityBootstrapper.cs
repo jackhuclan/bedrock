@@ -97,11 +97,10 @@ namespace Bedrock.UnityExtensions
 
             if (this.Startup != null)
             {
-                this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
+//                this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
+                this.Logger.Log(Resources.BootstrapperSequenceCompleted, Category.Debug, Priority.Low);
                 this.ShowStartup();
             }
-
-            this.Logger.Log(Resources.BootstrapperSequenceCompleted, Category.Debug, Priority.Low);
         }
 
         /// <summary>
