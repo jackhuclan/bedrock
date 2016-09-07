@@ -57,7 +57,6 @@
             this.ModuleB.Name = "ModuleB";
             this.ModuleB.Size = new System.Drawing.Size(133, 110);
             this.ModuleB.TabIndex = 1;
-            this.ModuleB.Load += new System.EventHandler(this.ModuleB_Load);
             // 
             // ModuleC
             // 
@@ -68,7 +67,6 @@
             this.ModuleC.Name = "ModuleC";
             this.ModuleC.Size = new System.Drawing.Size(133, 110);
             this.ModuleC.TabIndex = 2;
-            this.ModuleC.Load += new System.EventHandler(this.ModuleC_Load);
             // 
             // ModuleD
             // 
@@ -90,7 +88,6 @@
             this.ModuleE.Name = "ModuleE";
             this.ModuleE.Size = new System.Drawing.Size(133, 110);
             this.ModuleE.TabIndex = 4;
-            this.ModuleE.Load += new System.EventHandler(this.ModuleE_Load);
             // 
             // ModuleF
             // 
@@ -101,10 +98,11 @@
             this.ModuleF.Name = "ModuleF";
             this.ModuleF.Size = new System.Drawing.Size(133, 110);
             this.ModuleF.TabIndex = 5;
-            this.ModuleF.Load += new System.EventHandler(this.ModuleF_Load);
             // 
             // TraceTextBox
             // 
+            this.TraceTextBox.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TraceTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.TraceTextBox.Location = new System.Drawing.Point(29, 257);
             this.TraceTextBox.Multiline = true;
             this.TraceTextBox.Name = "TraceTextBox";

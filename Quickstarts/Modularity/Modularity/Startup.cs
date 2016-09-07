@@ -12,6 +12,8 @@ namespace Modularity
         private IModuleTracker moduleTracker;
         private IModuleManager moduleManager;
         private CallbackLogger logger;
+        private readonly Color loadedColor = System.Drawing.Color.FromArgb(((int) (((byte) (128)))), ((int) (((byte) (255)))),
+            ((int) (((byte) (128)))));
 
         public Startup(IModuleManager moduleManager, IModuleTracker moduleTracker, CallbackLogger logger)
         {
@@ -42,30 +44,24 @@ namespace Modularity
             this.TraceTextBox.AppendText(string.Format(CultureInfo.CurrentUICulture, "[{0}][{1}] {2}\r\n", category, priority, message));
         }
 
-        private void ModuleB_Load(object sender, EventArgs e)
+        private void ModuleB_Click(object sender, EventArgs e)
         {
             this.moduleManager.LoadModule(WellKnownModuleNames.ModuleB);
-            ModuleB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128))))); 
         }
 
-        private void ModuleC_Load(object sender, EventArgs e)
+        private void ModuleC_Click(object sender, EventArgs e)
         {
             this.moduleManager.LoadModule(WellKnownModuleNames.ModuleC);
-            ModuleC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-
         }
 
-        private void ModuleE_Load(object sender, EventArgs e)
+        private void ModuleE_Click(object sender, EventArgs e)
         {
             this.moduleManager.LoadModule(WellKnownModuleNames.ModuleE);
-            ModuleE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
         }
 
-        private void ModuleF_Load(object sender, EventArgs e)
+        private void ModuleF_Click(object sender, EventArgs e)
         {
             this.moduleManager.LoadModule(WellKnownModuleNames.ModuleF);
-            ModuleF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-
         }
 
         private void Startup_Load(object sender, EventArgs e)
@@ -77,6 +73,10 @@ namespace Modularity
             this.logger.ReplaySavedLogs();
             this.moduleManager.LoadModuleCompleted += this.ModuleManager_LoadModuleCompleted;
             this.moduleManager.ModuleDownloadProgressChanged += this.ModuleManager_ModuleDownloadProgressChanged;
+            this.ModuleB.Click += ModuleB_Click;
+            this.ModuleC.Click += ModuleC_Click;
+            this.ModuleE.Click += ModuleE_Click;
+            this.ModuleF.Click += ModuleF_Click;
         }
 
         /// <summary>
@@ -97,6 +97,21 @@ namespace Modularity
         void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
         {
             this.moduleTracker.RecordModuleLoaded(e.ModuleInfo.ModuleName);
+            switch (e.ModuleInfo.ModuleName)
+            {
+                case "ModuleB":
+                    ModuleB.BackColor = loadedColor;
+                    break;
+                case "ModuleC":
+                    ModuleC.BackColor = loadedColor;
+                    break;
+                case "ModuleE":
+                    ModuleE.BackColor = loadedColor;
+                    break;
+                case "ModuleF":
+                    ModuleF.BackColor = loadedColor;
+                    break;
+            }
         }
     }
 }
