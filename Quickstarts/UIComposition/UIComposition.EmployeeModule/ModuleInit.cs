@@ -1,6 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
-
+using System.Linq;
 using Bedrock.Modularity;
 using Bedrock.Regions;
 using Microsoft.Practices.Unity;
@@ -34,10 +32,12 @@ namespace UIComposition.EmployeeModule
             // with a region so that the view will be automatically added to the region when
             // the region is first displayed.
 
-            // TODO: 03 - The EmployeeModule configures the EmployeeListView to automatically appear in the Left region (using View Discovery).
             // Show the Employee List view in the shell's left hand region.
             this.regionManager.RegisterViewWithRegion( RegionNames.LeftRegion,
                                                        () => this.container.Resolve<EmployeeListView>());
+            var leftRegion = this.regionManager.Regions[RegionNames.LeftRegion];
+            var viewOfLeftRegion = leftRegion.Views.First();
+            leftRegion.Activate(viewOfLeftRegion);
 
             // TODO: 04 - The EmployeeModule defines a controller class, MainRegionController, which programmatically displays views in the Main region (using View Injection).
             // Create the main region controller.

@@ -125,7 +125,7 @@
     <Compile Include="Regions\IRegionManager.cs" />
     <Compile Include="Regions\IRegionViewRegistry.cs" />
     <Compile Include="Regions\IViewsCollection.cs" />
-    <Compile Include="Regions\Region.cs" />
+    <Compile Include="Regions\RegionBase.cs" />
     <Compile Include="Regions\RegionBehavior.cs" />
     <Compile Include="Regions\RegionBehaviorCollection.cs" />
     <Compile Include="Regions\RegionBehaviorFactory.cs" />

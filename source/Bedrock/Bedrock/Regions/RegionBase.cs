@@ -184,7 +184,7 @@ namespace Bedrock.Regions
         /// <returns>The <see cref="IRegionManager"/> that is set on the view if it is a <see cref="DependencyObject"/>. It will be the current region manager when using this overload.</returns>
         public IRegionManager Add(IView view)
         {
-            return this.Add(view, null, false);
+            return this.Add(view, view.Name, false);
         }
 
         /// <summary>

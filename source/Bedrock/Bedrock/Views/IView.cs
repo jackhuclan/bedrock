@@ -1,6 +1,4 @@
-﻿using Bedrock.Regions;
-
-namespace Bedrock.Views
+﻿namespace Bedrock.Views
 {
     public interface IView
     {
