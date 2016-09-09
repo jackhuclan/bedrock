@@ -49,9 +49,9 @@ namespace UIComposition.EmployeeModule
             // Show the Employee Details and Employee Projects view in the tab region.
             // The tab region is defined as part of the Employee Summary view which is only
             // displayed once the user has selected an employee in the Employee List view.
-            this.regionManager.RegisterViewWithRegion( RegionNames.TabRegion,
+            this.regionManager.RegisterViewWithRegion( RegionNames.TabRegion1,
                                                        () => this.container.Resolve<EmployeeDetailsView>());
-            this.regionManager.RegisterViewWithRegion (RegionNames.TabRegion,
+            this.regionManager.RegisterViewWithRegion (RegionNames.TabRegion2,
                                                        () => this.container.Resolve<EmployeeProjectsView>());
         }
     }

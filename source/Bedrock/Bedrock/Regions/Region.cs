@@ -13,7 +13,7 @@ namespace Bedrock.Regions
     /// <summary>
     /// Implementation of <see cref="IRegion"/> that allows multiple active views.
     /// </summary>
-    public class Region : IRegion
+    public class RegionBase : IRegion
     {
         private ObservableCollection<IView> itemCollection;
         private string name;
@@ -25,14 +25,14 @@ namespace Bedrock.Regions
         /// <summary>
         /// Initializes a new instance of <see cref="Region"/>.
         /// </summary>
-        public Region(object control)
+        public RegionBase(object control)
         {
             this.Behaviors = new RegionBehaviorCollection(this);
             this.Control = control;
             this.name = GetNamePropertyVal(control);
         }
 
-        public Region(string name, object control)
+        public RegionBase(string name, object control)
         {
             this.Behaviors = new RegionBehaviorCollection(this);
             this.name = name;

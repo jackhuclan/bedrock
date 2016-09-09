@@ -316,4 +316,7 @@ Error was: {1}.</value>
   <data name="NameValueOfControlIsNull" xml:space="preserve">
     <value>The name of this control should not be null!</value>
   </data>
+  <data name="IRegionBehaviorFactoryInstanceNotExist" xml:space="preserve">
+    <value>IRegionBehaviorFactory instance need be registerd!</value>
+  </data>
 </root>

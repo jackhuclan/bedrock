@@ -316,6 +316,15 @@ namespace Bedrock.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IRegionBehaviorFactory instance need be registerd!.
+        /// </summary>
+        internal static string IRegionBehaviorFactoryInstanceNotExist {
+            get {
+                return ResourceManager.GetString("IRegionBehaviorFactoryInstanceNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ItemsControl&apos;s ItemsSource property is not empty. 
         ///    This control is being associated with a region, but the control is already bound to something else. 
         ///    If you did not explicitly set the control&apos;s ItemSource property, 

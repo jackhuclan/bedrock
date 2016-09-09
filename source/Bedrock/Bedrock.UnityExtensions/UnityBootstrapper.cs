@@ -83,7 +83,7 @@ namespace Bedrock.UnityExtensions
             if (this.Startup != null)
             {
                 this.Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
-                RegionManager.SetRegionManager(this.Startup, this.Container.Resolve<IRegionManager>());
+//                RegionManager.SetRegionManager(this.Startup, this.Container.Resolve<IRegionManager>());
 
                 this.Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 RegionManager.UpdateRegions();

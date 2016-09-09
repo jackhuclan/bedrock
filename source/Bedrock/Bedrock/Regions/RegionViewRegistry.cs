@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using Bedrock.Properties;
+using Bedrock.Regions.Behaviors;
 using Bedrock.Views;
 using Microsoft.Practices.ServiceLocation;
 
@@ -69,6 +70,7 @@ namespace Bedrock.Regions
         public void RegisterViewWithRegion(string regionName, Func<IView> getContentDelegate)
         {
             RegionShouldAlreadyExist(regionName);
+            AttachDefaultBehaviors(regionName);
             this.registeredContent.Add(regionName, getContentDelegate);
             this.OnContentRegistered(new ViewRegisteredEventArgs(regionName, getContentDelegate));
         }
@@ -117,7 +119,25 @@ namespace Bedrock.Regions
             if (regionManager != null && !regionManager.Regions.ContainsRegionWithName(regionName))
             {
                 throw new ArgumentNullException(
-                    string.Format("The '{0}' should be added via IView.InitializeRegions!", regionName));
+                    string.Format("The '{0}' should already be added via IView.InitializeRegions!", regionName));
+            }
+        }
+
+        private void AttachDefaultBehaviors(string regionName)
+        {
+            var regionManager = (IRegionManager)locator.GetInstance(typeof(IRegionManager));
+            var regionBehaviorFactory = locator.GetInstance<IRegionBehaviorFactory>();
+            if (regionBehaviorFactory == null)
+            {
+                throw new ArgumentNullException(Resources.IRegionBehaviorFactoryInstanceNotExist);
+            }
+
+            if (regionManager != null)
+            {
+                var region = regionManager.Regions.GetRegionByName(regionName);
+                region.Behaviors.Add(
+                    AutoPopulateRegionBehavior.BehaviorKey,
+                    regionBehaviorFactory.CreateFromKey(AutoPopulateRegionBehavior.BehaviorKey));
             }
         }
     }

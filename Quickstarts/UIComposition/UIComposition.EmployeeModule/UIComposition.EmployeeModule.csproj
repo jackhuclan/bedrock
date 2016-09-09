@@ -103,6 +103,20 @@
       <DependentUpon>EmployeeSummaryView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EmployeeDetailsView.resx">
+      <DependentUpon>EmployeeDetailsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeListView.resx">
+      <DependentUpon>EmployeeListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeProjectsView.resx">
+      <DependentUpon>EmployeeProjectsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeSummaryView.resx">
+      <DependentUpon>EmployeeSummaryView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

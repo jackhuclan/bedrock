@@ -140,7 +140,6 @@
     <Compile Include="Regions\WeakDelegatesManager.cs" />
     <Compile Include="ServiceLocatorExtensions.cs" />
     <Compile Include="Views\IView.cs" />
-    <Compile Include="Views\ViewBase.cs" />
     <Compile Include="Views\ViewsCollection.cs" />
   </ItemGroup>
   <ItemGroup>
