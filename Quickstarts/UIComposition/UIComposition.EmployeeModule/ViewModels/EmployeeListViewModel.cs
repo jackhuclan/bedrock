@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Microsoft.Practices.Prism.PubSubEvents;
+using UIComposition.EmployeeModule.Events;
 using UIComposition.EmployeeModule.Models;
 using UIComposition.EmployeeModule.Services;
 

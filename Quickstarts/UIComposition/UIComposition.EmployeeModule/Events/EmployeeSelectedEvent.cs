@@ -1,8 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using Microsoft.Practices.Prism.PubSubEvents;
 
-namespace UIComposition.EmployeeModule
+namespace UIComposition.EmployeeModule.Events
 {
     /// <summary>
     /// Defines an event to communicate that an employee has been selected.
