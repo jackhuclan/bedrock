@@ -34,26 +34,18 @@ namespace UIComposition.EmployeeModule
             // the region is first displayed.
 
             // Show the Employee List view in the shell's left hand region.
-            this.regionManager.RegisterViewWithRegion(RegionNames.LeftRegion,
-                                                       () => this.container.Resolve<EmployeeListView>());
-            var leftRegion = this.regionManager.Regions[RegionNames.LeftRegion];
-            var viewOfLeftRegion = leftRegion.Views.First() as IView;
-            leftRegion.Activate(viewOfLeftRegion);
+            this.regionManager.RegisterViewWithRegion(RegionNames.LeftRegion, () => this.container.Resolve<EmployeeListView>());
+            this.regionManager.Regions[RegionNames.LeftRegion].Activate();
 
-            // TODO: 04 - The EmployeeModule defines a controller class, MainRegionController, which programmatically displays views in the Main region (using View Injection).
             // Create the main region controller.
             // This is used to programmatically coordinate the view
             // in the main region of the shell.
             this._mainRegionController = this.container.Resolve<MainRegionController>();
 
-            // TODO: 08 - The EmployeeModule configures the EmployeeDetailsView and EmployeeProjectsView to automatically appear in the Tab region (using View Discovery).
-            // Show the Employee Details and Employee Projects view in the tab region.
-            // The tab region is defined as part of the Employee Summary view which is only
-            // displayed once the user has selected an employee in the Employee List view.
-            this.regionManager.RegisterViewWithRegion(RegionNames.TabRegion1,
-                                                       () => this.container.Resolve<EmployeeDetailsView>());
-            this.regionManager.RegisterViewWithRegion(RegionNames.TabRegion2,
-                                                       () => this.container.Resolve<EmployeeProjectsView>());
+            this.regionManager.RegisterViewWithRegion(RegionNames.TabRegion1, () => this.container.Resolve<EmployeeDetailsView>());
+            this.regionManager.Regions[RegionNames.TabRegion1].Activate();
+            this.regionManager.RegisterViewWithRegion(RegionNames.TabRegion2, () => this.container.Resolve<EmployeeProjectsView>());
+            this.regionManager.Regions[RegionNames.TabRegion2].Activate();
         }
     }
 }

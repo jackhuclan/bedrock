@@ -237,8 +237,8 @@ namespace Bedrock.Regions
             foreach (IView view in Views)
             {
                 Deactivate(view);
-                activeViews.Remove(view);
-                views.Remove(view);
+                ActiveViews.Remove(view);
+                Views.Remove(view);
             }
         }
 
@@ -257,7 +257,7 @@ namespace Bedrock.Regions
         /// <param name="view">The view to activate.</param>
         public virtual void Activate(IView view)
         {
-            activeViews.Add(view);
+            ActiveViews.Add(view);
         }
 
         public void Activate()
@@ -274,7 +274,7 @@ namespace Bedrock.Regions
         /// <param name="view">The view to deactivate.</param>
         public virtual void Deactivate(IView view)
         {
-            activeViews.Remove(view);
+            ActiveViews.Remove(view);
         }
 
         public void Deactivate()
