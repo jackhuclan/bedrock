@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Bedrock.Views;
@@ -17,5 +15,15 @@ namespace Bedrock.Regions
         /// <param name="value">The object to locate in the collection.</param>
         /// <returns><see langword="true" /> if <paramref name="value"/> is found in the collection; otherwise, <see langword="false" />.</returns>
         bool Contains(IView value);
+        /// <summary>
+        /// add a view from the collection
+        /// </summary>
+        /// <param name="view"></param>
+        void Add(IView view);
+        /// <summary>
+        /// remove a view from the collection
+        /// </summary>
+        /// <param name="view"></param>
+        void Remove(IView view);
     }
 }

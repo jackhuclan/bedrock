@@ -232,6 +232,16 @@ namespace Bedrock.Regions
             }
         }
 
+        public void RemoveAllViews()
+        {
+            foreach (IView view in Views)
+            {
+                Deactivate(view);
+                activeViews.Remove(view);
+                views.Remove(view);
+            }
+        }
+
         /// <summary>
         /// Removes the specified view from the region.
         /// </summary>
@@ -247,7 +257,15 @@ namespace Bedrock.Regions
         /// <param name="view">The view to activate.</param>
         public virtual void Activate(IView view)
         {
+            activeViews.Add(view);
+        }
 
+        public void Activate()
+        {
+            foreach (IView view in Views)
+            {
+                Activate(view);
+            }
         }
 
         /// <summary>
@@ -256,7 +274,15 @@ namespace Bedrock.Regions
         /// <param name="view">The view to deactivate.</param>
         public virtual void Deactivate(IView view)
         {
+            activeViews.Remove(view);
+        }
 
+        public void Deactivate()
+        {
+            foreach (IView view in Views)
+            {
+                Deactivate(view);
+            }
         }
 
         /// <summary>

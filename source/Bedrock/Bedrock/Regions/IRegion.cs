@@ -70,6 +70,11 @@ namespace Bedrock.Regions
         void RegisterDefaultBehavior();
 
         /// <summary>
+        /// Remove All Views from the region.
+        /// </summary>
+        void RemoveAllViews();
+
+        /// <summary>
         /// Removes the specified view from the region.
         /// </summary>
         /// <param name="view">The view to remove.</param>
@@ -82,10 +87,20 @@ namespace Bedrock.Regions
         void Activate(IView view);
 
         /// <summary>
+        /// activate all views registered in this region
+        /// </summary>
+        void Activate();
+
+        /// <summary>
         /// Marks the specified view as inactive. 
         /// </summary>
         /// <param name="view">The view to deactivate.</param>
         void Deactivate(IView view);
+
+        /// <summary>
+        /// Deactivate all views registered in this region
+        /// </summary>
+        void Deactivate();
 
         /// <summary>
         /// Returns the view instance that was added to the region using a specific name.

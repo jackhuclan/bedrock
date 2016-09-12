@@ -43,6 +43,30 @@ namespace Bedrock.Views
             return this._subjectCollection.Contains(value);
         }
 
+        /// <summary>
+        /// add a view from the collection
+        /// </summary>
+        /// <param name="view"></param>
+        public void Add(IView view)
+        {
+            if (!_subjectCollection.Contains(view))
+            {
+                _subjectCollection.Add(view);
+            }
+        }
+
+        /// <summary>
+        /// remove a view from the collection
+        /// </summary>
+        /// <param name="view"></param>
+        public void Remove(IView view)
+        {
+            if (_subjectCollection.Contains(view))
+            {
+                _subjectCollection.Remove(view);
+            }
+        }
+
 
         /// <summary>
         /// Used to invoked the <see cref="CollectionChanged"/> event.

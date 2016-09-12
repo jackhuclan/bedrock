@@ -16,6 +16,7 @@ namespace Bedrock.Winform
 
         public override void Activate(IView view)
         {
+            base.Activate(view);
             var castedView = view as Control;
             var container = Control as Control;
             if (castedView != null && container != null)
@@ -27,6 +28,7 @@ namespace Bedrock.Winform
 
         public override void Deactivate(IView view)
         {
+            base.Deactivate(view);
             var castedView = view as Control;
             if (castedView != null)
             {
@@ -41,6 +43,8 @@ namespace Bedrock.Winform
             if (castedView != null && container != null)
             {
                 container.Controls.Remove(castedView);
+                ActiveViews.Remove(view);
+                Views.Remove(view);
             }
         }
     }
