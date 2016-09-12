@@ -1,7 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using Microsoft.Practices.Prism.PubSubEvents;
 using UIComposition.EmployeeModule.Models;
+using UIComposition.EmployeeModule.Services;
 
 namespace UIComposition.EmployeeModule.ViewModels
 {
@@ -10,8 +12,28 @@ namespace UIComposition.EmployeeModule.ViewModels
     /// </summary>
     public class EmployeeDetailsViewModel : INotifyPropertyChanged
     {
-        public EmployeeDetailsViewModel()
+        public EmployeeDetailsViewModel(
+            IEmployeeDataService dataService,
+            IEventAggregator eventAggregator)
         {
+            _dataService = dataService;
+            Employees = dataService.GetEmployees();
+            eventAggregator.GetEvent<EmployeeSelectedEvent>().Subscribe(this.EmployeeSelected, true);
+        }
+
+        private void EmployeeSelected(string obj)
+        {
+            CurrentEmployee = Employees.FirstOrDefault(x => x.Id == obj);
+        }
+
+        public Employee CurrentEmployee
+        {
+            get { return _currentEmployee; }
+            set
+            {
+                _currentEmployee = value;
+                NotifyPropertyChanged("CurrentEmployee");
+            }
         }
 
         public string ViewName
@@ -19,17 +41,7 @@ namespace UIComposition.EmployeeModule.ViewModels
             get { return "Employee Details"; }
         }
 
-        private Employee currentEmployee;
-
-        public Employee CurrentEmployee
-        {
-            get { return this.currentEmployee; }
-            set
-            {
-                this.currentEmployee = value;
-                this.NotifyPropertyChanged("CurrentEmployee");
-            }
-        }
+        public List<Employee> Employees { get; set; }
 
         #region INotifyPropertyChanged Members
 
@@ -44,5 +56,8 @@ namespace UIComposition.EmployeeModule.ViewModels
         }
 
         #endregion
+
+        private readonly IEmployeeDataService _dataService;
+        private Employee _currentEmployee;
     }
 }

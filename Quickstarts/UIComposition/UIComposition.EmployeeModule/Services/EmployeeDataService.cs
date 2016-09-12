@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
+using System.Collections.Generic;
 using UIComposition.EmployeeModule.Models;
 
 namespace UIComposition.EmployeeModule.Services
@@ -10,20 +11,20 @@ namespace UIComposition.EmployeeModule.Services
     /// </summary>
     public class EmployeeDataService : IEmployeeDataService
     {
-        private Employees employees;
-        private Projects projects;
+        private List<Employee> employees;
+        private List<Project> projects;
 
-        public Employees GetEmployees()
+        public List<Employee> GetEmployees()
         {
             if (this.employees == null)
             {
                 // Dummy Data.
-                this.employees = new Employees
+                this.employees = new List<Employee>
                                       {
                                           new Employee()
                                               {
                                                   Id = "1",
-                                                  Name = "John",
+                                                  FirstName = "John",
                                                   LastName = "Smith",
                                                   Phone = "(425) 555 8912",
                                                   Email = "John.Smith@Contoso.com"
@@ -31,7 +32,7 @@ namespace UIComposition.EmployeeModule.Services
                                           new Employee()
                                               {
                                                   Id = "2",
-                                                  Name = "Bonnie",
+                                                  FirstName = "Bonnie",
                                                   LastName = "Skelly",
                                                   Phone = "(206) 555 7301",
                                                   Email = "Bonnie.Skelly@Contoso.com"
@@ -39,7 +40,7 @@ namespace UIComposition.EmployeeModule.Services
                                           new Employee()
                                               {
                                                   Id = "3",
-                                                  Name = "Dana",
+                                                  FirstName = "Dana",
                                                   LastName = "Birkby",
                                                   Phone = "(425) 555 7492",
                                                   Email = "Dana.Birkby@Contoso.com"
@@ -47,7 +48,7 @@ namespace UIComposition.EmployeeModule.Services
                                           new Employee()
                                               {
                                                   Id = "4",
-                                                  Name = "David",
+                                                  FirstName = "David",
                                                   LastName = "Probst",
                                                   Phone = "(425) 555 2836",
                                                   Email = "David.Probst@Contoso.com"
@@ -58,12 +59,12 @@ namespace UIComposition.EmployeeModule.Services
             return this.employees;
         }
 
-        public Projects GetProjects()
+        public List<Project> GetProjects()
         {
             if (this.projects == null)
             {
                 // Dummy data.
-                this.projects = new Projects
+                this.projects = new List<Project>
                                      {
                                          new Project() {Id = "1", ProjectName = "Project 1", Role = "Dev Lead"},
                                          new Project() {Id = "1", ProjectName = "Project 2", Role = "Tech Reviewer"},

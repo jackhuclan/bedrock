@@ -2,7 +2,10 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using Microsoft.Practices.Prism.PubSubEvents;
 using UIComposition.EmployeeModule.Models;
 using UIComposition.EmployeeModule.Services;
 
@@ -13,12 +16,19 @@ namespace UIComposition.EmployeeModule.ViewModels
     /// </summary>
     public class EmployeeProjectsViewModel : INotifyPropertyChanged
     {
-        public EmployeeProjectsViewModel(IEmployeeDataService dataService)
+        public EmployeeProjectsViewModel(
+            IEmployeeDataService dataService,
+            IEventAggregator eventAggregator)
         {
             if (dataService == null) throw new ArgumentNullException("dataService");
+            _dataService = dataService;
+            eventAggregator.GetEvent<EmployeeSelectedEvent>().Subscribe(this.EmployeeSelected, true);
+        }
 
-            // Initialize a CollectionView for the project list.
-            this.Projects = new ArrayList(dataService.GetProjects());
+        private void EmployeeSelected(string obj)
+        {
+            this._projects = _dataService.GetProjects();
+            Projects = _projects.Where(x => x.Id == obj).ToList();
         }
 
         public string ViewName
@@ -26,26 +36,15 @@ namespace UIComposition.EmployeeModule.ViewModels
             get { return "Employee Projects"; }
         }
 
-        private Employee currentEmployee;
-
-        public Employee CurrentEmployee
+        public List<Project> Projects
         {
-            get { return this.currentEmployee; }
-            set
+            get { return _projects; }
+            private set
             {
-                this.currentEmployee = value;
-
-                // Filter the list of projects to those that are assigned to the current employee.
-//                if (this.CurrentEmployee != null)
-//                    this.Projects.Filter = obj => ((Project) obj).Id == this.CurrentEmployee.Id;
-//                this.Projects.Refresh();
-
-                this.NotifyPropertyChanged("CurrentEmployee");
-                this.NotifyPropertyChanged("Projects");
+                _projects = value;
+                NotifyPropertyChanged("Projects");
             }
         }
-
-        public IList Projects { get; private set; }
 
         #region INotifyPropertyChanged Members
 
@@ -60,5 +59,8 @@ namespace UIComposition.EmployeeModule.ViewModels
         }
 
         #endregion
+
+        private List<Project> _projects;
+        private readonly IEmployeeDataService _dataService;
     }
 }
