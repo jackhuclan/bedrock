@@ -55,7 +55,6 @@ namespace Bedrock.Regions
 
             this.behaviors.Add(key, regionBehavior);
             regionBehavior.Region = this.region;
-            regionBehavior.Attach();
         }
 
         /// <summary>

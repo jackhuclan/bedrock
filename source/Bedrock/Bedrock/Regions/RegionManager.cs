@@ -54,7 +54,7 @@ namespace Bedrock.Regions
 
         public static void SetRegionManager(IView view, IRegionManager regionManager)
         {
-//            view.RegionManager = regionManager;
+            //            view.RegionManager = regionManager;
         }
 
         private readonly RegionCollection _regionCollection;
@@ -145,7 +145,6 @@ namespace Bedrock.Regions
 
                 this._regions.Add(region);
                 region.RegionManager = this._regionManager;
-
                 this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, region, 0));
             }
 

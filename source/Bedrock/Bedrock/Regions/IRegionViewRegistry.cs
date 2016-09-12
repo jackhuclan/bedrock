@@ -18,7 +18,13 @@ namespace Bedrock.Regions
         /// This event uses weak references to the event handler to prevent this service (typically a singleton) of keeping the
         /// target element longer than expected.
         /// </remarks>
-        event EventHandler<ViewRegisteredEventArgs> ContentRegistered;
+        event EventHandler<ViewRegisteredEventArgs> ViewRegistered;
+
+        /// <summary>
+        /// Raise ViewRegistered event
+        /// </summary>
+        /// <param name="e"></param>
+        void OnViewRegistered(ViewRegisteredEventArgs e);
 
         /// <summary>
         /// Returns the contents associated with a region name.

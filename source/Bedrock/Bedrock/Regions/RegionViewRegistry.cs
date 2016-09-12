@@ -14,9 +14,9 @@ namespace Bedrock.Regions
     /// </summary>
     public class RegionViewRegistry : IRegionViewRegistry
     {
-        private readonly IServiceLocator locator;
-        private readonly ListDictionary<string, Func<object>> registeredContent = new ListDictionary<string, Func<object>>();
-        private readonly WeakDelegatesManager contentRegisteredListeners = new WeakDelegatesManager();
+        private readonly IServiceLocator _locator;
+        private readonly ListDictionary<string, Func<object>> _registeredView = new ListDictionary<string, Func<object>>();
+        private readonly WeakDelegatesManager _viewRegisteredListeners = new WeakDelegatesManager();
 
         /// <summary>
         /// Creates a new instance of the <see cref="RegionViewRegistry"/> class.
@@ -24,16 +24,16 @@ namespace Bedrock.Regions
         /// <param name="locator"><see cref="IServiceLocator"/> used to create the instance of the views from its <see cref="Type"/>.</param>
         public RegionViewRegistry(IServiceLocator locator)
         {
-            this.locator = locator;
+            this._locator = locator;
         }
-
+        
         /// <summary>
         /// Occurs whenever a new view is registered.
         /// </summary>
-        public event EventHandler<ViewRegisteredEventArgs> ContentRegistered
+        public event EventHandler<ViewRegisteredEventArgs> ViewRegistered
         {
-            add { this.contentRegisteredListeners.AddListener(value); }
-            remove { this.contentRegisteredListeners.RemoveListener(value); }
+            add { this._viewRegisteredListeners.AddListener(value); }
+            remove { this._viewRegisteredListeners.RemoveListener(value); }
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Bedrock.Regions
         public IEnumerable<IView> GetContents(string regionName)
         {
             List<IView> items = new List<IView>();
-            foreach (Func<IView> getContentDelegate in this.registeredContent[regionName])
+            foreach (Func<IView> getContentDelegate in this._registeredView[regionName])
             {
                 items.Add(getContentDelegate());
             }
@@ -70,9 +70,8 @@ namespace Bedrock.Regions
         public void RegisterViewWithRegion(string regionName, Func<IView> getContentDelegate)
         {
             RegionShouldAlreadyExist(regionName);
-            AttachDefaultBehaviors(regionName);
-            this.registeredContent.Add(regionName, getContentDelegate);
-            this.OnContentRegistered(new ViewRegisteredEventArgs(regionName, getContentDelegate));
+            this._registeredView.Add(regionName, getContentDelegate);
+            InvokeBindingBehaviors(regionName);
         }
 
         /// <summary>
@@ -82,14 +81,14 @@ namespace Bedrock.Regions
         /// <returns>Instance of the registered view.</returns>
         protected virtual IView CreateInstance(Type type)
         {
-            return this.locator.GetInstance(type) as IView;
+            return this._locator.GetInstance(type) as IView;
         }
 
-        private void OnContentRegistered(ViewRegisteredEventArgs e)
+        public void OnViewRegistered(ViewRegisteredEventArgs e)
         {
             try
             {
-                this.contentRegisteredListeners.Raise(this, e);
+                this._viewRegisteredListeners.Raise(this, e);
             }
             catch (TargetInvocationException ex)
             {
@@ -107,7 +106,7 @@ namespace Bedrock.Regions
                     string.Format(
                         CultureInfo.CurrentCulture,
                         Resources.OnViewRegisteredException,
-                        e.RegionName,
+                        e.Region.Name,
                         rootException),
                     ex.InnerException);
             }
@@ -115,7 +114,7 @@ namespace Bedrock.Regions
 
         private void RegionShouldAlreadyExist(string regionName)
         {
-            var regionManager = (IRegionManager)locator.GetInstance(typeof(IRegionManager));
+            var regionManager = (IRegionManager)_locator.GetInstance(typeof(IRegionManager));
             if (regionManager != null && !regionManager.Regions.ContainsRegionWithName(regionName))
             {
                 throw new ArgumentNullException(
@@ -123,10 +122,10 @@ namespace Bedrock.Regions
             }
         }
 
-        private void AttachDefaultBehaviors(string regionName)
+        private void InvokeBindingBehaviors(string regionName)
         {
-            var regionManager = (IRegionManager)locator.GetInstance(typeof(IRegionManager));
-            var regionBehaviorFactory = locator.GetInstance<IRegionBehaviorFactory>();
+            var regionManager = (IRegionManager)_locator.GetInstance(typeof(IRegionManager));
+            var regionBehaviorFactory = _locator.GetInstance<IRegionBehaviorFactory>();
             if (regionBehaviorFactory == null)
             {
                 throw new ArgumentNullException(Resources.IRegionBehaviorFactoryInstanceNotExist);
@@ -135,9 +134,14 @@ namespace Bedrock.Regions
             if (regionManager != null)
             {
                 var region = regionManager.Regions.GetRegionByName(regionName);
-                region.Behaviors.Add(
-                    AutoPopulateRegionBehavior.BehaviorKey,
-                    regionBehaviorFactory.CreateFromKey(AutoPopulateRegionBehavior.BehaviorKey));
+                if (region == null)
+                {
+                    throw new ArgumentNullException(Resources.RegionNotFound);
+                }
+
+                region.RegisterDefaultBehavior();
+                var behavior = region.Behaviors[AutoPopulateRegionBehavior.BehaviorKey];
+                behavior.Attach();
             }
         }
     }

@@ -1,12 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using Bedrock.Properties;
+using Bedrock.Regions.Behaviors;
 using Bedrock.Views;
+using Microsoft.Practices.ServiceLocation;
 
 namespace Bedrock.Regions
 {
@@ -43,7 +43,7 @@ namespace Bedrock.Regions
         /// Occurs when a property value changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-        
+
         /// <summary>
         /// Gets the collection of <see cref="IRegionBehavior"/>s that can extend the behavior of regions. 
         /// </summary>
@@ -217,6 +217,21 @@ namespace Bedrock.Regions
             return manager;
         }
 
+        public virtual void RegisterDefaultBehavior()
+        {
+            if (!Behaviors.ContainsKey(AutoPopulateRegionBehavior.BehaviorKey))
+            {
+                var regionBehaviorFatory = ServiceLocator.Current.GetInstance<IRegionBehaviorFactory>();
+                if (regionBehaviorFatory == null)
+                {
+                    throw new ArgumentNullException(Resources.IRegionBehaviorFactoryInstanceNotExist);
+                }
+
+                var behavior = regionBehaviorFatory.CreateFromKey(AutoPopulateRegionBehavior.BehaviorKey);
+                Behaviors.Add(AutoPopulateRegionBehavior.BehaviorKey, behavior);
+            }
+        }
+
         /// <summary>
         /// Removes the specified view from the region.
         /// </summary>
@@ -232,7 +247,7 @@ namespace Bedrock.Regions
         /// <param name="view">The view to activate.</param>
         public virtual void Activate(IView view)
         {
-            
+
         }
 
         /// <summary>
@@ -241,7 +256,7 @@ namespace Bedrock.Regions
         /// <param name="view">The view to deactivate.</param>
         public virtual void Deactivate(IView view)
         {
-           
+
         }
 
         /// <summary>

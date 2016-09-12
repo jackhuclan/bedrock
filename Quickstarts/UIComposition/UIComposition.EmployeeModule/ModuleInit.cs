@@ -1,6 +1,7 @@
 using System.Linq;
 using Bedrock.Modularity;
 using Bedrock.Regions;
+using Bedrock.Views;
 using Microsoft.Practices.Unity;
 using UIComposition.EmployeeModule.Controllers;
 using UIComposition.EmployeeModule.Services;
@@ -11,14 +12,14 @@ namespace UIComposition.EmployeeModule
     public class ModuleInit : IModule
     {
         private readonly IUnityContainer container;
-        private readonly IRegionManager  regionManager;
+        private readonly IRegionManager regionManager;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         private MainRegionController _mainRegionController;
 
         public ModuleInit(IUnityContainer container, IRegionManager regionManager)
         {
-            this.container     = container;
+            this.container = container;
             this.regionManager = regionManager;
         }
 
@@ -33,10 +34,10 @@ namespace UIComposition.EmployeeModule
             // the region is first displayed.
 
             // Show the Employee List view in the shell's left hand region.
-            this.regionManager.RegisterViewWithRegion( RegionNames.LeftRegion,
+            this.regionManager.RegisterViewWithRegion(RegionNames.LeftRegion,
                                                        () => this.container.Resolve<EmployeeListView>());
             var leftRegion = this.regionManager.Regions[RegionNames.LeftRegion];
-            var viewOfLeftRegion = leftRegion.Views.First();
+            var viewOfLeftRegion = leftRegion.Views.First() as IView;
             leftRegion.Activate(viewOfLeftRegion);
 
             // TODO: 04 - The EmployeeModule defines a controller class, MainRegionController, which programmatically displays views in the Main region (using View Injection).
@@ -49,9 +50,9 @@ namespace UIComposition.EmployeeModule
             // Show the Employee Details and Employee Projects view in the tab region.
             // The tab region is defined as part of the Employee Summary view which is only
             // displayed once the user has selected an employee in the Employee List view.
-            this.regionManager.RegisterViewWithRegion( RegionNames.TabRegion1,
+            this.regionManager.RegisterViewWithRegion(RegionNames.TabRegion1,
                                                        () => this.container.Resolve<EmployeeDetailsView>());
-            this.regionManager.RegisterViewWithRegion (RegionNames.TabRegion2,
+            this.regionManager.RegisterViewWithRegion(RegionNames.TabRegion2,
                                                        () => this.container.Resolve<EmployeeProjectsView>());
         }
     }

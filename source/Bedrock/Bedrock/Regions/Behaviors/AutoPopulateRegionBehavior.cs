@@ -47,9 +47,8 @@ namespace Bedrock.Regions.Behaviors
             foreach (IView view in this.CreateViewsToAutoPopulate())
             {
                 AddViewIntoRegion(view);
+                regionViewRegistry.OnViewRegistered(new ViewRegisteredEventArgs(Region, view));
             }
-
-            this.regionViewRegistry.ContentRegistered += this.OnViewRegistered;
         }
 
         /// <summary>
@@ -77,23 +76,6 @@ namespace Bedrock.Regions.Behaviors
             {
                 this.Region.PropertyChanged -= this.Region_PropertyChanged;
                 this.StartPopulatingContent();
-            }
-        }
-
-        /// <summary>
-        /// Handler of the event that fires when a new viewtype is registered to the registry. 
-        /// </summary>
-        /// <remarks>Although this is a public method to support Weak Delegates in Silverlight, it should not be called by the user.</remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers", Justification = "This has to be public in order to work with weak references in partial trust or Silverlight environments.")]
-        public virtual void OnViewRegistered(object sender, ViewRegisteredEventArgs e)
-        {
-            if (e == null) throw new System.ArgumentNullException("e");
-
-            if (e.RegionName == this.Region.Name)
-            {
-                AddViewIntoRegion(e.GetView());
             }
         }
     }

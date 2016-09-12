@@ -4,6 +4,7 @@ using System;
 using System.Globalization;
 using System.Threading;
 using Bedrock.Properties;
+using Bedrock.Regions.Behaviors;
 using Bedrock.Views;
 using Microsoft.Practices.ServiceLocation;
 
@@ -33,7 +34,6 @@ namespace Bedrock.Regions
             }
 
             IRegion region = regionManager.Regions[regionName];
-
             return region.Add(view);
         }
 

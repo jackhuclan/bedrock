@@ -1,6 +1,8 @@
+using System.Linq;
 using System.Windows.Forms;
 using Bedrock.Modularity;
 using Bedrock.Regions;
+using Bedrock.Views;
 
 namespace HelloWorldModule
 {
@@ -17,17 +19,26 @@ namespace HelloWorldModule
 
         public void Initialize()
         {
-            _regionViewRegistry.ContentRegistered += _regionViewRegistry_ContentRegistered;
+            _regionViewRegistry.ViewRegistered += _regionViewRegistry_ViewRegistered;
             _regionViewRegistry.RegisterViewWithRegion("panel1", typeof(Views.HelloWorldView));
+
+            ////you could show the subview by region's activate method;
+
+            //            var leftRegion = this._regionManager.Regions["panel1"];
+            //            var viewOfLeftRegion = leftRegion.Views.First() as IView;
+            //            leftRegion.Activate(viewOfLeftRegion);
         }
 
-        private void _regionViewRegistry_ContentRegistered(object sender, ViewRegisteredEventArgs e)
+        private void _regionViewRegistry_ViewRegistered(object sender, ViewRegisteredEventArgs e)
         {
-            var view = e.GetView() as Control;
-            var regionContainer = _regionManager.Regions[e.RegionName].Control as Control;
-            if (regionContainer != null && view != null)
+            ////you could show the subview by register IRegionViewRegistry's ViewRegisteredEvent
+            ////then add subview to container manually.
+
+            var container = e.Region.Control as Control;
+            var view = e.RegisteredView as Control;
+            if (container != null && view != null)
             {
-                regionContainer.Controls.Add(view);
+                container.Controls.Add(view);
             }
         }
     }

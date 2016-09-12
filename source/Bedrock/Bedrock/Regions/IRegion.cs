@@ -65,6 +65,11 @@ namespace Bedrock.Regions
         IRegionManager Add(IView view, string viewName, bool createRegionManagerScope);
 
         /// <summary>
+        /// 
+        /// </summary>
+        void RegisterDefaultBehavior();
+
+        /// <summary>
         /// Removes the specified view from the region.
         /// </summary>
         /// <param name="view">The view to remove.</param>
