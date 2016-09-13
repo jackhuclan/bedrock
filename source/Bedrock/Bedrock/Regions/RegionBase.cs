@@ -249,6 +249,8 @@ namespace Bedrock.Regions
         public virtual void Remove(IView view)
         {
             this.ItemMetadataCollection.Remove(view);
+            ActiveViews.Remove(view);
+            Views.Remove(view);
         }
 
         /// <summary>

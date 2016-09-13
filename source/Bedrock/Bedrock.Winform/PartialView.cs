@@ -2,7 +2,6 @@
 using Bedrock.Regions;
 using Bedrock.Views;
 using Microsoft.Practices.ServiceLocation;
-// ReSharper disable VirtualMemberCallInContructor
 
 namespace Bedrock.Winform
 {

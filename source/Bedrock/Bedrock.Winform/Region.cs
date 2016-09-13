@@ -38,13 +38,12 @@ namespace Bedrock.Winform
 
         public override void Remove(IView view)
         {
+            base.Remove(view);
             var castedView = view as Control;
             var container = Control as Control;
             if (castedView != null && container != null)
             {
                 container.Controls.Remove(castedView);
-                ActiveViews.Remove(view);
-                Views.Remove(view);
             }
         }
     }

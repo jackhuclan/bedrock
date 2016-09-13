@@ -1,10 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using System;
 using System.Globalization;
 using System.Threading;
 using Bedrock.Properties;
-using Bedrock.Regions.Behaviors;
 using Bedrock.Views;
 using Microsoft.Practices.ServiceLocation;
 
