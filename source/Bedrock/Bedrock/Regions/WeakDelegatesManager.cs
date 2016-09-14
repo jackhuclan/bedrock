@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Practices.Prism.PubSubEvents;
+using Bedrock.Events;
 
 namespace Bedrock.Regions
 {

@@ -319,4 +319,10 @@ Error was: {1}.</value>
   <data name="IRegionBehaviorFactoryInstanceNotExist" xml:space="preserve">
     <value>IRegionBehaviorFactory instance need be registerd!</value>
   </data>
+  <data name="EventAggregatorNotConstructedOnUIThread" xml:space="preserve">
+    <value>To use the UIThread option for subscribing, the EventAggregator must be constructed on the UI thread.</value>
+  </data>
+  <data name="InvalidDelegateRerefenceTypeException1" xml:space="preserve">
+    <value>Invalid Delegate Reference Type Exception</value>
+  </data>
 </root>

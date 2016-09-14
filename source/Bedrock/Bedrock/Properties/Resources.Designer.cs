@@ -217,6 +217,15 @@ namespace Bedrock.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To use the UIThread option for subscribing, the EventAggregator must be constructed on the UI thread..
+        /// </summary>
+        internal static string EventAggregatorNotConstructedOnUIThread {
+            get {
+                return ResourceManager.GetString("EventAggregatorNotConstructedOnUIThread", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to retrieve the module type {0} from the loaded assemblies.  You may need to specify a more fully-qualified type name..
         /// </summary>
         internal static string FailedToGetType {
@@ -312,6 +321,15 @@ namespace Bedrock.Properties {
         internal static string InvalidDelegateRerefenceTypeException {
             get {
                 return ResourceManager.GetString("InvalidDelegateRerefenceTypeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Delegate Reference Type Exception.
+        /// </summary>
+        internal static string InvalidDelegateRerefenceTypeException1 {
+            get {
+                return ResourceManager.GetString("InvalidDelegateRerefenceTypeException1", resourceCulture);
             }
         }
         
