@@ -147,6 +147,15 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {1}: {2}. Priority: {3}. Timestamp:{0:u}..
         /// </summary>
+        internal static string DefaultDebugLoggerPattern {
+            get {
+                return ResourceManager.GetString("DefaultDebugLoggerPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {1}: {2}. Priority: {3}. Timestamp:{0:u}..
+        /// </summary>
         internal static string DefaultTextLoggerPattern {
             get {
                 return ResourceManager.GetString("DefaultTextLoggerPattern", resourceCulture);

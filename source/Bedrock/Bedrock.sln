@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bedrock.UnityExtensions", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bedrock.Winform", "Bedrock.Winform\Bedrock.Winform.csproj", "{6F226E56-36AA-4721-96C8-EF6E47784253}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{26FCCF74-EA54-4DCF-8643-B6EFEF08CC6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bedrock.Tests", "Bedrock.Tests\Bedrock.Tests.csproj", "{E46780B4-ECBC-4311-B713-1931C4237BE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,15 @@ Global
 		{6F226E56-36AA-4721-96C8-EF6E47784253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F226E56-36AA-4721-96C8-EF6E47784253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F226E56-36AA-4721-96C8-EF6E47784253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E46780B4-ECBC-4311-B713-1931C4237BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E46780B4-ECBC-4311-B713-1931C4237BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E46780B4-ECBC-4311-B713-1931C4237BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E46780B4-ECBC-4311-B713-1931C4237BE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E46780B4-ECBC-4311-B713-1931C4237BE2} = {26FCCF74-EA54-4DCF-8643-B6EFEF08CC6A}
 	EndGlobalSection
 EndGlobal
