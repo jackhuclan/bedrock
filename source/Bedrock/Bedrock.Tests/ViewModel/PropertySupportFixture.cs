@@ -1,5 +1,4 @@
 using System;
-using System.Linq.Expressions;
 using Bedrock.TestSupport;
 using Bedrock.ViewModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

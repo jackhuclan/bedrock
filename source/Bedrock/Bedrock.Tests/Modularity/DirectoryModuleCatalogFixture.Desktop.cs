@@ -381,21 +381,6 @@ namespace Bedrock.Tests.Modularity
         }
 
         [TestMethod]
-        public void ShouldLoadAssemblyEvenIfIsExposingTypesFromAnAssemblyInTheGac()
-        {
-            CompilerHelper.CompileFile(@"Bedrock.Tests.Mocks.Modules.MockExposingTypeFromGacAssemblyModule.cs",
-                                       ModulesDirectory4 + @"\MockExposingTypeFromGacAssemblyModule.dll", @"System.Transactions.dll");
-
-            DirectoryModuleCatalog catalog = new DirectoryModuleCatalog();
-            catalog.ModulePath = ModulesDirectory4;
-            catalog.Load();
-
-            ModuleInfo[] modules = catalog.Modules.ToArray();
-
-            Assert.AreEqual(1, modules.Count());
-        }
-
-        [TestMethod]
         public void ShouldNotFailWhenAlreadyLoadedAssembliesAreAlsoFoundOnTargetDirectory()
         {
             CompilerHelper.CompileFile(@"Bedrock.Tests.Mocks.Modules.MockModuleA.cs",

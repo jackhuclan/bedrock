@@ -71,7 +71,7 @@ namespace Bedrock.Tests
         }
 
         [TestMethod]
-        public void ConfigureDefaultRegionBehaviorsShouldAddSevenDefaultBehaviors()
+        public void ConfigureDefaultRegionBehaviorsShouldAddOneDefaultBehaviors()
         {
             var bootstrapper = new DefaultBootstrapper();
 
@@ -79,7 +79,7 @@ namespace Bedrock.Tests
 
             bootstrapper.CallConfigureDefaultRegionBehaviors();
 
-            Assert.AreEqual(7, bootstrapper.DefaultRegionBehaviorTypes.Count());
+            Assert.AreEqual(1, bootstrapper.DefaultRegionBehaviorTypes.Count());
         }
 
         private static void CreateAndConfigureServiceLocatorWithDefaultRegionBehaviors()

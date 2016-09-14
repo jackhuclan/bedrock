@@ -73,7 +73,7 @@ namespace Bedrock.Tests.Events
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void NullActionThrows()
         {
             var filterDelegateReference = new MockDelegateReference()
@@ -87,7 +87,7 @@ namespace Bedrock.Tests.Events
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void NullActionThrowsNonGeneric()
         {
             var eventSubscription = new EventSubscription(null);
@@ -133,7 +133,7 @@ namespace Bedrock.Tests.Events
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void NullFilterThrows()
         {
             var actionDelegateReference = new MockDelegateReference()

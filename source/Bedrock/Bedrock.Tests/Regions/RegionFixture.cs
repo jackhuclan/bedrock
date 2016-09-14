@@ -4,9 +4,7 @@ using System.Linq;
 using Bedrock.Regions;
 using Bedrock.Tests.Mocks;
 using Bedrock.Views;
-using Microsoft.Practices.ServiceLocation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace Bedrock.Tests.Regions
 {
@@ -19,9 +17,7 @@ namespace Bedrock.Tests.Regions
         {
             var control = new object();
             IRegion region = new RegionBase(control);
-
             region.Add(new MockView());
-
             Assert.AreEqual(1, region.Views.Cast<object>().Count());
         }
 
@@ -32,10 +28,8 @@ namespace Bedrock.Tests.Regions
             var control = new object();
             IRegion region = new RegionBase(control);
             IView view = new MockView();
-
             region.Add(view);
             region.Remove(view);
-
             Assert.AreEqual(0, region.Views.Cast<object>().Count());
         }
 

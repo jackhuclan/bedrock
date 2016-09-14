@@ -14,7 +14,7 @@ namespace Bedrock.Tests
     {
         private static string moduleTemplate =
             @"using System;
-            using Microsoft.Practices.Prism.Modularity;
+            using Bedrock.Modularity;
 
             namespace TestModules
             {

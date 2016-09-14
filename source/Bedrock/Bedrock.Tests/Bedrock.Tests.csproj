@@ -96,16 +96,16 @@
     <Compile Include="Mocks\MockServiceLocator.cs" />
     <Compile Include="Mocks\MockView.cs" />
     <Compile Include="Mocks\MockViewsCollection.cs" />
-    <Compile Include="Mocks\Modules\MockAbstractModule.cs" />
-    <Compile Include="Mocks\Modules\MockAttributedModule.cs" />
-    <Compile Include="Mocks\Modules\MockDependantModule.cs" />
-    <Compile Include="Mocks\Modules\MockDependencyModule.cs" />
-    <Compile Include="Mocks\Modules\MockModuleA.cs" />
-    <Compile Include="Mocks\Modules\MockModuleReferencedAssembly.cs" />
-    <Compile Include="Mocks\Modules\MockModuleReferencingAssembly.cs" />
-    <Compile Include="Mocks\Modules\MockModuleReferencingOtherModule.cs" />
-    <Compile Include="Mocks\Modules\MockModuleThrowingException.cs" />
-    <Compile Include="Mocks\Modules\MockStartupLoadedAttributedModule.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockAbstractModule.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockAttributedModule.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockDependantModule.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockDependencyModule.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockModuleA.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockModuleReferencedAssembly.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockModuleReferencingAssembly.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockModuleReferencingOtherModule.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockModuleThrowingException.cs" />
+    <EmbeddedResource Include="Mocks\Modules\MockStartupLoadedAttributedModule.cs" />
     <Compile Include="Modularity\AssemblyResolverFixture.Desktop.cs" />
     <Compile Include="Modularity\ConfigurationModuleCatalogFixture.Desktop.cs" />
     <Compile Include="Modularity\ConfigurationStoreFixture.Desktop.cs" />
@@ -143,6 +143,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
