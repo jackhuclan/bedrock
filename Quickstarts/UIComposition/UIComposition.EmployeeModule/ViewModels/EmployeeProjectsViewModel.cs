@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Microsoft.Practices.Prism.PubSubEvents;
+using Bedrock.Events;
 using UIComposition.EmployeeModule.Events;
 using UIComposition.EmployeeModule.Models;
 using UIComposition.EmployeeModule.Services;

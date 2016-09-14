@@ -1,4 +1,4 @@
-using Microsoft.Practices.Prism.PubSubEvents;
+using Bedrock.Events;
 
 namespace UIComposition.EmployeeModule.Events
 {

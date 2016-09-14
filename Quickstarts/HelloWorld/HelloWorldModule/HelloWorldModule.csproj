@@ -39,9 +39,6 @@
     <Reference Include="Bedrock.Winform">
       <HintPath>..\..\..\Lib\Bedrock.Winform.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.PubSubEvents">
-      <HintPath>..\..\..\Lib\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\..\Lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
