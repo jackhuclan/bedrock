@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Bedrock.Events;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Events
 {
+    [TestClass]
     public class PubSubEventFixture
     {
-        [Fact]
+        [TestMethod]
         public void CanSubscribeAndRaiseEvent()
         {
             TestablePubSubEvent<string> pubSubEvent = new TestablePubSubEvent<string>();
@@ -17,10 +18,10 @@ namespace Bedrock.Tests.Events
             pubSubEvent.Subscribe(delegate { published = true; }, ThreadOption.PublisherThread, true, delegate { return true; });
             pubSubEvent.Publish(null);
 
-            Assert.True(published);
+            Assert.IsTrue(published);
         }
 
-        [Fact]
+        [TestMethod]
         public void CanSubscribeAndRaiseEventNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -28,10 +29,10 @@ namespace Bedrock.Tests.Events
             pubSubEvent.Subscribe(delegate { published = true; }, ThreadOption.PublisherThread, true);
             pubSubEvent.Publish();
 
-            Assert.True(published);
+            Assert.IsTrue(published);
         }
 
-        [Fact]
+        [TestMethod]
         public void CanSubscribeAndRaiseCustomEvent()
         {
             var customEvent = new TestablePubSubEvent<Payload>();
@@ -41,10 +42,10 @@ namespace Bedrock.Tests.Events
 
             customEvent.Publish(payload);
 
-            Assert.Same(action.ActionArg<Payload>(), payload);
+            Assert.AreSame(action.ActionArg<Payload>(), payload);
         }
 
-        [Fact]
+        [TestMethod]
         public void CanHaveMultipleSubscribersAndRaiseCustomEvent()
         {
             var customEvent = new TestablePubSubEvent<Payload>();
@@ -56,11 +57,11 @@ namespace Bedrock.Tests.Events
 
             customEvent.Publish(payload);
 
-            Assert.Same(action1.ActionArg<Payload>(), payload);
-            Assert.Same(action2.ActionArg<Payload>(), payload);
+            Assert.AreSame(action1.ActionArg<Payload>(), payload);
+            Assert.AreSame(action2.ActionArg<Payload>(), payload);
         }
 
-        [Fact]
+        [TestMethod]
         public void CanHaveMultipleSubscribersAndRaiseEvent()
         {
             var customEvent = new TestablePubSubEvent();
@@ -71,11 +72,11 @@ namespace Bedrock.Tests.Events
 
             customEvent.Publish();
 
-            Assert.True(action1.ActionCalled);
-            Assert.True(action2.ActionCalled);
+            Assert.IsTrue(action1.ActionCalled);
+            Assert.IsTrue(action2.ActionCalled);
         }
 
-        [Fact]
+        [TestMethod]
         public void SubscribeTakesExecuteDelegateThreadOptionAndFilter()
         {
             TestablePubSubEvent<string> pubSubEvent = new TestablePubSubEvent<string>();
@@ -84,11 +85,11 @@ namespace Bedrock.Tests.Events
 
             pubSubEvent.Publish("test");
 
-            Assert.Equal("test", action.ActionArg<string>());
+            Assert.AreEqual("test", action.ActionArg<string>());
 
         }
 
-        [Fact]
+        [TestMethod]
         public void FilterEnablesActionTarget()
         {
             TestablePubSubEvent<string> pubSubEvent = new TestablePubSubEvent<string>();
@@ -101,12 +102,12 @@ namespace Bedrock.Tests.Events
 
             pubSubEvent.Publish("test");
 
-            Assert.True(actionGoodFilter.ActionCalled);
-            Assert.False(actionBadFilter.ActionCalled);
+            Assert.IsTrue(actionGoodFilter.ActionCalled);
+            Assert.IsFalse(actionBadFilter.ActionCalled);
 
         }
 
-        [Fact]
+        [TestMethod]
         public void SubscribeDefaultsThreadOptionAndNoFilter()
         {
             TestablePubSubEvent<string> pubSubEvent = new TestablePubSubEvent<string>();
@@ -121,10 +122,10 @@ namespace Bedrock.Tests.Events
 
             pubSubEvent.Publish("test");
 
-            Assert.Equal(SynchronizationContext.Current, calledSyncContext);
+            Assert.AreEqual(SynchronizationContext.Current, calledSyncContext);
         }
 
-        [Fact]
+        [TestMethod]
         public void SubscribeDefaultsThreadOptionAndNoFilterNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -139,10 +140,10 @@ namespace Bedrock.Tests.Events
 
             pubSubEvent.Publish();
 
-            Assert.Equal(SynchronizationContext.Current, calledSyncContext);
+            Assert.AreEqual(SynchronizationContext.Current, calledSyncContext);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeFromPublisherThread()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -152,12 +153,12 @@ namespace Bedrock.Tests.Events
                 actionEvent.Action,
                 ThreadOption.PublisherThread);
 
-            Assert.True(PubSubEvent.Contains(actionEvent.Action));
+            Assert.IsTrue(PubSubEvent.Contains(actionEvent.Action));
             PubSubEvent.Unsubscribe(actionEvent.Action);
-            Assert.False(PubSubEvent.Contains(actionEvent.Action));
+            Assert.IsFalse(PubSubEvent.Contains(actionEvent.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeFromPublisherThreadNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -167,12 +168,12 @@ namespace Bedrock.Tests.Events
                 actionEvent.Action,
                 ThreadOption.PublisherThread);
 
-            Assert.True(pubSubEvent.Contains(actionEvent.Action));
+            Assert.IsTrue(pubSubEvent.Contains(actionEvent.Action));
             pubSubEvent.Unsubscribe(actionEvent.Action);
-            Assert.False(pubSubEvent.Contains(actionEvent.Action));
+            Assert.IsFalse(pubSubEvent.Contains(actionEvent.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void UnsubscribeShouldNotFailWithNonSubscriber()
         {
             TestablePubSubEvent<string> pubSubEvent = new TestablePubSubEvent<string>();
@@ -181,7 +182,7 @@ namespace Bedrock.Tests.Events
             pubSubEvent.Unsubscribe(subscriber);
         }
 
-        [Fact]
+        [TestMethod]
         public void UnsubscribeShouldNotFailWithNonSubscriberNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -190,7 +191,7 @@ namespace Bedrock.Tests.Events
             pubSubEvent.Unsubscribe(subscriber);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeFromBackgroundThread()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -200,12 +201,12 @@ namespace Bedrock.Tests.Events
                 actionEvent.Action,
                 ThreadOption.BackgroundThread);
 
-            Assert.True(PubSubEvent.Contains(actionEvent.Action));
+            Assert.IsTrue(PubSubEvent.Contains(actionEvent.Action));
             PubSubEvent.Unsubscribe(actionEvent.Action);
-            Assert.False(PubSubEvent.Contains(actionEvent.Action));
+            Assert.IsFalse(PubSubEvent.Contains(actionEvent.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeFromBackgroundThreadNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -215,12 +216,12 @@ namespace Bedrock.Tests.Events
                 actionEvent.Action,
                 ThreadOption.BackgroundThread);
 
-            Assert.True(pubSubEvent.Contains(actionEvent.Action));
+            Assert.IsTrue(pubSubEvent.Contains(actionEvent.Action));
             pubSubEvent.Unsubscribe(actionEvent.Action);
-            Assert.False(pubSubEvent.Contains(actionEvent.Action));
+            Assert.IsFalse(pubSubEvent.Contains(actionEvent.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeFromUIThread()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -231,12 +232,12 @@ namespace Bedrock.Tests.Events
                 actionEvent.Action,
                 ThreadOption.UIThread);
 
-            Assert.True(PubSubEvent.Contains(actionEvent.Action));
+            Assert.IsTrue(PubSubEvent.Contains(actionEvent.Action));
             PubSubEvent.Unsubscribe(actionEvent.Action);
-            Assert.False(PubSubEvent.Contains(actionEvent.Action));
+            Assert.IsFalse(PubSubEvent.Contains(actionEvent.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeFromUIThreadNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -247,12 +248,12 @@ namespace Bedrock.Tests.Events
                 actionEvent.Action,
                 ThreadOption.UIThread);
 
-            Assert.True(pubSubEvent.Contains(actionEvent.Action));
+            Assert.IsTrue(pubSubEvent.Contains(actionEvent.Action));
             pubSubEvent.Unsubscribe(actionEvent.Action);
-            Assert.False(pubSubEvent.Contains(actionEvent.Action));
+            Assert.IsFalse(pubSubEvent.Contains(actionEvent.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeASingleDelegate()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -264,15 +265,15 @@ namespace Bedrock.Tests.Events
             PubSubEvent.Subscribe(actionEvent.Action);
 
             PubSubEvent.Publish(null);
-            Assert.Equal<int>(2, callCount);
+            Assert.AreEqual<int>(2, callCount);
 
             callCount = 0;
             PubSubEvent.Unsubscribe(actionEvent.Action);
             PubSubEvent.Publish(null);
-            Assert.Equal<int>(1, callCount);
+            Assert.AreEqual<int>(1, callCount);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldUnsubscribeASingleDelegateNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -284,15 +285,15 @@ namespace Bedrock.Tests.Events
             pubSubEvent.Subscribe(actionEvent.Action);
 
             pubSubEvent.Publish();
-            Assert.Equal<int>(2, callCount);
+            Assert.AreEqual<int>(2, callCount);
 
             callCount = 0;
             pubSubEvent.Unsubscribe(actionEvent.Action);
             pubSubEvent.Publish();
-            Assert.Equal<int>(1, callCount);
+            Assert.AreEqual<int>(1, callCount);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldNotExecuteOnGarbageCollectedDelegateReferenceWhenNotKeepAlive()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -301,17 +302,17 @@ namespace Bedrock.Tests.Events
             PubSubEvent.Subscribe(externalAction.ExecuteAction);
 
             PubSubEvent.Publish("testPayload");
-            Assert.Equal("testPayload", externalAction.PassedValue);
+            Assert.AreEqual("testPayload", externalAction.PassedValue);
 
             WeakReference actionEventReference = new WeakReference(externalAction);
             externalAction = null;
             GC.Collect();
-            Assert.False(actionEventReference.IsAlive);
+            Assert.IsFalse(actionEventReference.IsAlive);
 
             PubSubEvent.Publish("testPayload");
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldNotExecuteOnGarbageCollectedDelegateReferenceWhenNotKeepAliveNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -320,17 +321,17 @@ namespace Bedrock.Tests.Events
             pubSubEvent.Subscribe(externalAction.ExecuteAction);
 
             pubSubEvent.Publish();
-            Assert.True(externalAction.Executed);
+            Assert.IsTrue(externalAction.Executed);
 
             var actionEventReference = new WeakReference(externalAction);
             externalAction = null;
             GC.Collect();
-            Assert.False(actionEventReference.IsAlive);
+            Assert.IsFalse(actionEventReference.IsAlive);
 
             pubSubEvent.Publish();
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldNotExecuteOnGarbageCollectedFilterReferenceWhenNotKeepAlive()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -342,19 +343,19 @@ namespace Bedrock.Tests.Events
             PubSubEvent.Subscribe(actionEvent.Action, ThreadOption.PublisherThread, false, filter.AlwaysTrueFilter);
 
             PubSubEvent.Publish("testPayload");
-            Assert.True(wasCalled);
+            Assert.IsTrue(wasCalled);
 
             wasCalled = false;
             WeakReference filterReference = new WeakReference(filter);
             filter = null;
             GC.Collect();
-            Assert.False(filterReference.IsAlive);
+            Assert.IsFalse(filterReference.IsAlive);
 
             PubSubEvent.Publish("testPayload");
-            Assert.False(wasCalled);
+            Assert.IsFalse(wasCalled);
         }
 
-        [Fact]
+        [TestMethod]
         public void CanAddSubscriptionWhileEventIsFiring()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -369,14 +370,14 @@ namespace Bedrock.Tests.Events
 
             PubSubEvent.Subscribe(subscriptionAction.Action);
 
-            Assert.False(PubSubEvent.Contains(emptyAction.Action));
+            Assert.IsFalse(PubSubEvent.Contains(emptyAction.Action));
 
             PubSubEvent.Publish(null);
 
-            Assert.True((PubSubEvent.Contains(emptyAction.Action)));
+            Assert.IsTrue((PubSubEvent.Contains(emptyAction.Action)));
         }
 
-        [Fact]
+        [TestMethod]
         public void CanAddSubscriptionWhileEventIsFiringNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -391,14 +392,14 @@ namespace Bedrock.Tests.Events
 
             pubSubEvent.Subscribe(subscriptionAction.Action);
 
-            Assert.False(pubSubEvent.Contains(emptyAction.Action));
+            Assert.IsFalse(pubSubEvent.Contains(emptyAction.Action));
 
             pubSubEvent.Publish();
 
-            Assert.True((pubSubEvent.Contains(emptyAction.Action)));
+            Assert.IsTrue((pubSubEvent.Contains(emptyAction.Action)));
         }
 
-        [Fact]
+        [TestMethod]
         public void InlineDelegateDeclarationsDoesNotGetCollectedIncorrectlyWithWeakReferences()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -407,10 +408,10 @@ namespace Bedrock.Tests.Events
             GC.Collect();
             PubSubEvent.Publish(null);
 
-            Assert.True(published);
+            Assert.IsTrue(published);
         }
 
-        [Fact]
+        [TestMethod]
         public void InlineDelegateDeclarationsDoesNotGetCollectedIncorrectlyWithWeakReferencesNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -419,10 +420,10 @@ namespace Bedrock.Tests.Events
             GC.Collect();
             pubSubEvent.Publish();
 
-            Assert.True(published);
+            Assert.IsTrue(published);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldNotGarbageCollectDelegateReferenceWhenUsingKeepAlive()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -434,14 +435,14 @@ namespace Bedrock.Tests.Events
             externalAction = null;
             GC.Collect();
             GC.Collect();
-            Assert.True(actionEventReference.IsAlive);
+            Assert.IsTrue(actionEventReference.IsAlive);
 
             PubSubEvent.Publish("testPayload");
 
-            Assert.Equal("testPayload", ((ExternalAction)actionEventReference.Target).PassedValue);
+            Assert.AreEqual("testPayload", ((ExternalAction)actionEventReference.Target).PassedValue);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldNotGarbageCollectDelegateReferenceWhenUsingKeepAliveNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -453,14 +454,14 @@ namespace Bedrock.Tests.Events
             externalAction = null;
             GC.Collect();
             GC.Collect();
-            Assert.True(actionEventReference.IsAlive);
+            Assert.IsTrue(actionEventReference.IsAlive);
 
             pubSubEvent.Publish();
 
-            Assert.True(((ExternalAction)actionEventReference.Target).Executed);
+            Assert.IsTrue(((ExternalAction)actionEventReference.Target).Executed);
         }
 
-        [Fact]
+        [TestMethod]
         public void RegisterReturnsTokenThatCanBeUsedToUnsubscribe()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
@@ -469,10 +470,10 @@ namespace Bedrock.Tests.Events
             var token = PubSubEvent.Subscribe(emptyAction.Action);
             PubSubEvent.Unsubscribe(token);
 
-            Assert.False(PubSubEvent.Contains(emptyAction.Action));
+            Assert.IsFalse(PubSubEvent.Contains(emptyAction.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void RegisterReturnsTokenThatCanBeUsedToUnsubscribeNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
@@ -481,55 +482,55 @@ namespace Bedrock.Tests.Events
             var token = pubSubEvent.Subscribe(emptyAction.Action);
             pubSubEvent.Unsubscribe(token);
 
-            Assert.False(pubSubEvent.Contains(emptyAction.Action));
+            Assert.IsFalse(pubSubEvent.Contains(emptyAction.Action));
         }
 
-        [Fact]
+        [TestMethod]
         public void ContainsShouldSearchByToken()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
             var emptyAction = new ActionHelper();
             var token = PubSubEvent.Subscribe(emptyAction.Action);
 
-            Assert.True(PubSubEvent.Contains(token));
+            Assert.IsTrue(PubSubEvent.Contains(token));
 
             PubSubEvent.Unsubscribe(emptyAction.Action);
-            Assert.False(PubSubEvent.Contains(token));
+            Assert.IsFalse(PubSubEvent.Contains(token));
         }
 
-        [Fact]
+        [TestMethod]
         public void ContainsShouldSearchByTokenNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
             var emptyAction = new ActionHelper();
             var token = pubSubEvent.Subscribe(emptyAction.Action);
 
-            Assert.True(pubSubEvent.Contains(token));
+            Assert.IsTrue(pubSubEvent.Contains(token));
 
             pubSubEvent.Unsubscribe(emptyAction.Action);
-            Assert.False(pubSubEvent.Contains(token));
+            Assert.IsFalse(pubSubEvent.Contains(token));
         }
 
-        [Fact]
+        [TestMethod]
         public void SubscribeDefaultsToPublisherThread()
         {
             var PubSubEvent = new TestablePubSubEvent<string>();
             Action<string> action = delegate { };
             var token = PubSubEvent.Subscribe(action, true);
 
-            Assert.Equal(1, PubSubEvent.BaseSubscriptions.Count);
-            Assert.Equal(typeof(EventSubscription<string>), PubSubEvent.BaseSubscriptions.ElementAt(0).GetType());
+            Assert.AreEqual(1, PubSubEvent.BaseSubscriptions.Count);
+            Assert.AreEqual(typeof(EventSubscription<string>), PubSubEvent.BaseSubscriptions.ElementAt(0).GetType());
         }
 
-        [Fact]
+        [TestMethod]
         public void SubscribeDefaultsToPublisherThreadNonGeneric()
         {
             var pubSubEvent = new TestablePubSubEvent();
             Action action = delegate { };
             var token = pubSubEvent.Subscribe(action, true);
 
-            Assert.Equal(1, pubSubEvent.BaseSubscriptions.Count);
-            Assert.Equal(typeof(EventSubscription), pubSubEvent.BaseSubscriptions.ElementAt(0).GetType());
+            Assert.AreEqual(1, pubSubEvent.BaseSubscriptions.Count);
+            Assert.AreEqual(typeof(EventSubscription), pubSubEvent.BaseSubscriptions.ElementAt(0).GetType());
         }
 
         public class ExternalFilter

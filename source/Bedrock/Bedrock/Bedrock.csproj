@@ -149,12 +149,14 @@
     <Compile Include="Regions\ViewRegistrationException.Desktop.cs" />
     <Compile Include="Regions\WeakDelegatesManager.cs" />
     <Compile Include="ServiceLocatorExtensions.cs" />
+    <Compile Include="ViewModel\NotificationObject.cs" />
+    <Compile Include="ViewModel\PropertySupport.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Views\ViewsCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>

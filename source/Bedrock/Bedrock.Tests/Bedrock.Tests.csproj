@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E46780B4-ECBC-4311-B713-1931C4237BE2}</ProjectGuid>
+    <ProjectGuid>{EDF5008C-2630-40E8-A9D0-2384555FA068}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bedrock.Tests</RootNamespace>
@@ -16,7 +16,6 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,23 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.5.21.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.5.21\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -60,9 +57,16 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise />
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BootstrapperFixture.cs" />
+    <Compile Include="CollectionExtensionsFixture.cs" />
+    <Compile Include="CompilerHelper.Desktop.cs" />
     <Compile Include="Events\BackgroundEventSubscriptionFixture.cs" />
     <Compile Include="Events\DataEventArgsFixture.cs" />
     <Compile Include="Events\DelegateReferenceFixture.cs" />
@@ -72,18 +76,77 @@
     <Compile Include="Events\EventSubscriptionFixture.cs" />
     <Compile Include="Events\MockDelegateReference.cs" />
     <Compile Include="Events\PubSubEventFixture.cs" />
+    <Compile Include="ExceptionExtensionsFixture.cs" />
+    <Compile Include="ListDictionaryFixture.cs" />
     <Compile Include="Logging\DebugLoggerFixture.cs" />
     <Compile Include="Logging\EmptyLoggerFixture.cs" />
+    <Compile Include="Logging\TextLoggerFixture.cs" />
+    <Compile Include="Logging\TraceLoggerFixture.Desktop.cs" />
+    <Compile Include="Mocks\MockAsyncModuleTypeLoader.cs" />
+    <Compile Include="Mocks\MockConfigurationStore.Desktop.cs" />
+    <Compile Include="Mocks\MockContainerAdapter.cs" />
+    <Compile Include="Mocks\MockDelegateReference.cs" />
+    <Compile Include="Mocks\MockLogger.cs" />
+    <Compile Include="Mocks\MockModuleTypeLoader.cs" />
+    <Compile Include="Mocks\MockPresentationRegion.cs" />
+    <Compile Include="Mocks\MockRegion.cs" />
+    <Compile Include="Mocks\MockRegionBehavior.cs" />
+    <Compile Include="Mocks\MockRegionBehaviorCollection.cs" />
+    <Compile Include="Mocks\MockRegionManager.cs" />
+    <Compile Include="Mocks\MockServiceLocator.cs" />
+    <Compile Include="Mocks\MockView.cs" />
+    <Compile Include="Mocks\MockViewsCollection.cs" />
+    <Compile Include="Mocks\Modules\MockAbstractModule.cs" />
+    <Compile Include="Mocks\Modules\MockAttributedModule.cs" />
+    <Compile Include="Mocks\Modules\MockDependantModule.cs" />
+    <Compile Include="Mocks\Modules\MockDependencyModule.cs" />
+    <Compile Include="Mocks\Modules\MockModuleA.cs" />
+    <Compile Include="Mocks\Modules\MockModuleReferencedAssembly.cs" />
+    <Compile Include="Mocks\Modules\MockModuleReferencingAssembly.cs" />
+    <Compile Include="Mocks\Modules\MockModuleReferencingOtherModule.cs" />
+    <Compile Include="Mocks\Modules\MockModuleThrowingException.cs" />
+    <Compile Include="Mocks\Modules\MockStartupLoadedAttributedModule.cs" />
+    <Compile Include="Modularity\AssemblyResolverFixture.Desktop.cs" />
+    <Compile Include="Modularity\ConfigurationModuleCatalogFixture.Desktop.cs" />
+    <Compile Include="Modularity\ConfigurationStoreFixture.Desktop.cs" />
+    <Compile Include="Modularity\DirectoryModuleCatalogFixture.Desktop.cs" />
+    <Compile Include="Modularity\FileModuleTypeLoaderFixture.Desktop.cs" />
+    <Compile Include="Modularity\ModuleAttributeFixture.Desktop.cs" />
+    <Compile Include="Modularity\ModuleCatalogFixture.cs" />
+    <Compile Include="Modularity\ModuleDependencySolverFixture.cs" />
+    <Compile Include="Modularity\ModuleInfoGroupExtensionsFixture.cs" />
+    <Compile Include="Modularity\ModuleInfoGroupFixture.cs" />
+    <Compile Include="Modularity\ModuleInitializerFixture.cs" />
+    <Compile Include="Modularity\ModuleManagerFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regions\Behaviors\AutoPopulateRegionBehaviorFixture.cs" />
+    <Compile Include="Regions\RegionBehaviorCollectionFixture.cs" />
+    <Compile Include="Regions\RegionBehaviorFactoryFixture.cs" />
+    <Compile Include="Regions\RegionBehaviorFixture.cs" />
+    <Compile Include="Regions\RegionFixture.cs" />
+    <Compile Include="Regions\RegionManagerExtensionsFixture.cs" />
+    <Compile Include="Regions\RegionManagerFixture.cs" />
+    <Compile Include="Regions\RegionViewRegistryFixture.cs" />
+    <Compile Include="Regions\ViewsCollectionFixture.cs" />
+    <Compile Include="ServiceLocatorExtensionsFixture.cs" />
+    <Compile Include="ViewModel\NotificationObjectFixture.cs" />
+    <Compile Include="ViewModel\PropertySupportFixture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bedrock.TestSupport\Bedrock.TestSupport.csproj">
+      <Project>{d1c75de6-cb2b-401a-985c-033c4fabad84}</Project>
+      <Name>Bedrock.TestSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bedrock\Bedrock.csproj">
+      <Project>{754c5cfc-3473-41f4-ae4a-41bc1131ef3e}</Project>
+      <Name>Bedrock</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bedrock\Bedrock.csproj">
-      <Project>{754c5cfc-3473-41f4-ae4a-41bc1131ef3e}</Project>
-      <Name>Bedrock</Name>
-    </ProjectReference>
+    <Content Include="Modularity\NotAValidDotNetDll.txt.dll" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

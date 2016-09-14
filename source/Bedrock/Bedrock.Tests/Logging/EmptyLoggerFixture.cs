@@ -1,11 +1,12 @@
 using Bedrock.Logging;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Logging
 {
+    [TestClass]
     public class EmptyLoggerFixture
     {
-        [Fact]
+        [TestMethod]
         public void LogShouldNotFail()
         {
             ILoggerFacade logger = new EmptyLogger();

@@ -1,166 +1,151 @@
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using Bedrock.Events;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Events
 {
+    [TestClass]
     public class EventSubscriptionFixture
     {
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void NullTargetInActionThrows()
         {
-            Assert.Throws<ArgumentException>(() =>
+            var actionDelegateReference = new MockDelegateReference()
             {
-                var actionDelegateReference = new MockDelegateReference()
+                Target = null
+            };
+            var filterDelegateReference = new MockDelegateReference()
+            {
+                Target = (Predicate<object>)(arg =>
                 {
-                    Target = null
-                };
-                var filterDelegateReference = new MockDelegateReference()
-                {
-                    Target = (Predicate<object>)(arg =>
-                    {
-                        return true;
-                    })
-                };
-                var eventSubscription = new EventSubscription<object>(actionDelegateReference,
-                                                                                filterDelegateReference);
-            });
+                    return true;
+                })
+            };
+            var eventSubscription = new EventSubscription<object>(
+                actionDelegateReference,
+                filterDelegateReference);
 
         }
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void NullTargetInActionThrowsNonGeneric()
         {
-            Assert.Throws<ArgumentException>(() =>
+            var actionDelegateReference = new MockDelegateReference()
             {
-                var actionDelegateReference = new MockDelegateReference()
-                {
-                    Target = null
-                };
-                var eventSubscription = new EventSubscription(actionDelegateReference);
-            });
+                Target = null
+            };
+            var eventSubscription = new EventSubscription(actionDelegateReference);
         }
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void DifferentTargetTypeInActionThrows()
         {
-            Assert.Throws<ArgumentException>(() =>
+            var actionDelegateReference = new MockDelegateReference()
             {
-                var actionDelegateReference = new MockDelegateReference()
+                Target = (Action<int>)delegate { }
+            };
+            var filterDelegateReference = new MockDelegateReference()
+            {
+                Target = (Predicate<string>)(arg =>
                 {
-                    Target = (Action<int>)delegate { }
-                };
-                var filterDelegateReference = new MockDelegateReference()
-                {
-                    Target = (Predicate<string>)(arg =>
-                    {
-                        return true;
-                    })
-                };
-                var eventSubscription = new EventSubscription<string>(actionDelegateReference,
-                                                                                filterDelegateReference);
-            });
+                    return true;
+                })
+            };
+            var eventSubscription = new EventSubscription<string>(actionDelegateReference,
+                                                                            filterDelegateReference);
         }
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void DifferentTargetTypeInActionThrowsNonGeneric()
         {
-            Assert.Throws<ArgumentException>(() =>
+            var actionDelegateReference = new MockDelegateReference()
             {
-                var actionDelegateReference = new MockDelegateReference()
-                {
-                    Target = (Action<int>)delegate { }
-                };
+                Target = (Action<int>)delegate { }
+            };
 
-                var eventSubscription = new EventSubscription(actionDelegateReference);
-            });
+            var eventSubscription = new EventSubscription(actionDelegateReference);
         }
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void NullActionThrows()
         {
-            Assert.Throws<ArgumentNullException>(() =>
+            var filterDelegateReference = new MockDelegateReference()
             {
-                var filterDelegateReference = new MockDelegateReference()
+                Target = (Predicate<object>)(arg =>
                 {
-                    Target = (Predicate<object>)(arg =>
-                    {
-                        return true;
-                    })
-                };
-                var eventSubscription = new EventSubscription<object>(null, filterDelegateReference);
-            });
+                    return true;
+                })
+            };
+            var eventSubscription = new EventSubscription<object>(null, filterDelegateReference);
         }
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void NullActionThrowsNonGeneric()
         {
-            Assert.Throws<ArgumentNullException>(() =>
-            {
-                var eventSubscription = new EventSubscription(null);
-            });
+            var eventSubscription = new EventSubscription(null);
         }
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void NullTargetInFilterThrows()
         {
-            Assert.Throws<ArgumentException>(() =>
+            var actionDelegateReference = new MockDelegateReference()
             {
-                var actionDelegateReference = new MockDelegateReference()
-                {
-                    Target = (Action<object>)delegate { }
-                };
+                Target = (Action<object>)delegate { }
+            };
 
-                var filterDelegateReference = new MockDelegateReference()
-                {
-                    Target = null
-                };
-                var eventSubscription = new EventSubscription<object>(actionDelegateReference,
-                                                                                filterDelegateReference);
-            });
+            var filterDelegateReference = new MockDelegateReference()
+            {
+                Target = null
+            };
+            var eventSubscription = new EventSubscription<object>(actionDelegateReference,
+                                                                            filterDelegateReference);
         }
 
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void DifferentTargetTypeInFilterThrows()
         {
-            Assert.Throws<ArgumentException>(() =>
+            var actionDelegateReference = new MockDelegateReference()
             {
-                var actionDelegateReference = new MockDelegateReference()
-                {
-                    Target = (Action<string>)delegate { }
-                };
+                Target = (Action<string>)delegate { }
+            };
 
-                var filterDelegateReference = new MockDelegateReference()
+            var filterDelegateReference = new MockDelegateReference()
+            {
+                Target = (Predicate<int>)(arg =>
                 {
-                    Target = (Predicate<int>)(arg =>
-                    {
-                        return true;
-                    })
-                };
+                    return true;
+                })
+            };
 
-                var eventSubscription = new EventSubscription<string>(actionDelegateReference,
-                                                                                filterDelegateReference);
-            });
+            var eventSubscription = new EventSubscription<string>(actionDelegateReference,
+                                                                            filterDelegateReference);
         }
 
-        [Fact]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void NullFilterThrows()
         {
-            Assert.Throws<ArgumentNullException>(() =>
+            var actionDelegateReference = new MockDelegateReference()
             {
-                var actionDelegateReference = new MockDelegateReference()
-                {
-                    Target = (Action<object>)delegate { }
-                };
+                Target = (Action<object>)delegate { }
+            };
 
-                var eventSubscription = new EventSubscription<object>(actionDelegateReference,
-                                                                                null);
-            });
+            var eventSubscription = new EventSubscription<object>(actionDelegateReference,
+                                                                            null);
         }
 
-        [Fact]
+        [TestMethod]
         public void CanInitEventSubscription()
         {
             var actionDelegateReference = new MockDelegateReference((Action<object>)delegate { });
@@ -171,12 +156,12 @@ namespace Bedrock.Tests.Events
 
             eventSubscription.SubscriptionToken = subscriptionToken;
 
-            Assert.Same(actionDelegateReference.Target, eventSubscription.Action);
-            Assert.Same(filterDelegateReference.Target, eventSubscription.Filter);
-            Assert.Same(subscriptionToken, eventSubscription.SubscriptionToken);
+            Assert.AreSame(actionDelegateReference.Target, eventSubscription.Action);
+            Assert.AreSame(filterDelegateReference.Target, eventSubscription.Filter);
+            Assert.AreSame(subscriptionToken, eventSubscription.SubscriptionToken);
         }
 
-        [Fact]
+        [TestMethod]
         public void CanInitEventSubscriptionNonGeneric()
         {
             var actionDelegateReference = new MockDelegateReference((Action)delegate { });
@@ -186,11 +171,11 @@ namespace Bedrock.Tests.Events
 
             eventSubscription.SubscriptionToken = subscriptionToken;
 
-            Assert.Same(actionDelegateReference.Target, eventSubscription.Action);
-            Assert.Same(subscriptionToken, eventSubscription.SubscriptionToken);
+            Assert.AreSame(actionDelegateReference.Target, eventSubscription.Action);
+            Assert.AreSame(subscriptionToken, eventSubscription.SubscriptionToken);
         }
 
-        [Fact]
+        [TestMethod]
         public void GetPublishActionReturnsDelegateThatExecutesTheFilterAndThenTheAction()
         {
             var executedDelegates = new List<string>();
@@ -209,16 +194,16 @@ namespace Bedrock.Tests.Events
 
             var publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.NotNull(publishAction);
+            Assert.IsNotNull(publishAction);
 
             publishAction.Invoke(null);
 
-            Assert.Equal(2, executedDelegates.Count);
-            Assert.Equal("Filter", executedDelegates[0]);
-            Assert.Equal("Action", executedDelegates[1]);
+            Assert.AreEqual(2, executedDelegates.Count);
+            Assert.AreEqual("Filter", executedDelegates[0]);
+            Assert.AreEqual("Action", executedDelegates[1]);
         }
 
-        [Fact]
+        [TestMethod]
         public void GetPublishActionReturnsNullIfActionIsNull()
         {
             var actionDelegateReference = new MockDelegateReference((Action<object>)delegate { });
@@ -228,16 +213,16 @@ namespace Bedrock.Tests.Events
 
             var publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.NotNull(publishAction);
+            Assert.IsNotNull(publishAction);
 
             actionDelegateReference.Target = null;
 
             publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.Null(publishAction);
+            Assert.IsNull(publishAction);
         }
 
-        [Fact]
+        [TestMethod]
         public void GetPublishActionReturnsNullIfActionIsNullNonGeneric()
         {
             var actionDelegateReference = new MockDelegateReference((Action)delegate { });
@@ -246,16 +231,16 @@ namespace Bedrock.Tests.Events
 
             var publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.NotNull(publishAction);
+            Assert.IsNotNull(publishAction);
 
             actionDelegateReference.Target = null;
 
             publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.Null(publishAction);
+            Assert.IsNull(publishAction);
         }
 
-        [Fact]
+        [TestMethod]
         public void GetPublishActionReturnsNullIfFilterIsNull()
         {
             var actionDelegateReference = new MockDelegateReference((Action<object>)delegate { });
@@ -265,16 +250,16 @@ namespace Bedrock.Tests.Events
 
             var publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.NotNull(publishAction);
+            Assert.IsNotNull(publishAction);
 
             filterDelegateReference.Target = null;
 
             publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.Null(publishAction);
+            Assert.IsNull(publishAction);
         }
 
-        [Fact]
+        [TestMethod]
         public void GetPublishActionDoesNotExecuteActionIfFilterReturnsFalse()
         {
             bool actionExecuted = false;
@@ -294,10 +279,10 @@ namespace Bedrock.Tests.Events
 
             publishAction.Invoke(new object[] { null });
 
-            Assert.False(actionExecuted);
+            Assert.IsFalse(actionExecuted);
         }
 
-        [Fact]
+        [TestMethod]
         public void StrategyPassesArgumentToDelegates()
         {
             string passedArgumentToAction = null;
@@ -315,8 +300,8 @@ namespace Bedrock.Tests.Events
 
             publishAction.Invoke(new[] { "TestString" });
 
-            Assert.Equal("TestString", passedArgumentToAction);
-            Assert.Equal("TestString", passedArgumentToFilter);
+            Assert.AreEqual("TestString", passedArgumentToAction);
+            Assert.AreEqual("TestString", passedArgumentToFilter);
         }
     }
 }

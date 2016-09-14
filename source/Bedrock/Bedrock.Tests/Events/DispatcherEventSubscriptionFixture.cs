@@ -1,13 +1,14 @@
 using System;
 using System.Threading;
 using Bedrock.Events;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Events
 {
+    [TestClass]
     public class DispatcherEventSubscriptionFixture
     {
-        [Fact]
+        [TestMethod]
         public void ShouldCallInvokeOnDispatcher()
         {
             DispatcherEventSubscription<object> eventSubscription = null;
@@ -30,10 +31,10 @@ namespace Bedrock.Tests.Events
 
             eventSubscription.GetExecutionStrategy().Invoke(new object[0]);
 
-            Assert.True(mockSyncContext.InvokeCalled);
+            Assert.IsTrue(mockSyncContext.InvokeCalled);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldCallInvokeOnDispatcherNonGeneric()
         {
             DispatcherEventSubscription eventSubscription = null;
@@ -50,10 +51,10 @@ namespace Bedrock.Tests.Events
 
             eventSubscription.GetExecutionStrategy().Invoke(new object[0]);
 
-            Assert.True(mockSyncContext.InvokeCalled);
+            Assert.IsTrue(mockSyncContext.InvokeCalled);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldPassParametersCorrectly()
         {
             IDelegateReference actionDelegateReference = new MockDelegateReference()
@@ -74,13 +75,13 @@ namespace Bedrock.Tests.Events
             DispatcherEventSubscription<object> eventSubscription = new DispatcherEventSubscription<object>(actionDelegateReference, filterDelegateReference, mockSyncContext);
 
             var executionStrategy = eventSubscription.GetExecutionStrategy();
-            Assert.NotNull(executionStrategy);
+            Assert.IsNotNull(executionStrategy);
 
             object argument1 = new object();
 
             executionStrategy.Invoke(new[] { argument1 });
 
-            Assert.Same(argument1, mockSyncContext.InvokeArg);
+            Assert.AreSame(argument1, mockSyncContext.InvokeArg);
         }
     }
 

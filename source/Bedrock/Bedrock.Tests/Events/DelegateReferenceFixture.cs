@@ -1,12 +1,13 @@
 using System;
 using Bedrock.Events;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Events
 {
+    [TestClass]
     public class DelegateReferenceFixture
     {
-        [Fact]
+        [TestMethod]
         public void KeepAlivePreventsDelegateFromBeingCollected()
         {
             var delegates = new SomeClassHandler();
@@ -15,10 +16,10 @@ namespace Bedrock.Tests.Events
             delegates = null;
             GC.Collect();
 
-            Assert.NotNull(delegateReference.Target);
+            Assert.IsNotNull(delegateReference.Target);
         }
 
-        [Fact]
+        [TestMethod]
         public void NotKeepAliveAllowsDelegateToBeCollected()
         {
             var delegates = new SomeClassHandler();
@@ -27,10 +28,10 @@ namespace Bedrock.Tests.Events
             delegates = null;
             GC.Collect();
 
-            Assert.Null(delegateReference.Target);
+            Assert.IsNull(delegateReference.Target);
         }
 
-        [Fact]
+        [TestMethod]
         public void NotKeepAliveKeepsDelegateIfStillAlive()
         {
             var delegates = new SomeClassHandler();
@@ -38,16 +39,16 @@ namespace Bedrock.Tests.Events
 
             GC.Collect();
 
-            Assert.NotNull(delegateReference.Target);
+            Assert.IsNotNull(delegateReference.Target);
 
             GC.KeepAlive(delegates);  //Makes delegates ineligible for garbage collection until this point (to prevent oompiler optimizations that may release the referenced object prematurely).
             delegates = null;
             GC.Collect();
 
-            Assert.Null(delegateReference.Target);
+            Assert.IsNull(delegateReference.Target);
         }
 
-        [Fact]
+        [TestMethod]
         public void TargetShouldReturnAction()
         {
             var classHandler = new SomeClassHandler();
@@ -56,10 +57,10 @@ namespace Bedrock.Tests.Events
             var weakAction = new DelegateReference(myAction, false);
 
             ((Action<string>)weakAction.Target)("payload");
-            Assert.Equal("payload", classHandler.MyActionArg);
+            Assert.AreEqual("payload", classHandler.MyActionArg);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldAllowCollectionOfOriginalDelegate()
         {
             var classHandler = new SomeClassHandler();
@@ -70,13 +71,13 @@ namespace Bedrock.Tests.Events
             var originalAction = new WeakReference(myAction);
             myAction = null;
             GC.Collect();
-            Assert.False(originalAction.IsAlive);
+            Assert.IsFalse(originalAction.IsAlive);
 
             ((Action<string>)weakAction.Target)("payload");
-            Assert.Equal("payload", classHandler.MyActionArg);
+            Assert.AreEqual("payload", classHandler.MyActionArg);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldReturnNullIfTargetNotAlive()
         {
             SomeClassHandler handler = new SomeClassHandler();
@@ -86,21 +87,21 @@ namespace Bedrock.Tests.Events
 
             handler = null;
             GC.Collect();
-            Assert.False(weakHandlerRef.IsAlive);
+            Assert.IsFalse(weakHandlerRef.IsAlive);
 
-            Assert.Null(action.Target);
+            Assert.IsNull(action.Target);
         }
 
-        [Fact]
+        [TestMethod]
         public void WeakDelegateWorksWithStaticMethodDelegates()
         {
             var action = new DelegateReference((Action)SomeClassHandler.StaticMethod, false);
 
-            Assert.NotNull(action.Target);
+            Assert.IsNotNull(action.Target);
         }
 
         //todo: fix
-        //[Fact]
+        //[TestMethod]
         //public void NullDelegateThrows()
         //{
         //    Assert.ThrowsException<ArgumentNullException>(() =>

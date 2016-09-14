@@ -1,13 +1,14 @@
 using System;
 using System.Threading;
 using Bedrock.Events;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Events
 {
+    [TestClass]
     public class BackgroundEventSubscriptionFixture
     {
-        [Fact]
+        [TestMethod]
         public void ShouldReceiveDelegateOnDifferentThread()
         {
             ManualResetEvent completeEvent = new ManualResetEvent(false);
@@ -27,16 +28,16 @@ namespace Bedrock.Tests.Events
 
             var publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.NotNull(publishAction);
+            Assert.IsNotNull(publishAction);
 
             publishAction.Invoke(null);
 
             completeEvent.WaitOne(5000);
 
-            Assert.NotEqual(SynchronizationContext.Current, calledSyncContext);
+            Assert.AreNotEqual(SynchronizationContext.Current, calledSyncContext);
         }
 
-        [Fact]
+        [TestMethod]
         public void ShouldReceiveDelegateOnDifferentThreadNonGeneric()
         {
             var completeEvent = new ManualResetEvent(false);
@@ -54,13 +55,13 @@ namespace Bedrock.Tests.Events
 
             var publishAction = eventSubscription.GetExecutionStrategy();
 
-            Assert.NotNull(publishAction);
+            Assert.IsNotNull(publishAction);
 
             publishAction.Invoke(null);
 
             completeEvent.WaitOne(5000);
 
-            Assert.NotEqual(SynchronizationContext.Current, calledSyncContext);
+            Assert.AreNotEqual(SynchronizationContext.Current, calledSyncContext);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Bedrock.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Bedrock.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bedrock.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Bedrock.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The object must be of type &apos;{0}&apos; in order to use the current region adapter..
         /// </summary>
-        internal static string AdapterInvalidTypeException {
+        public static string AdapterInvalidTypeException {
             get {
                 return ResourceManager.GetString("AdapterInvalidTypeException", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot change the region name once is set. The current region name is &apos;{0}&apos;..
         /// </summary>
-        internal static string CannotChangeRegionNameException {
+        public static string CannotChangeRegionNameException {
             get {
                 return ResourceManager.GetString("CannotChangeRegionNameException", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot create navigation target &apos;{0}&apos;..
         /// </summary>
-        internal static string CannotCreateNavigationTarget {
+        public static string CannotCreateNavigationTarget {
             get {
                 return ResourceManager.GetString("CannotCreateNavigationTarget", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Can&apos;t find name property for this control!.
         /// </summary>
-        internal static string CannotFindNameProperty {
+        public static string CannotFindNameProperty {
             get {
                 return ResourceManager.GetString("CannotFindNameProperty", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Type &apos;{0}&apos; does not implement from IRegionBehavior..
         /// </summary>
-        internal static string CanOnlyAddTypesThatInheritIFromRegionBehavior {
+        public static string CanOnlyAddTypesThatInheritIFromRegionBehavior {
             get {
                 return ResourceManager.GetString("CanOnlyAddTypesThatInheritIFromRegionBehavior", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The ConfigurationStore cannot contain a null value. .
         /// </summary>
-        internal static string ConfigurationStoreCannotBeNull {
+        public static string ConfigurationStoreCannotBeNull {
             get {
                 return ResourceManager.GetString("ConfigurationStoreCannotBeNull", resourceCulture);
             }
@@ -120,7 +120,7 @@ namespace Bedrock.Properties {
         ///    If you did not explicitly set the control&apos;s Content property, 
         ///    this exception may be caused by a change in the value of the inherited RegionManager attached property..
         /// </summary>
-        internal static string ContentControlHasContentException {
+        public static string ContentControlHasContentException {
             get {
                 return ResourceManager.GetString("ContentControlHasContentException", resourceCulture);
             }
@@ -129,7 +129,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to At least one cyclic dependency has been found in the module catalog. Cycles in the module dependencies must be avoided..
         /// </summary>
-        internal static string CyclicDependencyFound {
+        public static string CyclicDependencyFound {
             get {
                 return ResourceManager.GetString("CyclicDependencyFound", resourceCulture);
             }
@@ -138,7 +138,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deactivation is not possible in this type of region..
         /// </summary>
-        internal static string DeactiveNotPossibleException {
+        public static string DeactiveNotPossibleException {
             get {
                 return ResourceManager.GetString("DeactiveNotPossibleException", resourceCulture);
             }
@@ -147,7 +147,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {1}: {2}. Priority: {3}. Timestamp:{0:u}..
         /// </summary>
-        internal static string DefaultDebugLoggerPattern {
+        public static string DefaultDebugLoggerPattern {
             get {
                 return ResourceManager.GetString("DefaultDebugLoggerPattern", resourceCulture);
             }
@@ -156,7 +156,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {1}: {2}. Priority: {3}. Timestamp:{0:u}..
         /// </summary>
-        internal static string DefaultTextLoggerPattern {
+        public static string DefaultTextLoggerPattern {
             get {
                 return ResourceManager.GetString("DefaultTextLoggerPattern", resourceCulture);
             }
@@ -165,7 +165,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Neither the executeMethod nor the canExecuteMethod delegates can be null..
         /// </summary>
-        internal static string DelegateCommandDelegatesCannotBeNull {
+        public static string DelegateCommandDelegatesCannotBeNull {
             get {
                 return ResourceManager.GetString("DelegateCommandDelegatesCannotBeNull", resourceCulture);
             }
@@ -174,7 +174,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to T for DelegateCommand&lt;T&gt; is not an object nor Nullable..
         /// </summary>
-        internal static string DelegateCommandInvalidGenericPayloadType {
+        public static string DelegateCommandInvalidGenericPayloadType {
             get {
                 return ResourceManager.GetString("DelegateCommandInvalidGenericPayloadType", resourceCulture);
             }
@@ -183,7 +183,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot add dependency for unknown module {0}.
         /// </summary>
-        internal static string DependencyForUnknownModule {
+        public static string DependencyForUnknownModule {
             get {
                 return ResourceManager.GetString("DependencyForUnknownModule", resourceCulture);
             }
@@ -192,7 +192,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A module declared a dependency on another module which is not declared to be loaded. Missing module(s): {0}.
         /// </summary>
-        internal static string DependencyOnMissingModule {
+        public static string DependencyOnMissingModule {
             get {
                 return ResourceManager.GetString("DependencyOnMissingModule", resourceCulture);
             }
@@ -201,7 +201,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Directory {0} was not found..
         /// </summary>
-        internal static string DirectoryNotFound {
+        public static string DirectoryNotFound {
             get {
                 return ResourceManager.GetString("DirectoryNotFound", resourceCulture);
             }
@@ -210,7 +210,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A duplicated module with name {0} has been found by the loader..
         /// </summary>
-        internal static string DuplicatedModule {
+        public static string DuplicatedModule {
             get {
                 return ResourceManager.GetString("DuplicatedModule", resourceCulture);
             }
@@ -219,7 +219,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A duplicated module group with name {0} has been found by the loader..
         /// </summary>
-        internal static string DuplicatedModuleGroup {
+        public static string DuplicatedModuleGroup {
             get {
                 return ResourceManager.GetString("DuplicatedModuleGroup", resourceCulture);
             }
@@ -228,7 +228,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to To use the UIThread option for subscribing, the EventAggregator must be constructed on the UI thread..
         /// </summary>
-        internal static string EventAggregatorNotConstructedOnUIThread {
+        public static string EventAggregatorNotConstructedOnUIThread {
             get {
                 return ResourceManager.GetString("EventAggregatorNotConstructedOnUIThread", resourceCulture);
             }
@@ -237,7 +237,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to retrieve the module type {0} from the loaded assemblies.  You may need to specify a more fully-qualified type name..
         /// </summary>
-        internal static string FailedToGetType {
+        public static string FailedToGetType {
             get {
                 return ResourceManager.GetString("FailedToGetType", resourceCulture);
             }
@@ -250,7 +250,7 @@ namespace Bedrock.Properties {
         ///    Check the InnerException property of the exception for more information. If the exception occurred while creating an object in a DI container, you can exception.GetRootException() to help locate the root cause of the problem. 
         ///  .
         /// </summary>
-        internal static string FailedToLoadModule {
+        public static string FailedToLoadModule {
             get {
                 return ResourceManager.GetString("FailedToLoadModule", resourceCulture);
             }
@@ -263,7 +263,7 @@ namespace Bedrock.Properties {
         ///    while creating an object in a DI container, you can exception.GetRootException() to help locate the 
         ///    root cause of the problem. .
         /// </summary>
-        internal static string FailedToLoadModuleNoAssemblyInfo {
+        public static string FailedToLoadModuleNoAssemblyInfo {
             get {
                 return ResourceManager.GetString("FailedToLoadModuleNoAssemblyInfo", resourceCulture);
             }
@@ -273,7 +273,7 @@ namespace Bedrock.Properties {
         ///   Looks up a localized string similar to Failed to load type for module {0}. 
         ///Error was: {1}..
         /// </summary>
-        internal static string FailedToRetrieveModule {
+        public static string FailedToRetrieveModule {
             get {
                 return ResourceManager.GetString("FailedToRetrieveModule", resourceCulture);
             }
@@ -282,7 +282,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to HostControl cannot have null value when behavior attaches. .
         /// </summary>
-        internal static string HostControlCannotBeNull {
+        public static string HostControlCannotBeNull {
             get {
                 return ResourceManager.GetString("HostControlCannotBeNull", resourceCulture);
             }
@@ -291,7 +291,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The HostControl property cannot be set after Attach method has been called..
         /// </summary>
-        internal static string HostControlCannotBeSetAfterAttach {
+        public static string HostControlCannotBeSetAfterAttach {
             get {
                 return ResourceManager.GetString("HostControlCannotBeSetAfterAttach", resourceCulture);
             }
@@ -300,7 +300,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to HostControl type must be a TabControl..
         /// </summary>
-        internal static string HostControlMustBeATabControl {
+        public static string HostControlMustBeATabControl {
             get {
                 return ResourceManager.GetString("HostControlMustBeATabControl", resourceCulture);
             }
@@ -309,7 +309,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The IModuleEnumerator interface is no longer used and has been replaced by ModuleCatalog..
         /// </summary>
-        internal static string IEnumeratorObsolete {
+        public static string IEnumeratorObsolete {
             get {
                 return ResourceManager.GetString("IEnumeratorObsolete", resourceCulture);
             }
@@ -318,7 +318,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The argument must be a valid absolute Uri to an assembly file..
         /// </summary>
-        internal static string InvalidArgumentAssemblyUri {
+        public static string InvalidArgumentAssemblyUri {
             get {
                 return ResourceManager.GetString("InvalidArgumentAssemblyUri", resourceCulture);
             }
@@ -327,7 +327,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Target of the IDelegateReference should be of type {0}..
         /// </summary>
-        internal static string InvalidDelegateRerefenceTypeException {
+        public static string InvalidDelegateRerefenceTypeException {
             get {
                 return ResourceManager.GetString("InvalidDelegateRerefenceTypeException", resourceCulture);
             }
@@ -336,7 +336,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid Delegate Reference Type Exception.
         /// </summary>
-        internal static string InvalidDelegateRerefenceTypeException1 {
+        public static string InvalidDelegateRerefenceTypeException1 {
             get {
                 return ResourceManager.GetString("InvalidDelegateRerefenceTypeException1", resourceCulture);
             }
@@ -345,7 +345,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to IRegionBehaviorFactory instance need be registerd!.
         /// </summary>
-        internal static string IRegionBehaviorFactoryInstanceNotExist {
+        public static string IRegionBehaviorFactoryInstanceNotExist {
             get {
                 return ResourceManager.GetString("IRegionBehaviorFactoryInstanceNotExist", resourceCulture);
             }
@@ -357,7 +357,7 @@ namespace Bedrock.Properties {
         ///    If you did not explicitly set the control&apos;s ItemSource property, 
         ///    this exception may be caused by a change in the value of the inherited RegionManager attached property..
         /// </summary>
-        internal static string ItemsControlHasItemsSourceException {
+        public static string ItemsControlHasItemsSourceException {
             get {
                 return ResourceManager.GetString("ItemsControlHasItemsSourceException", resourceCulture);
             }
@@ -366,7 +366,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mapping with the given type is already registered: {0}..
         /// </summary>
-        internal static string MappingExistsException {
+        public static string MappingExistsException {
             get {
                 return ResourceManager.GetString("MappingExistsException", resourceCulture);
             }
@@ -375,7 +375,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Module {0} depends on other modules that don&apos;t belong to the same group..
         /// </summary>
-        internal static string ModuleDependenciesNotMetInGroup {
+        public static string ModuleDependenciesNotMetInGroup {
             get {
                 return ResourceManager.GetString("ModuleDependenciesNotMetInGroup", resourceCulture);
             }
@@ -384,7 +384,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Module {0} was not found in the catalog..
         /// </summary>
-        internal static string ModuleNotFound {
+        public static string ModuleNotFound {
             get {
                 return ResourceManager.GetString("ModuleNotFound", resourceCulture);
             }
@@ -393,7 +393,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The ModulePath cannot contain a null value or be empty.
         /// </summary>
-        internal static string ModulePathCannotBeNullOrEmpty {
+        public static string ModulePathCannotBeNullOrEmpty {
             get {
                 return ResourceManager.GetString("ModulePathCannotBeNullOrEmpty", resourceCulture);
             }
@@ -402,7 +402,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Failed to load type &apos;{0}&apos; from assembly &apos;{1}&apos;..
         /// </summary>
-        internal static string ModuleTypeNotFound {
+        public static string ModuleTypeNotFound {
             get {
                 return ResourceManager.GetString("ModuleTypeNotFound", resourceCulture);
             }
@@ -411,7 +411,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The name of this control should not be null!.
         /// </summary>
-        internal static string NameValueOfControlIsNull {
+        public static string NameValueOfControlIsNull {
             get {
                 return ResourceManager.GetString("NameValueOfControlIsNull", resourceCulture);
             }
@@ -420,7 +420,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Navigation is already in progress on region with name &apos;{0}&apos;..
         /// </summary>
-        internal static string NavigationInProgress {
+        public static string NavigationInProgress {
             get {
                 return ResourceManager.GetString("NavigationInProgress", resourceCulture);
             }
@@ -429,7 +429,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Navigation cannot proceed until a region is set for the RegionNavigationService..
         /// </summary>
-        internal static string NavigationServiceHasNoRegion {
+        public static string NavigationServiceHasNoRegion {
             get {
                 return ResourceManager.GetString("NavigationServiceHasNoRegion", resourceCulture);
             }
@@ -438,7 +438,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The IRegionAdapter for the type {0} is not registered in the region adapter mappings. You can register an IRegionAdapter for this control by overriding the ConfigureRegionAdapterMappings method in the bootstrapper..
         /// </summary>
-        internal static string NoRegionAdapterException {
+        public static string NoRegionAdapterException {
             get {
                 return ResourceManager.GetString("NoRegionAdapterException", resourceCulture);
             }
@@ -447,7 +447,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There is currently no moduleTypeLoader in the ModuleManager that can retrieve the specified module..
         /// </summary>
-        internal static string NoRetrieverCanRetrieveModule {
+        public static string NoRetrieverCanRetrieveModule {
             get {
                 return ResourceManager.GetString("NoRetrieverCanRetrieveModule", resourceCulture);
             }
@@ -458,7 +458,7 @@ namespace Bedrock.Properties {
         ///    - The most likely causing exception was was: &apos;{1}&apos;.
         ///    But also check the InnerExceptions for more detail or call .GetRootException(). .
         /// </summary>
-        internal static string OnViewRegisteredException {
+        public static string OnViewRegisteredException {
             get {
                 return ResourceManager.GetString("OnViewRegisteredException", resourceCulture);
             }
@@ -467,7 +467,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The member access expression does not access a property..
         /// </summary>
-        internal static string PropertySupport_ExpressionNotProperty_Exception {
+        public static string PropertySupport_ExpressionNotProperty_Exception {
             get {
                 return ResourceManager.GetString("PropertySupport_ExpressionNotProperty_Exception", resourceCulture);
             }
@@ -476,7 +476,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The expression is not a member access expression..
         /// </summary>
-        internal static string PropertySupport_NotMemberAccessExpression_Exception {
+        public static string PropertySupport_NotMemberAccessExpression_Exception {
             get {
                 return ResourceManager.GetString("PropertySupport_NotMemberAccessExpression_Exception", resourceCulture);
             }
@@ -485,7 +485,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The referenced property is a static property..
         /// </summary>
-        internal static string PropertySupport_StaticExpression_Exception {
+        public static string PropertySupport_StaticExpression_Exception {
             get {
                 return ResourceManager.GetString("PropertySupport_StaticExpression_Exception", resourceCulture);
             }
@@ -494,7 +494,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Attach method cannot be called when Region property is null..
         /// </summary>
-        internal static string RegionBehaviorAttachCannotBeCallWithNullRegion {
+        public static string RegionBehaviorAttachCannotBeCallWithNullRegion {
             get {
                 return ResourceManager.GetString("RegionBehaviorAttachCannotBeCallWithNullRegion", resourceCulture);
             }
@@ -503,7 +503,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Region property cannot be set after Attach method has been called..
         /// </summary>
-        internal static string RegionBehaviorRegionCannotBeSetAfterAttach {
+        public static string RegionBehaviorRegionCannotBeSetAfterAttach {
             get {
                 return ResourceManager.GetString("RegionBehaviorRegionCannotBeSetAfterAttach", resourceCulture);
             }
@@ -512,7 +512,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to An exception occurred while creating a region with name &apos;{0}&apos;. The exception was: {1}. .
         /// </summary>
-        internal static string RegionCreationException {
+        public static string RegionCreationException {
             get {
                 return ResourceManager.GetString("RegionCreationException", resourceCulture);
             }
@@ -521,7 +521,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The region being added already has a name of &apos;{0}&apos; and cannot be added to the region manager with a different name (&apos;{1}&apos;)..
         /// </summary>
-        internal static string RegionManagerWithDifferentNameException {
+        public static string RegionManagerWithDifferentNameException {
             get {
                 return ResourceManager.GetString("RegionManagerWithDifferentNameException", resourceCulture);
             }
@@ -530,7 +530,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The region name cannot be null or empty..
         /// </summary>
-        internal static string RegionNameCannotBeEmptyException {
+        public static string RegionNameCannotBeEmptyException {
             get {
                 return ResourceManager.GetString("RegionNameCannotBeEmptyException", resourceCulture);
             }
@@ -539,7 +539,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Region with the given name is already registered: {0}.
         /// </summary>
-        internal static string RegionNameExistsException {
+        public static string RegionNameExistsException {
             get {
                 return ResourceManager.GetString("RegionNameExistsException", resourceCulture);
             }
@@ -548,7 +548,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This RegionManager does not contain a Region with the name &apos;{0}&apos;..
         /// </summary>
-        internal static string RegionNotFound {
+        public static string RegionNotFound {
             get {
                 return ResourceManager.GetString("RegionNotFound", resourceCulture);
             }
@@ -557,7 +557,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The region manager does not contain the {0} region..
         /// </summary>
-        internal static string RegionNotInRegionManagerException {
+        public static string RegionNotInRegionManagerException {
             get {
                 return ResourceManager.GetString("RegionNotInRegionManagerException", resourceCulture);
             }
@@ -566,7 +566,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to View already exists in region..
         /// </summary>
-        internal static string RegionViewExistsException {
+        public static string RegionViewExistsException {
             get {
                 return ResourceManager.GetString("RegionViewExistsException", resourceCulture);
             }
@@ -575,7 +575,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to View with name &apos;{0}&apos; already exists in the region..
         /// </summary>
-        internal static string RegionViewNameExistsException {
+        public static string RegionViewNameExistsException {
             get {
                 return ResourceManager.GetString("RegionViewNameExistsException", resourceCulture);
             }
@@ -584,7 +584,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Module {0} is marked for automatic initialization when the application starts, but it depends on modules that are marked as OnDemand initialization. To fix this error, mark the dependency modules for InitializationMode=WhenAvailable, or remove this validation by extending the ModuleCatalog class..
         /// </summary>
-        internal static string StartupModuleDependsOnAnOnDemandModule {
+        public static string StartupModuleDependsOnAnOnDemandModule {
             get {
                 return ResourceManager.GetString("StartupModuleDependsOnAnOnDemandModule", resourceCulture);
             }
@@ -593,7 +593,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided String argument {0} must not be null or empty..
         /// </summary>
-        internal static string StringCannotBeNullOrEmpty {
+        public static string StringCannotBeNullOrEmpty {
             get {
                 return ResourceManager.GetString("StringCannotBeNullOrEmpty", resourceCulture);
             }
@@ -602,7 +602,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided String argument {0} must not be null or empty..
         /// </summary>
-        internal static string StringCannotBeNullOrEmpty1 {
+        public static string StringCannotBeNullOrEmpty1 {
             get {
                 return ResourceManager.GetString("StringCannotBeNullOrEmpty1", resourceCulture);
             }
@@ -611,7 +611,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No BehaviorType with key &apos;{0}&apos; was registered..
         /// </summary>
-        internal static string TypeWithKeyNotRegistered {
+        public static string TypeWithKeyNotRegistered {
             get {
                 return ResourceManager.GetString("TypeWithKeyNotRegistered", resourceCulture);
             }
@@ -622,7 +622,7 @@ namespace Bedrock.Properties {
         ///    - The most likely causing exception was: &apos;{0}&apos;.
         ///    But also check the InnerExceptions for more detail or call .GetRootException(). .
         /// </summary>
-        internal static string UpdateRegionException {
+        public static string UpdateRegionException {
             get {
                 return ResourceManager.GetString("UpdateRegionException", resourceCulture);
             }
@@ -631,7 +631,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The value must be of type ModuleInfo..
         /// </summary>
-        internal static string ValueMustBeOfTypeModuleInfo {
+        public static string ValueMustBeOfTypeModuleInfo {
             get {
                 return ResourceManager.GetString("ValueMustBeOfTypeModuleInfo", resourceCulture);
             }
@@ -640,7 +640,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} not found..
         /// </summary>
-        internal static string ValueNotFound {
+        public static string ValueNotFound {
             get {
                 return ResourceManager.GetString("ValueNotFound", resourceCulture);
             }
@@ -649,7 +649,7 @@ namespace Bedrock.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The region does not contain the specified view..
         /// </summary>
-        internal static string ViewNotInRegionException {
+        public static string ViewNotInRegionException {
             get {
                 return ResourceManager.GetString("ViewNotInRegionException", resourceCulture);
             }

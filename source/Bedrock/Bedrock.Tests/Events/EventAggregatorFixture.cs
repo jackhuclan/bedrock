@@ -1,18 +1,19 @@
 using Bedrock.Events;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Events
 {
+    [TestClass]
     public class EventAggregatorFixture
     {
-        [Fact]
+        [TestMethod]
         public void GetReturnsSingleInstancesOfSameEventType()
         {
             var eventAggregator = new EventAggregator();
             var instance1 = eventAggregator.GetEvent<MockEventBase>();
             var instance2 = eventAggregator.GetEvent<MockEventBase>();
 
-            Assert.Same(instance2, instance1);
+            Assert.AreSame(instance2, instance1);
         }
 
         public class MockEventBase : EventBase { }

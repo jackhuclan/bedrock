@@ -1,24 +1,25 @@
 using System;
 using Bedrock.Events;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bedrock.Tests.Events
 {
+    [TestClass]
     public class DataEventArgsFixture
     {
-        [Fact]
+        [TestMethod]
         public void CanPassData()
         {
             DataEventArgs<int> e = new DataEventArgs<int>(32);
-            Assert.Equal(32, e.Value);
+            Assert.AreEqual(32, e.Value);
         }
 
-        [Fact]
+        [TestMethod]
         public void IsEventArgs()
         {
             DataEventArgs<string> dea = new DataEventArgs<string>("");
             EventArgs ea = dea as EventArgs;
-            Assert.NotNull(ea);
+            Assert.IsNotNull(ea);
         }
     }
 }
