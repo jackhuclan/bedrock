@@ -16,6 +16,7 @@ namespace Bedrock.Regions
     public class RegionBase : IRegion
     {
         private ObservableCollection<IView> itemCollection;
+        private ObservableCollection<IView> activatedItemCollection;
         private string name;
         private ViewsCollection views;
         private ViewsCollection activeViews;
@@ -30,6 +31,7 @@ namespace Bedrock.Regions
             this.Behaviors = new RegionBehaviorCollection(this);
             this.Control = control;
             this.name = GetNamePropertyVal(control);
+            this.activatedItemCollection = new ObservableCollection<IView>();
         }
 
         public RegionBase(string name, object control)
@@ -37,6 +39,7 @@ namespace Bedrock.Regions
             this.Behaviors = new RegionBehaviorCollection(this);
             this.name = name;
             this.Control = control;
+            this.activatedItemCollection = new ObservableCollection<IView>();
         }
 
         /// <summary>
@@ -127,7 +130,7 @@ namespace Bedrock.Regions
             {
                 if (this.activeViews == null)
                 {
-                    this.activeViews = new ViewsCollection(itemCollection);
+                    this.activeViews = new ViewsCollection(activatedItemCollection);
                 }
 
                 return this.activeViews;
@@ -214,7 +217,7 @@ namespace Bedrock.Regions
         {
             if (GetView(viewName) != null)
             {
-                throw new InvalidOperationException(Resources.RegionViewNameExistsException);
+                throw new InvalidOperationException(Resources.ViewAlreadyExistsInRegion);
             }
 
             view.Name = viewName;

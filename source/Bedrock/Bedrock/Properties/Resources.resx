@@ -331,4 +331,7 @@ Error was: {1}.</value>
   <data name="ViewShouldNotBeNull" xml:space="preserve">
     <value>view can't be null</value>
   </data>
+  <data name="ViewAlreadyExistsInRegion" xml:space="preserve">
+    <value>View already exists in region.</value>
+  </data>
 </root>

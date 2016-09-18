@@ -647,6 +647,15 @@ namespace Bedrock.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View already exists in region..
+        /// </summary>
+        public static string ViewAlreadyExistsInRegion {
+            get {
+                return ResourceManager.GetString("ViewAlreadyExistsInRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The region does not contain the specified view..
         /// </summary>
         public static string ViewNotInRegionException {
