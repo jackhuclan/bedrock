@@ -11,11 +11,10 @@ namespace Bedrock.Tests.Regions
     [TestClass]
     public class RegionFixture
     {
-
         [TestMethod]
         public void CanAddContentToRegion()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.Add(new MockView());
             Assert.AreEqual(1, region.Views.Cast<object>().Count());
@@ -25,7 +24,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void CanRemoveContentFromRegion()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView view = new MockView();
             region.Add(view);
@@ -34,22 +33,19 @@ namespace Bedrock.Tests.Regions
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void RemoveInexistentViewThrows()
+        public void RemoveNonexistViewNothingHappen()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView view = new MockView();
-
             region.Remove(view);
-
             Assert.AreEqual(0, region.Views.Cast<object>().Count());
         }
 
         [TestMethod]
         public void RegionExposesCollectionOfContainedViews()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView view = new MockView();
 
@@ -65,7 +61,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void CanAddAndRetrieveNamedViewInstance()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView myView = new MockView();
             region.Add(myView, "MyView");
@@ -79,7 +75,7 @@ namespace Bedrock.Tests.Regions
         [ExpectedException(typeof(InvalidOperationException))]
         public void AddingDuplicateNamedViewThrows()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView myView = new MockView();
 
@@ -90,7 +86,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void AddNamedViewIsAlsoListedInViewsCollection()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView myView = new MockView();
 
@@ -103,7 +99,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void GetViewReturnsNullWhenViewDoesNotExistInRegion()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView myView = new MockView();
 
@@ -115,7 +111,7 @@ namespace Bedrock.Tests.Regions
         [ExpectedException(typeof(ArgumentException))]
         public void GetViewWithNullOrEmptyStringThrows()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView myView = new MockView();
 
@@ -126,7 +122,7 @@ namespace Bedrock.Tests.Regions
         [ExpectedException(typeof(ArgumentException))]
         public void AddNamedViewWithNullOrEmptyStringNameThrows()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView myView = new MockView();
 
@@ -136,7 +132,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void GetViewReturnsNullAfterRemovingViewFromRegion()
         {
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             IView myView = new MockView();
 
@@ -151,7 +147,7 @@ namespace Bedrock.Tests.Regions
         public void CreatingNewScopesAsksTheRegionManagerForNewInstance()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             var myView = new MockView();
@@ -165,7 +161,7 @@ namespace Bedrock.Tests.Regions
         public void AddViewReturnsExistingRegionManager()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             var myView = new MockView();
@@ -179,7 +175,7 @@ namespace Bedrock.Tests.Regions
         public void AddViewReturnsNewRegionManager()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             var myView = new MockView();
@@ -193,7 +189,7 @@ namespace Bedrock.Tests.Regions
         public void AddingNonDependencyObjectToRegionDoesNotThrow()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             var myView = new MockView();
@@ -208,7 +204,7 @@ namespace Bedrock.Tests.Regions
         public void ActivateNonAddedViewThrows()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView nonAddedView = new MockView();
@@ -221,7 +217,7 @@ namespace Bedrock.Tests.Regions
         public void DeactivateNonAddedViewThrows()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView nonAddedView = new MockView();
@@ -234,7 +230,7 @@ namespace Bedrock.Tests.Regions
         public void ActivateNullViewThrows()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView nonAddedView = new MockView();
@@ -248,7 +244,7 @@ namespace Bedrock.Tests.Regions
             bool viewAddedCalled = false;
 
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -272,7 +268,7 @@ namespace Bedrock.Tests.Regions
             object viewAdded = null;
 
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -284,12 +280,11 @@ namespace Bedrock.Tests.Regions
                                                           viewAdded = e.NewItems[0];
                                                       }
                                                   };
-            object model = new object();
             Assert.IsNull(viewAdded);
             region.Add(myView);
 
             Assert.IsNotNull(viewAdded);
-            Assert.AreSame(model, viewAdded);
+            Assert.AreSame(myView, viewAdded);
         }
 
         [TestMethod]
@@ -298,7 +293,7 @@ namespace Bedrock.Tests.Regions
             bool viewRemoved = false;
 
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -323,7 +318,7 @@ namespace Bedrock.Tests.Regions
             object removedView = null;
 
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -333,13 +328,12 @@ namespace Bedrock.Tests.Regions
                                                       if (e.Action == NotifyCollectionChangedAction.Remove)
                                                           removedView = e.OldItems[0];
                                                   };
-            object model = new object();
             region.Add(myView);
             Assert.IsNull(removedView);
 
             region.Remove(myView);
 
-            Assert.AreSame(model, removedView);
+            Assert.AreSame(myView, removedView);
         }
 
         [TestMethod]
@@ -348,7 +342,7 @@ namespace Bedrock.Tests.Regions
             bool viewActivated = false;
 
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -370,7 +364,7 @@ namespace Bedrock.Tests.Regions
         public void AddingSameViewTwiceThrows()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -396,7 +390,7 @@ namespace Bedrock.Tests.Regions
         public void RemovingViewAlsoRemovesItFromActiveViews()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -414,7 +408,7 @@ namespace Bedrock.Tests.Regions
         public void ShouldGetNotificationWhenContextChanges()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
             IView myView = new MockView();
@@ -432,7 +426,7 @@ namespace Bedrock.Tests.Regions
         public void ChangingNameOnceItIsSetThrows()
         {
             var regionManager = new MockRegionManager();
-            var control = new object();
+            var control = new MockControl();
             IRegion region = new RegionBase(control);
             region.RegionManager = regionManager;
 

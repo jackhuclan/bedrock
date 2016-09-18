@@ -7,7 +7,7 @@ namespace Bedrock.Regions
     /// <summary>
     /// Defines a view of a collection.
     /// </summary>
-    public interface IViewsCollection : IEnumerable<object>, INotifyCollectionChanged
+    public interface IViewsCollection : IEnumerable<IView>, INotifyCollectionChanged
     {
         /// <summary>
         /// Determines whether the collection contains a specific value.

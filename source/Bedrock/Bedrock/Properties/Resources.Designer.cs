@@ -654,5 +654,14 @@ namespace Bedrock.Properties {
                 return ResourceManager.GetString("ViewNotInRegionException", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to view can&apos;t be null.
+        /// </summary>
+        public static string ViewShouldNotBeNull {
+            get {
+                return ResourceManager.GetString("ViewShouldNotBeNull", resourceCulture);
+            }
+        }
     }
 }

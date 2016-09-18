@@ -1,4 +1,3 @@
-
 using System;
 using System.ComponentModel;
 using Bedrock.Regions;
@@ -9,7 +8,7 @@ namespace Bedrock.Tests.Mocks
     internal class MockRegion : IRegion
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public Func<string, object> GetViewStringDelegate { get; set; }
+        public Func<string, IView> GetViewStringDelegate { get; set; }
 
         private MockViewsCollection views = new MockViewsCollection();
 
@@ -63,7 +62,7 @@ namespace Bedrock.Tests.Mocks
             throw new System.NotImplementedException();
         }
 
-        public object GetView(string viewName)
+        public IView GetView(string viewName)
         {
             return GetViewStringDelegate(viewName);
         }

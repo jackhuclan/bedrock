@@ -161,7 +161,6 @@ namespace Bedrock.Tests.Regions
 
         public void OnViewRegistered(ViewRegisteredEventArgs e)
         {
-            throw new NotImplementedException();
         }
     }
 }

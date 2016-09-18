@@ -212,6 +212,12 @@ namespace Bedrock.Regions
         /// <returns>The <see cref="IRegionManager"/> that is set on the view if it is a <see cref="DependencyObject"/>.</returns>
         public virtual IRegionManager Add(IView view, string viewName, bool createRegionManagerScope)
         {
+            if (GetView(viewName) != null)
+            {
+                throw new InvalidOperationException(Resources.RegionViewNameExistsException);
+            }
+
+            view.Name = viewName;
             IRegionManager manager = createRegionManagerScope ? this.RegionManager.CreateRegionManager() : this.RegionManager;
             this.ItemMetadataCollection.Add(view);
             return manager;
@@ -259,6 +265,16 @@ namespace Bedrock.Regions
         /// <param name="view">The view to activate.</param>
         public virtual void Activate(IView view)
         {
+            if (view == null)
+            {
+                throw new ArgumentNullException(Resources.ViewShouldNotBeNull);
+            }
+
+            if (GetView(view.Name) == null)
+            {
+                throw new ArgumentException(Resources.ViewNotInRegionException);
+            }
+
             ActiveViews.Add(view);
         }
 
@@ -276,6 +292,16 @@ namespace Bedrock.Regions
         /// <param name="view">The view to deactivate.</param>
         public virtual void Deactivate(IView view)
         {
+            if (view == null)
+            {
+                throw new ArgumentNullException(Resources.ViewShouldNotBeNull);
+            }
+
+            if (GetView(view.Name) == null)
+            {
+                throw new ArgumentException(Resources.ViewNotInRegionException);
+            }
+
             ActiveViews.Remove(view);
         }
 
@@ -292,7 +318,7 @@ namespace Bedrock.Regions
         /// </summary>
         /// <param name="viewName">The name used when adding the view to the region.</param>
         /// <returns>Returns the named view or <see langword="null"/> if the view with <paramref name="viewName"/> does not exist in the current region.</returns>
-        public virtual object GetView(string viewName)
+        public virtual IView GetView(string viewName)
         {
             if (string.IsNullOrEmpty(viewName))
             {

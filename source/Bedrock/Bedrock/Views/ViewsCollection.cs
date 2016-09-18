@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -138,7 +139,7 @@ namespace Bedrock.Views
             }
         }
 
-        public IEnumerator<object> GetEnumerator()
+        public IEnumerator<IView> GetEnumerator()
         {
             return _subjectCollection.GetEnumerator();
         }

@@ -1,9 +1,8 @@
 ﻿using System;
-using Bedrock.Views;
 
 namespace Bedrock.Tests.Mocks
 {
-    public class MockView : IView
+    public class MockControl
     {
         private string _name;
 
@@ -19,11 +18,6 @@ namespace Bedrock.Tests.Mocks
                 return _name;
             }
             set { _name = value; }
-        }
-        public object DataContext { get; set; }
-        public void RegisterRegion(string regionName, object control)
-        {
-            throw new NotImplementedException();
         }
     }
 }

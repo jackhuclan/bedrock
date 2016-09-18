@@ -9,7 +9,7 @@ namespace Bedrock.Tests.Mocks
 {
     class MockViewsCollection : IViewsCollection
     {
-        public ObservableCollection<object> Items = new ObservableCollection<object>();
+        public ObservableCollection<IView> Items = new ObservableCollection<IView>();
 
         public void Add(IView view)
         {
@@ -26,7 +26,7 @@ namespace Bedrock.Tests.Mocks
             return Items.Contains(value);
         }
 
-        public IEnumerator<object> GetEnumerator()
+        public IEnumerator<IView> GetEnumerator()
         {
             return Items.GetEnumerator();
         }

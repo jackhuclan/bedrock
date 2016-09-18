@@ -23,13 +23,9 @@ namespace Bedrock.Tests.Mocks
 
         public IRegionManager CreateRegionManager()
         {
-            throw new System.NotImplementedException();
+           return new MockRegionManager();
         }
 
-        public bool Navigate(System.Uri source)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
     internal class MockRegionCollection : List<IRegion>, IRegionCollection

@@ -85,6 +85,7 @@
     <Compile Include="Mocks\MockAsyncModuleTypeLoader.cs" />
     <Compile Include="Mocks\MockConfigurationStore.Desktop.cs" />
     <Compile Include="Mocks\MockContainerAdapter.cs" />
+    <Compile Include="Mocks\MockControl.cs" />
     <Compile Include="Mocks\MockDelegateReference.cs" />
     <Compile Include="Mocks\MockLogger.cs" />
     <Compile Include="Mocks\MockModuleTypeLoader.cs" />

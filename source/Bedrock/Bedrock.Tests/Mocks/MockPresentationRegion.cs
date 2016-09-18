@@ -20,13 +20,13 @@ namespace Bedrock.Tests.Mocks
         public IRegionManager Add(IView view)
         {
             MockViews.Items.Add(view);
-
-            return null;
+            return RegionManager;
         }
 
         public void RemoveAllViews()
         {
-            throw new NotImplementedException();
+            MockViews = new MockViewsCollection();
+            MockActiveViews = new MockViewsCollection();
         }
 
         public void Remove(IView view)
@@ -42,27 +42,28 @@ namespace Bedrock.Tests.Mocks
 
         public void Activate()
         {
-            throw new NotImplementedException();
+            foreach (var view in Views)
+            {
+                Activate(view);
+            }
         }
-
-        public void Deactivate(IView view)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void Deactivate()
         {
-            throw new NotImplementedException();
+            foreach (var view in MockActiveViews)
+            {
+                Deactivate(view);
+            }
         }
 
         public IRegionManager Add(IView view, string viewName)
         {
-            throw new NotImplementedException();
+            return this.Add(view, viewName, false);
         }
 
         public IRegionManager Add(IView view, string viewName, bool createRegionManagerScope)
         {
-            throw new NotImplementedException();
+            return this.Add(view, viewName, false);
         }
 
         public void RegisterDefaultBehavior()
@@ -70,7 +71,7 @@ namespace Bedrock.Tests.Mocks
             throw new NotImplementedException();
         }
 
-        public object GetView(string viewName)
+        public IView GetView(string viewName)
         {
             throw new NotImplementedException();
         }
@@ -89,7 +90,7 @@ namespace Bedrock.Tests.Mocks
             get { return MockActiveViews; }
         }
 
-        public void Deactivate(object view)
+        public void Deactivate(IView view)
         {
             MockActiveViews.Items.Remove(view);
         }
@@ -123,23 +124,6 @@ namespace Bedrock.Tests.Mocks
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        public bool Navigate(Uri source)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Comparison<object> SortComparison
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
             }
         }
     }
