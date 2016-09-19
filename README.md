@@ -1,3 +1,7 @@
 # bedrock
 a plugin framework for winform application. 
-Many people know prism, but it could not be used for winform applications. Since there still have lots of winform applications, so I try to transform prism for winform.
+
+what can bedrock do?
+- load module on demanding, dynamically. So in this case, each module could be a single addin.
+- render each view from the plugin into the main module.
+- manage different instances by unity container
