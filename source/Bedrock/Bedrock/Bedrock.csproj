@@ -149,7 +149,7 @@
     <Compile Include="Regions\ViewRegistrationException.Desktop.cs" />
     <Compile Include="Regions\WeakDelegatesManager.cs" />
     <Compile Include="ServiceLocatorExtensions.cs" />
-    <Compile Include="ViewModel\NotificationObject.cs" />
+    <Compile Include="ViewModel\BindableBase.cs" />
     <Compile Include="ViewModel\PropertySupport.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Views\ViewsCollection.cs" />

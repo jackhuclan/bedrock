@@ -131,7 +131,8 @@
     <Compile Include="Regions\RegionViewRegistryFixture.cs" />
     <Compile Include="Regions\ViewsCollectionFixture.cs" />
     <Compile Include="ServiceLocatorExtensionsFixture.cs" />
-    <Compile Include="ViewModel\NotificationObjectFixture.cs" />
+    <Compile Include="ViewModel\BindableBaseFixture.cs" />
+    <Compile Include="ViewModel\MockViewModel.cs" />
     <Compile Include="ViewModel\PropertySupportFixture.cs" />
   </ItemGroup>
   <ItemGroup>
