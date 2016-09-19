@@ -93,6 +93,7 @@
     <Compile Include="Mocks\MockRegion.cs" />
     <Compile Include="Mocks\MockRegionBehavior.cs" />
     <Compile Include="Mocks\MockRegionBehaviorCollection.cs" />
+    <Compile Include="Mocks\MockRegionBehaviorFactory.cs" />
     <Compile Include="Mocks\MockRegionManager.cs" />
     <Compile Include="Mocks\MockServiceLocator.cs" />
     <Compile Include="Mocks\MockView.cs" />

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Bedrock.Regions;
 
 namespace Bedrock.Tests.Mocks
@@ -23,7 +24,7 @@ namespace Bedrock.Tests.Mocks
 
         public IRegionManager CreateRegionManager()
         {
-           return new MockRegionManager();
+            return new MockRegionManager();
         }
 
     }
@@ -32,7 +33,7 @@ namespace Bedrock.Tests.Mocks
     {
         IEnumerator<IRegion> IEnumerable<IRegion>.GetEnumerator()
         {
-            throw new System.NotImplementedException();
+            return this.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -42,7 +43,7 @@ namespace Bedrock.Tests.Mocks
 
         public IRegion this[string regionName]
         {
-            get { return this[0]; }
+            get { return this.FirstOrDefault(x => x.Name == regionName); }
         }
 
         void IRegionCollection.Add(IRegion region)
@@ -57,12 +58,14 @@ namespace Bedrock.Tests.Mocks
 
         public bool ContainsRegionWithName(string regionName)
         {
-            return true;
+            if (GetRegionByName(regionName) == null)
+                return false;
+            return this.Contains(GetRegionByName(regionName));
         }
 
         public IRegion GetRegionByName(string regionName)
         {
-            throw new NotImplementedException();
+            return this[regionName];
         }
 
         public event System.Collections.Specialized.NotifyCollectionChangedEventHandler CollectionChanged;

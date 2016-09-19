@@ -29,8 +29,8 @@ namespace Bedrock.Regions
         public RegionBase(object control)
         {
             this.Behaviors = new RegionBehaviorCollection(this);
-            this.Control = control;
             this.name = GetNamePropertyVal(control);
+            this.Control = control;
             this.activatedItemCollection = new ObservableCollection<IView>();
         }
 
@@ -224,21 +224,6 @@ namespace Bedrock.Regions
             IRegionManager manager = createRegionManagerScope ? this.RegionManager.CreateRegionManager() : this.RegionManager;
             this.ItemMetadataCollection.Add(view);
             return manager;
-        }
-
-        public virtual void RegisterDefaultBehavior()
-        {
-            if (!Behaviors.ContainsKey(AutoPopulateRegionBehavior.BehaviorKey))
-            {
-                var regionBehaviorFatory = ServiceLocator.Current.GetInstance<IRegionBehaviorFactory>();
-                if (regionBehaviorFatory == null)
-                {
-                    throw new ArgumentNullException(Resources.IRegionBehaviorFactoryInstanceNotExist);
-                }
-
-                var behavior = regionBehaviorFatory.CreateFromKey(AutoPopulateRegionBehavior.BehaviorKey);
-                Behaviors.Add(AutoPopulateRegionBehavior.BehaviorKey, behavior);
-            }
         }
 
         public void RemoveAllViews()

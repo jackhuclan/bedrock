@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using Bedrock.Properties;
 using Bedrock.Regions.Behaviors;
@@ -125,12 +126,6 @@ namespace Bedrock.Regions
         private void InvokeBindingBehaviors(string regionName)
         {
             var regionManager = (IRegionManager)_locator.GetInstance(typeof(IRegionManager));
-            var regionBehaviorFactory = _locator.GetInstance<IRegionBehaviorFactory>();
-            if (regionBehaviorFactory == null)
-            {
-                throw new ArgumentNullException(Resources.IRegionBehaviorFactoryInstanceNotExist);
-            }
-
             if (regionManager != null)
             {
                 var region = regionManager.Regions.GetRegionByName(regionName);
@@ -138,10 +133,11 @@ namespace Bedrock.Regions
                 {
                     throw new ArgumentNullException(Resources.RegionNotFound);
                 }
-
-                region.RegisterDefaultBehavior();
-                var behavior = region.Behaviors[AutoPopulateRegionBehavior.BehaviorKey];
-                behavior.Attach();
+             
+                foreach (var behaviorPair in region.Behaviors)
+                {
+                    behaviorPair.Value.Attach();
+                }
             }
         }
     }

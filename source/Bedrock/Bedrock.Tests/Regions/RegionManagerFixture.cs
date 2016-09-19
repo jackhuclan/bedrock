@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using Bedrock.Regions;
 using Bedrock.Tests.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace Bedrock.Tests.Regions
 {
@@ -16,7 +17,7 @@ namespace Bedrock.Tests.Regions
             IRegion region1 = new MockPresentationRegion();
             region1.Name = "MainRegion";
 
-            RegionManager regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
             regionManager.Regions.Add(region1);
 
             IRegion region2 = regionManager.Regions["MainRegion"];
@@ -27,14 +28,14 @@ namespace Bedrock.Tests.Regions
         [ExpectedException(typeof(KeyNotFoundException))]
         public void ShouldFailIfRegionDoesntExists()
         {
-            RegionManager regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
             IRegion region = regionManager.Regions["nonExistentRegion"];
         }
 
         [TestMethod]
         public void CanCheckTheExistenceOfARegion()
         {
-            RegionManager regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
             bool result = regionManager.Regions.ContainsRegionWithName("noRegion");
 
             Assert.IsFalse(result);
@@ -52,7 +53,7 @@ namespace Bedrock.Tests.Regions
         [ExpectedException(typeof(ArgumentException))]
         public void AddingMultipleRegionsWithSameNameThrowsArgumentException()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
             regionManager.Regions.Add(new MockPresentationRegion { Name = "region name" });
             regionManager.Regions.Add(new MockPresentationRegion { Name = "region name" });
         }
@@ -60,7 +61,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void AddPassesItselfAsTheRegionManagerOfTheRegion()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
             var region = new MockPresentationRegion();
             region.Name = "region";
             regionManager.Regions.Add(region);
@@ -71,7 +72,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void CreateRegionManagerCreatesANewInstance()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
             var createdRegionManager = regionManager.CreateRegionManager();
             Assert.IsNotNull(createdRegionManager);
             Assert.IsInstanceOfType(createdRegionManager, typeof(RegionManager));
@@ -81,7 +82,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void CanRemoveRegion()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(new MockRegionBehaviorFactory());
             IRegion region = new MockPresentationRegion();
             region.Name = "TestRegion";
             regionManager.Regions.Add(region);
@@ -94,7 +95,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void ShouldRemoveRegionManagerWhenRemoving()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
             var region = new MockPresentationRegion();
             region.Name = "TestRegion";
             regionManager.Regions.Add(region);
@@ -112,7 +113,7 @@ namespace Bedrock.Tests.Regions
             try
             {
                 RegionManager.UpdatingRegions += listener.OnUpdatingRegions;
-                RegionManager regionManager = new RegionManager();
+                RegionManager regionManager = new RegionManager(new MockRegionBehaviorFactory());
                 regionManager.Regions.ContainsRegionWithName("TestRegion");
                 Assert.IsTrue(listener.OnUpdatingRegionsCalled);
 
@@ -205,7 +206,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void WhenAddingRegions_ThenRegionsCollectionNotifiesUpdate()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
 
             var region1 = new MockRegion { Name = "region1" };
             var region2 = new MockRegion { Name = "region2" };
@@ -233,7 +234,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void WhenRemovingRegions_ThenRegionsCollectionNotifiesUpdate()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
 
             var region1 = new MockRegion { Name = "region1" };
             var region2 = new MockRegion { Name = "region2" };
@@ -264,7 +265,7 @@ namespace Bedrock.Tests.Regions
         [TestMethod]
         public void WhenRemovingNonExistingRegion_ThenRegionsCollectionDoesNotNotifyUpdate()
         {
-            var regionManager = new RegionManager();
+            var regionManager = new RegionManager(new MockRegionBehaviorFactory());
 
             var region1 = new MockRegion { Name = "region1" };
 
@@ -276,6 +277,13 @@ namespace Bedrock.Tests.Regions
             regionManager.Regions.Remove("region2");
 
             Assert.IsNull(args);
+        }
+
+        private MockRegionBehaviorFactory CreateMockRegionBehaviorFactory()
+        {
+            var behaviorFactory = new MockRegionBehaviorFactory();
+            behaviorFactory.CreateFromKey(MockRegionBehavior.BehaviorKey);
+            return behaviorFactory;
         }
 
     }

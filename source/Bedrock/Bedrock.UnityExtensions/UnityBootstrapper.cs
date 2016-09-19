@@ -139,10 +139,10 @@ namespace Bedrock.UnityExtensions
                 RegisterTypeIfMissing(typeof(IServiceLocator), typeof(UnityServiceLocatorAdapter), true);
                 RegisterTypeIfMissing(typeof(IModuleInitializer), typeof(ModuleInitializer), true);
                 RegisterTypeIfMissing(typeof(IModuleManager), typeof(ModuleManager), true);
-                RegisterTypeIfMissing(typeof(IRegionManager), typeof(RegionManager), true);
                 RegisterTypeIfMissing(typeof(IEventAggregator), typeof(EventAggregator), true);
                 RegisterTypeIfMissing(typeof(IRegionViewRegistry), typeof(RegionViewRegistry), true);
                 RegisterTypeIfMissing(typeof(IRegionBehaviorFactory), typeof(RegionBehaviorFactory), true);
+                RegisterTypeIfMissing(typeof(IRegionManager), typeof(RegionManager), true);
             }
         }
 

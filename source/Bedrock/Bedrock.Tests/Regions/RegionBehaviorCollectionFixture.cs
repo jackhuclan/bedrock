@@ -16,11 +16,13 @@ namespace Bedrock.Tests.Regions
             bool mock1Attached = false;
             mock1.OnAttach = () => mock1Attached = true;
             behaviorCollection.Add("Mock1", mock1);
+            mock1.Attach();
 
             var mock2 = new MockRegionBehavior();
             bool mock2Attached = false;
             mock2.OnAttach = () => mock2Attached = true;
             behaviorCollection.Add("Mock2", mock2);
+            mock2.Attach();
 
             Assert.IsTrue(mock1Attached);
             Assert.IsTrue(mock2Attached);

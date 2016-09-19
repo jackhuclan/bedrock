@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using Bedrock.Regions;
+using Bedrock.Regions.Behaviors;
 using Bedrock.Views;
 
 namespace Bedrock.Tests.Mocks
@@ -12,6 +13,11 @@ namespace Bedrock.Tests.Mocks
 
         private MockViewsCollection views = new MockViewsCollection();
 
+        public MockRegion()
+        {
+            this.Behaviors = new RegionBehaviorCollection(this);
+        }
+
         public IViewsCollection Views
         {
             get { return views; }
@@ -22,12 +28,7 @@ namespace Bedrock.Tests.Mocks
             get { throw new System.NotImplementedException(); }
         }
 
-        public object Context
-        {
-            get { throw new System.NotImplementedException(); }
-            set { throw new System.NotImplementedException(); }
-        }
-
+        public object Context { get; set; }
 
         public string Name { get; set; }
 
@@ -69,11 +70,7 @@ namespace Bedrock.Tests.Mocks
 
         public IRegionManager RegionManager { get; set; }
 
-        public IRegionBehaviorCollection Behaviors
-        {
-            get { throw new System.NotImplementedException(); }
-        }
-
+        public IRegionBehaviorCollection Behaviors { get; set; }
         public bool Navigate(System.Uri source)
         {
             throw new System.NotImplementedException();
@@ -84,12 +81,7 @@ namespace Bedrock.Tests.Mocks
         {
             throw new NotImplementedException();
         }
-
-        public void RegisterDefaultBehavior()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void RemoveAllViews()
         {
             throw new NotImplementedException();

@@ -27,23 +27,6 @@ namespace Bedrock.Tests.Regions
         }
 
         [TestMethod]
-        public void CanFilterCollection()
-        {
-            var originalCollection = new ObservableCollection<IView>();
-            IViewsCollection viewsCollection = new ViewsCollection(originalCollection);
-
-            originalCollection.Add(new MockView());
-
-            Assert.AreEqual(0, viewsCollection.Count());
-
-            var item = new MockView();
-            originalCollection.Add(item);
-            Assert.AreEqual(1, viewsCollection.Count());
-
-            Assert.AreSame(item, viewsCollection.First());
-        }
-
-        [TestMethod]
         public void RaisesCollectionChangedWhenFilteredCollectionChanges()
         {
             var originalCollection = new ObservableCollection<IView>();
@@ -84,21 +67,6 @@ namespace Bedrock.Tests.Regions
             originalCollection.Remove(filteredInObject);
 
             Assert.IsTrue(removedFromCollection);
-        }
-
-        [TestMethod]
-        public void DoesNotRaiseCollectionChangedWhenAddingOrRemovingFilteredOutObject()
-        {
-            var originalCollection = new ObservableCollection<IView>();
-            IViewsCollection viewsCollection = new ViewsCollection(originalCollection);
-            bool collectionChanged = false;
-            viewsCollection.CollectionChanged += (s, e) => collectionChanged = true;
-            var filteredOutObject = new MockView();
-
-            originalCollection.Add(filteredOutObject);
-            originalCollection.Remove(filteredOutObject);
-
-            Assert.IsFalse(collectionChanged);
         }
     }
 

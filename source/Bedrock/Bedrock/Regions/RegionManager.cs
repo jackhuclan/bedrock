@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Bedrock.Properties;
+using Bedrock.Regions.Behaviors;
 using Bedrock.Views;
 
 namespace Bedrock.Regions
@@ -18,6 +19,7 @@ namespace Bedrock.Regions
     /// </remarks>
     public class RegionManager : IRegionManager
     {
+        private readonly IRegionBehaviorFactory _regionBehaviorFactory;
         private static readonly WeakDelegatesManager UpdatingRegionsListeners = new WeakDelegatesManager();
 
         /// <summary>
@@ -62,9 +64,10 @@ namespace Bedrock.Regions
         /// <summary>
         /// Initializes a new instance of <see cref="RegionManager"/>.
         /// </summary>
-        public RegionManager()
+        public RegionManager(IRegionBehaviorFactory regionBehaviorFactory)
         {
-            _regionCollection = new RegionCollection(this);
+            _regionBehaviorFactory = regionBehaviorFactory;
+            _regionCollection = new RegionCollection(this, regionBehaviorFactory);
         }
 
         /// <summary>
@@ -82,18 +85,20 @@ namespace Bedrock.Regions
         /// <returns>A new region manager that can be used as a different scope from the current region manager.</returns>
         public IRegionManager CreateRegionManager()
         {
-            return new RegionManager();
+            return new RegionManager(_regionBehaviorFactory);
         }
 
         #region RegionCollection
         internal class RegionCollection : IRegionCollection
         {
             private readonly IRegionManager _regionManager;
+            private readonly IRegionBehaviorFactory _regionBehaviorFactory;
             private readonly List<IRegion> _regions;
 
-            public RegionCollection(IRegionManager regionManager)
+            public RegionCollection(IRegionManager regionManager, IRegionBehaviorFactory regionBehaviorFactory)
             {
                 this._regionManager = regionManager;
+                _regionBehaviorFactory = regionBehaviorFactory;
                 this._regions = new List<IRegion>();
             }
 
@@ -145,6 +150,7 @@ namespace Bedrock.Regions
 
                 this._regions.Add(region);
                 region.RegionManager = this._regionManager;
+                RegisterDefaultBehavior(region);
                 this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, region, 0));
             }
 
@@ -186,6 +192,15 @@ namespace Bedrock.Regions
                 if (handler != null)
                 {
                     handler(this, notifyCollectionChangedEventArgs);
+                }
+            }
+
+            private void RegisterDefaultBehavior(IRegion region)
+            {
+                if (!region.Behaviors.ContainsKey(AutoPopulateRegionBehavior.BehaviorKey))
+                {
+                    var behavior = _regionBehaviorFactory.CreateFromKey(AutoPopulateRegionBehavior.BehaviorKey);
+                    region.Behaviors.Add(AutoPopulateRegionBehavior.BehaviorKey, behavior);
                 }
             }
         }
