@@ -12,7 +12,7 @@ namespace Bedrock.Tests.Mocks
          
         public IEnumerator<string> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return behaviorTypes.Keys.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

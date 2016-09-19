@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using Bedrock.Regions;
 using Bedrock.Tests.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,6 +23,18 @@ namespace Bedrock.Tests.Regions
 
             IRegion region2 = regionManager.Regions["MainRegion"];
             Assert.AreSame(region1, region2);
+        }
+
+        [TestMethod]
+        public void AddRegionShouldHaveDefaultBehavior()
+        {
+            IRegion region1 = new MockPresentationRegion();
+            region1.Name = "MainRegion";
+
+            var regionManager = new RegionManager(CreateMockRegionBehaviorFactory());
+            regionManager.Regions.Add(region1);
+            Assert.AreEqual(1, region1.Behaviors.Count());
+            Assert.IsInstanceOfType(region1.Behaviors[MockRegionBehavior.BehaviorKey], typeof(MockRegionBehavior));
         }
 
         [TestMethod]
@@ -138,7 +151,7 @@ namespace Bedrock.Tests.Regions
                 RegionManager.UpdatingRegions -= listener.OnUpdatingRegions;
             }
         }
-        
+
 
         [TestMethod]
         public void ShouldNotPreventSubscribersToStaticEventFromBeingGarbageCollected()

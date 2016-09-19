@@ -197,10 +197,15 @@ namespace Bedrock.Regions
 
             private void RegisterDefaultBehavior(IRegion region)
             {
-                if (!region.Behaviors.ContainsKey(AutoPopulateRegionBehavior.BehaviorKey))
+                var enumerator = _regionBehaviorFactory.GetEnumerator();
+                while (enumerator.MoveNext())
                 {
-                    var behavior = _regionBehaviorFactory.CreateFromKey(AutoPopulateRegionBehavior.BehaviorKey);
-                    region.Behaviors.Add(AutoPopulateRegionBehavior.BehaviorKey, behavior);
+                    var behaviorKey = enumerator.Current;
+                    if (!region.Behaviors.ContainsKey(behaviorKey))
+                    {
+                        var behavior = _regionBehaviorFactory.CreateFromKey(behaviorKey);
+                        region.Behaviors.Add(behaviorKey, behavior);
+                    }
                 }
             }
         }
