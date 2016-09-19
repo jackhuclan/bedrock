@@ -117,14 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AdapterInvalidTypeException" xml:space="preserve">
-    <value>The object must be of type '{0}' in order to use the current region adapter.</value>
-  </data>
   <data name="CannotChangeRegionNameException" xml:space="preserve">
     <value>Cannot change the region name once is set. The current region name is '{0}'.</value>
-  </data>
-  <data name="CannotCreateNavigationTarget" xml:space="preserve">
-    <value>Cannot create navigation target '{0}'.</value>
   </data>
   <data name="CanOnlyAddTypesThatInheritIFromRegionBehavior" xml:space="preserve">
     <value>Type '{0}' does not implement from IRegionBehavior.</value>
@@ -132,26 +126,11 @@
   <data name="ConfigurationStoreCannotBeNull" xml:space="preserve">
     <value>The ConfigurationStore cannot contain a null value. </value>
   </data>
-  <data name="ContentControlHasContentException" xml:space="preserve">
-    <value>ContentControl's Content property is not empty. 
-    This control is being associated with a region, but the control is already bound to something else. 
-    If you did not explicitly set the control's Content property, 
-    this exception may be caused by a change in the value of the inherited RegionManager attached property.</value>
-  </data>
   <data name="CyclicDependencyFound" xml:space="preserve">
     <value>At least one cyclic dependency has been found in the module catalog. Cycles in the module dependencies must be avoided.</value>
   </data>
-  <data name="DeactiveNotPossibleException" xml:space="preserve">
-    <value>Deactivation is not possible in this type of region.</value>
-  </data>
   <data name="DefaultTextLoggerPattern" xml:space="preserve">
     <value>{1}: {2}. Priority: {3}. Timestamp:{0:u}.</value>
-  </data>
-  <data name="DelegateCommandDelegatesCannotBeNull" xml:space="preserve">
-    <value>Neither the executeMethod nor the canExecuteMethod delegates can be null.</value>
-  </data>
-  <data name="DelegateCommandInvalidGenericPayloadType" xml:space="preserve">
-    <value>T for DelegateCommand&lt;T&gt; is not an object nor Nullable.</value>
   </data>
   <data name="DependencyForUnknownModule" xml:space="preserve">
     <value>Cannot add dependency for unknown module {0}</value>
@@ -189,32 +168,11 @@
     <value>Failed to load type for module {0}. 
 Error was: {1}.</value>
   </data>
-  <data name="HostControlCannotBeNull" xml:space="preserve">
-    <value>HostControl cannot have null value when behavior attaches. </value>
-  </data>
-  <data name="HostControlCannotBeSetAfterAttach" xml:space="preserve">
-    <value>The HostControl property cannot be set after Attach method has been called.</value>
-  </data>
-  <data name="HostControlMustBeATabControl" xml:space="preserve">
-    <value>HostControl type must be a TabControl.</value>
-  </data>
-  <data name="IEnumeratorObsolete" xml:space="preserve">
-    <value>The IModuleEnumerator interface is no longer used and has been replaced by ModuleCatalog.</value>
-  </data>
   <data name="InvalidArgumentAssemblyUri" xml:space="preserve">
     <value>The argument must be a valid absolute Uri to an assembly file.</value>
   </data>
   <data name="InvalidDelegateRerefenceTypeException" xml:space="preserve">
     <value>The Target of the IDelegateReference should be of type {0}.</value>
-  </data>
-  <data name="ItemsControlHasItemsSourceException" xml:space="preserve">
-    <value>ItemsControl's ItemsSource property is not empty. 
-    This control is being associated with a region, but the control is already bound to something else. 
-    If you did not explicitly set the control's ItemSource property, 
-    this exception may be caused by a change in the value of the inherited RegionManager attached property.</value>
-  </data>
-  <data name="MappingExistsException" xml:space="preserve">
-    <value>Mapping with the given type is already registered: {0}.</value>
   </data>
   <data name="ModuleDependenciesNotMetInGroup" xml:space="preserve">
     <value>Module {0} depends on other modules that don't belong to the same group.</value>
@@ -227,15 +185,6 @@ Error was: {1}.</value>
   </data>
   <data name="ModuleTypeNotFound" xml:space="preserve">
     <value>Failed to load type '{0}' from assembly '{1}'.</value>
-  </data>
-  <data name="NavigationInProgress" xml:space="preserve">
-    <value>Navigation is already in progress on region with name '{0}'.</value>
-  </data>
-  <data name="NavigationServiceHasNoRegion" xml:space="preserve">
-    <value>Navigation cannot proceed until a region is set for the RegionNavigationService.</value>
-  </data>
-  <data name="NoRegionAdapterException" xml:space="preserve">
-    <value>The IRegionAdapter for the type {0} is not registered in the region adapter mappings. You can register an IRegionAdapter for this control by overriding the ConfigureRegionAdapterMappings method in the bootstrapper.</value>
   </data>
   <data name="NoRetrieverCanRetrieveModule" xml:space="preserve">
     <value>There is currently no moduleTypeLoader in the ModuleManager that can retrieve the specified module.</value>
@@ -259,9 +208,6 @@ Error was: {1}.</value>
   </data>
   <data name="RegionBehaviorRegionCannotBeSetAfterAttach" xml:space="preserve">
     <value>The Region property cannot be set after Attach method has been called.</value>
-  </data>
-  <data name="RegionCreationException" xml:space="preserve">
-    <value>An exception occurred while creating a region with name '{0}'. The exception was: {1}. </value>
   </data>
   <data name="RegionManagerWithDifferentNameException" xml:space="preserve">
     <value>The region being added already has a name of '{0}' and cannot be added to the region manager with a different name ('{1}').</value>
@@ -290,9 +236,6 @@ Error was: {1}.</value>
   <data name="StringCannotBeNullOrEmpty" xml:space="preserve">
     <value>The provided String argument {0} must not be null or empty.</value>
   </data>
-  <data name="StringCannotBeNullOrEmpty1" xml:space="preserve">
-    <value>The provided String argument {0} must not be null or empty.</value>
-  </data>
   <data name="TypeWithKeyNotRegistered" xml:space="preserve">
     <value>No BehaviorType with key '{0}' was registered.</value>
   </data>
@@ -316,14 +259,8 @@ Error was: {1}.</value>
   <data name="NameValueOfControlIsNull" xml:space="preserve">
     <value>The name of this control should not be null!</value>
   </data>
-  <data name="IRegionBehaviorFactoryInstanceNotExist" xml:space="preserve">
-    <value>IRegionBehaviorFactory instance need be registerd!</value>
-  </data>
   <data name="EventAggregatorNotConstructedOnUIThread" xml:space="preserve">
     <value>To use the UIThread option for subscribing, the EventAggregator must be constructed on the UI thread.</value>
-  </data>
-  <data name="InvalidDelegateRerefenceTypeException1" xml:space="preserve">
-    <value>Invalid Delegate Reference Type Exception</value>
   </data>
   <data name="DefaultDebugLoggerPattern" xml:space="preserve">
     <value>{1}: {2}. Priority: {3}. Timestamp:{0:u}.</value>

@@ -61,29 +61,11 @@ namespace Bedrock.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The object must be of type &apos;{0}&apos; in order to use the current region adapter..
-        /// </summary>
-        public static string AdapterInvalidTypeException {
-            get {
-                return ResourceManager.GetString("AdapterInvalidTypeException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot change the region name once is set. The current region name is &apos;{0}&apos;..
         /// </summary>
         public static string CannotChangeRegionNameException {
             get {
                 return ResourceManager.GetString("CannotChangeRegionNameException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot create navigation target &apos;{0}&apos;..
-        /// </summary>
-        public static string CannotCreateNavigationTarget {
-            get {
-                return ResourceManager.GetString("CannotCreateNavigationTarget", resourceCulture);
             }
         }
         
@@ -115,32 +97,11 @@ namespace Bedrock.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ContentControl&apos;s Content property is not empty. 
-        ///    This control is being associated with a region, but the control is already bound to something else. 
-        ///    If you did not explicitly set the control&apos;s Content property, 
-        ///    this exception may be caused by a change in the value of the inherited RegionManager attached property..
-        /// </summary>
-        public static string ContentControlHasContentException {
-            get {
-                return ResourceManager.GetString("ContentControlHasContentException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to At least one cyclic dependency has been found in the module catalog. Cycles in the module dependencies must be avoided..
         /// </summary>
         public static string CyclicDependencyFound {
             get {
                 return ResourceManager.GetString("CyclicDependencyFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deactivation is not possible in this type of region..
-        /// </summary>
-        public static string DeactiveNotPossibleException {
-            get {
-                return ResourceManager.GetString("DeactiveNotPossibleException", resourceCulture);
             }
         }
         
@@ -159,24 +120,6 @@ namespace Bedrock.Properties {
         public static string DefaultTextLoggerPattern {
             get {
                 return ResourceManager.GetString("DefaultTextLoggerPattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Neither the executeMethod nor the canExecuteMethod delegates can be null..
-        /// </summary>
-        public static string DelegateCommandDelegatesCannotBeNull {
-            get {
-                return ResourceManager.GetString("DelegateCommandDelegatesCannotBeNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to T for DelegateCommand&lt;T&gt; is not an object nor Nullable..
-        /// </summary>
-        public static string DelegateCommandInvalidGenericPayloadType {
-            get {
-                return ResourceManager.GetString("DelegateCommandInvalidGenericPayloadType", resourceCulture);
             }
         }
         
@@ -280,42 +223,6 @@ namespace Bedrock.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HostControl cannot have null value when behavior attaches. .
-        /// </summary>
-        public static string HostControlCannotBeNull {
-            get {
-                return ResourceManager.GetString("HostControlCannotBeNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The HostControl property cannot be set after Attach method has been called..
-        /// </summary>
-        public static string HostControlCannotBeSetAfterAttach {
-            get {
-                return ResourceManager.GetString("HostControlCannotBeSetAfterAttach", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HostControl type must be a TabControl..
-        /// </summary>
-        public static string HostControlMustBeATabControl {
-            get {
-                return ResourceManager.GetString("HostControlMustBeATabControl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The IModuleEnumerator interface is no longer used and has been replaced by ModuleCatalog..
-        /// </summary>
-        public static string IEnumeratorObsolete {
-            get {
-                return ResourceManager.GetString("IEnumeratorObsolete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The argument must be a valid absolute Uri to an assembly file..
         /// </summary>
         public static string InvalidArgumentAssemblyUri {
@@ -330,45 +237,6 @@ namespace Bedrock.Properties {
         public static string InvalidDelegateRerefenceTypeException {
             get {
                 return ResourceManager.GetString("InvalidDelegateRerefenceTypeException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid Delegate Reference Type Exception.
-        /// </summary>
-        public static string InvalidDelegateRerefenceTypeException1 {
-            get {
-                return ResourceManager.GetString("InvalidDelegateRerefenceTypeException1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to IRegionBehaviorFactory instance need be registerd!.
-        /// </summary>
-        public static string IRegionBehaviorFactoryInstanceNotExist {
-            get {
-                return ResourceManager.GetString("IRegionBehaviorFactoryInstanceNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ItemsControl&apos;s ItemsSource property is not empty. 
-        ///    This control is being associated with a region, but the control is already bound to something else. 
-        ///    If you did not explicitly set the control&apos;s ItemSource property, 
-        ///    this exception may be caused by a change in the value of the inherited RegionManager attached property..
-        /// </summary>
-        public static string ItemsControlHasItemsSourceException {
-            get {
-                return ResourceManager.GetString("ItemsControlHasItemsSourceException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mapping with the given type is already registered: {0}..
-        /// </summary>
-        public static string MappingExistsException {
-            get {
-                return ResourceManager.GetString("MappingExistsException", resourceCulture);
             }
         }
         
@@ -414,33 +282,6 @@ namespace Bedrock.Properties {
         public static string NameValueOfControlIsNull {
             get {
                 return ResourceManager.GetString("NameValueOfControlIsNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Navigation is already in progress on region with name &apos;{0}&apos;..
-        /// </summary>
-        public static string NavigationInProgress {
-            get {
-                return ResourceManager.GetString("NavigationInProgress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Navigation cannot proceed until a region is set for the RegionNavigationService..
-        /// </summary>
-        public static string NavigationServiceHasNoRegion {
-            get {
-                return ResourceManager.GetString("NavigationServiceHasNoRegion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The IRegionAdapter for the type {0} is not registered in the region adapter mappings. You can register an IRegionAdapter for this control by overriding the ConfigureRegionAdapterMappings method in the bootstrapper..
-        /// </summary>
-        public static string NoRegionAdapterException {
-            get {
-                return ResourceManager.GetString("NoRegionAdapterException", resourceCulture);
             }
         }
         
@@ -506,15 +347,6 @@ namespace Bedrock.Properties {
         public static string RegionBehaviorRegionCannotBeSetAfterAttach {
             get {
                 return ResourceManager.GetString("RegionBehaviorRegionCannotBeSetAfterAttach", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An exception occurred while creating a region with name &apos;{0}&apos;. The exception was: {1}. .
-        /// </summary>
-        public static string RegionCreationException {
-            get {
-                return ResourceManager.GetString("RegionCreationException", resourceCulture);
             }
         }
         
@@ -596,15 +428,6 @@ namespace Bedrock.Properties {
         public static string StringCannotBeNullOrEmpty {
             get {
                 return ResourceManager.GetString("StringCannotBeNullOrEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The provided String argument {0} must not be null or empty..
-        /// </summary>
-        public static string StringCannotBeNullOrEmpty1 {
-            get {
-                return ResourceManager.GetString("StringCannotBeNullOrEmpty1", resourceCulture);
             }
         }
         
