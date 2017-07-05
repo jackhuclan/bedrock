@@ -1,5 +1,5 @@
 # bedrock
-a plugin framework for winform application. 
+a MVVM plugin framework for winform application. 
 
 # what can bedrock do?
 - load module on demand, dynamically. So in this case, each module could be a single addin.
